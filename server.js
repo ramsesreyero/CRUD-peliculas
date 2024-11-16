@@ -6,10 +6,21 @@ const mysql = require('mysql2');
 const peliculasRoutes = require('./routes/peliculas');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 async function fetchData() {
-    const response = await fetch('/api/peliculas');
-    // Handle the response here
+    try {
+        const response = await fetch('http://localhost:8080/api/peliculas');
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        // Process the data here
+    } catch (error) {
+        console.error('Fetch error:', error);
+        // Handle the error (e.g., show a user-friendly message)
+    }
 }
 
+// Call the async function
+fetchData();
 // Call the async function
 fetchData().catch(error => console.error(error));
 const app = express();
