@@ -28,8 +28,7 @@
     <script>
         async function obtenerPeliculas() {
             try {
-                const response = await fetch('https://crud-peliculas-pyyp388wu-ramsesreyeros-projects.vercel.app/api/peliculas');
-                if (!response.ok) {
+                const response = await fetch('http://localhost:8080/api/peliculas');                if (!response.ok) {
                     // Captura el estado y el texto de la respuesta
                     const errorText = await response.text();
                     throw new Error(`Error en la respuesta de la API: ${response.status} ${response.statusText}. Detalles: ${errorText}`);

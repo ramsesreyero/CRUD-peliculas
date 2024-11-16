@@ -19,7 +19,8 @@ console.log('DB_NAME:', process.env.DB_NAME);
 app.use(cors({
     origin: [
         'https://crud-peliculas-pyyp388wu-ramsesreyeros-projects.vercel.app',
-        'https://crud-peliculas-omega.vercel.app'
+        'https://crud-peliculas-omega.vercel.app',
+        'http://localhost:8080' // Add your local development URL
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
