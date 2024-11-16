@@ -1,28 +1,11 @@
-require('dotenv').config(); // Asegúrate de que esto esté al principio
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql2');
 const peliculasRoutes = require('./routes/peliculas');
 const { createProxyMiddleware } = require('http-proxy-middleware');
-async function fetchData() {
-    try {
-        const response = await fetch('http://localhost:8080/api/peliculas');
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        // Process the data here
-    } catch (error) {
-        console.error('Fetch error:', error);
-        // Handle the error (e.g., show a user-friendly message)
-    }
-}
 
-// Call the async function
-fetchData();
-// Call the async function
-fetchData().catch(error => console.error(error));
 const app = express();
 const PORT = 8080;
 
@@ -56,6 +39,10 @@ app.use('/api', createProxyMiddleware({
 
 app.use('/api/peliculas', peliculasRoutes); // Aquí es donde defines la ruta
 
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
 
 // Configuración de la conexión a la base de datos
 const db = mysql.createConnection({
@@ -81,3 +68,21 @@ app.use('/peliculas', peliculasRoutes);
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });
+
+// Función asíncrona para obtener datos
+async function fetchData() {
+    try {
+        const response = await fetch('http://localhost:8080/api/peliculas');
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        // Process the data here
+    } catch (error) {
+        console.error('Fetch error:', error);
+        // Handle the error (e.g., show a user-friendly message)
+    }
+}
+
+// Llamar a la función asíncrona
+fetchData().catch(error => console.error(error));
