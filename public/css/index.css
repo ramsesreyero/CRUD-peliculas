@@ -1,0 +1,88 @@
+/* Asegurarse de que el html y el body ocupen toda la altura */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Alinear el contenido en columna */
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    background-color: #141414; /* Color de fondo */
+    color: #fff; /* Color del texto */
+}
+
+/* Estilos para el encabezado */
+.header {
+    background-color: #000;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Estilos para la navegación */
+.nav {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    padding: 10px 0;
+}
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+}
+
+.nav a:hover {
+    background-color: #575757;
+}
+
+/* Contenedor principal */
+.container {
+    flex: 1; /* Esto permite que el contenedor principal ocupe el espacio restante */
+    display: flex; /* Asegurarse de que la lista de películas use flexbox */
+    flex-wrap: wrap; /* Permitir que las películas se ajusten a la siguiente línea */
+    justify-content: center; /* Centrar las películas */
+    padding: 20px;
+}
+
+/* Estilos para la lista de películas */
+.movie-list {
+    display: flex; /* Asegurarse de que la lista de películas use flexbox */
+    flex-wrap: wrap; /* Permitir que las películas se ajusten a la siguiente línea */
+    justify-content: center; /* Centrar las películas */
+}
+
+/* Estilos para cada elemento de película */
+.movie-item {
+    margin: 10px;
+    cursor: pointer;
+    text-align: center; /* Centrar el texto dentro del contenedor de la película */
+    width: 200px; /* Establecer un ancho fijo para cada elemento de película */
+}
+
+.movie-item img {
+    width: 100%; /* Asegurar que la imagen ocupe todo el ancho del contenedor */
+    height: 300px; /* Establecer una altura fija para todas las imágenes */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+    border-radius: 8px; /* Bordes redondeados para un mejor aspecto */
+}
+
+.movie-item h3 {
+    font-size: 1.2em; /* Ajustar el tamaño de la fuente del título */
+    margin: 10px 0; /* Espaciado superior e inferior */
+}
+
+/* Estilos para el footer */
+.footer {
+    text-align: center; /* Centrar el texto del footer */
+    padding: 20px;
+    background-color: #000; /* Mismo fondo que en otras páginas */
+    color: #fff; /* Asegurarnos de que el texto sea blanco */
+    position: relative; /* Asegurarse de que esté en su lugar */
+    bottom: 0;
+    width: 100%;
+}

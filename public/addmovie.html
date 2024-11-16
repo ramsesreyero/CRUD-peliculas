@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Nueva Película</title>
+    <link rel="stylesheet" href="./css/addmovie.css"> <!-- Asegúrate de que la ruta sea correcta -->
+</head>
+<body>
+    <header class="header">
+        <h1>Agregar Nueva Película</h1>
+    </header>
+    <nav class="nav">
+        <a href="index.html">Inicio</a>
+        <a href="addmovie.html">Agregar Película</a>
+    </nav>
+
+    <main>
+        <form id="add-movie-form" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="titulo">Título</label>
+                <input type="text" id="titulo" placeholder="Título de la película" required />
+            </div>
+            <div class="form-group">
+                <label for="contenido">Descripción</label>
+                <textarea id="contenido" placeholder="Descripción de la película" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="categoria">Categoría</label>
+                <input type="text" id="categoria" placeholder="Categoría" required />
+            </div>
+            <div class="form-group">
+                <label for="anio">Año</label>
+                <input type="number" id="anio" placeholder="Año de lanzamiento" required min="1888" max="2100" />
+            </div>
+            <div class="form-group">
+                <label for="genero">Género</label>
+                <input type="text" id="genero" placeholder="Género" required />
+            </div>
+            <div class="form-group">
+                <label for="image">Imagen</label>
+                <input type="file" id="image" accept="image/*" required />
+            </div>
+            <button type="submit">Guardar Película</button>
+        </form>
+    </main>
+
+    <script>
+        document.getElementById('add-movie-form').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Evitar el envío del formulario
+
+            const titulo = document.getElementById('titulo').value;
+            const contenido = document.getElementById('contenido').value;
+            const categoria = document.getElementById('categoria').value;
+            const anio = document.getElementById('anio').value;
+            const genero = document.getElementById('genero').value;
+            const imageFile = document.getElementById('image').files[0]; // Obtener el archivo de imagen
+
+            const formData = new FormData();
+            formData.append('titulo', titulo);
+            formData.append('contenido', contenido);
+            formData.append('categoria', categoria);
+            formData.append('anio', anio);
+            formData.append('genero', genero);
+            formData.append('image', imageFile); // Agregar el archivo de imagen
+
+            const response = await fetch('http://localhost:8080/peliculas', {
+                method: 'POST',
+                body: formData // Enviar FormData
+            });
+
+            if (response.ok) {
+                alert('Película agregada con éxito');
+                window.location.href = 'index.html'; // Redirigir a la lista de películas
+            } else {
+                alert('Error al agregar la película');
+            }
+        });
+    </script>
+</body>
+</html>

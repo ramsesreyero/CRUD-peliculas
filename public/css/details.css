@@ -1,0 +1,114 @@
+/* Asegurarse de que el html y el body ocupen toda la altura */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Alinear el contenido en columna */
+body {
+    display: flex;
+    flex-direction: column; /* Alinear el contenido en columna */
+    font-family: 'Roboto', sans-serif;
+    background-color: #141414; /* Color de fondo */
+    color: #fff; /* Color del texto */
+}
+
+/* Estilos para el encabezado */
+.header {
+    background-color: #000;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Estilos para la navegación */
+.nav {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    padding: 10px 0;
+}
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+}
+
+.nav a:hover {
+    background-color: #575757;
+}
+
+/* Contenedor principal para los detalles de la película */
+.movie-details {
+    flex: 1; /* Esto permite que el contenedor principal ocupe el espacio restante */
+    display: flex; 
+    flex-direction: column; /* Alinear el contenido verticalmente */
+    align-items: center; /* Centrar horizontalmente */
+    padding: 20px;
+}
+
+/* Estilos para la imagen de la película */
+.movie-details img {
+    width: 300px; /* Ajusta el tamaño según lo necesites */
+    height: auto; /* Mantener la proporción de la imagen */
+    border-radius: 8px; /* Bordes redondeados para un mejor aspecto */
+}
+
+/* Estilos para la información de la película */
+.info {
+    max-width: 600px; /* Limitar el ancho de la información */
+    text-align: center; /* Centrar el texto */
+    margin-top: 20px; /* Espacio superior */
+}
+
+/* Estilos para los botones de acción */
+/* Estilos para el contenedor de los botones */
+.actions {
+    display: flex; /* Usar flexbox para alinear los botones */
+    justify-content: center; /* Centrar los botones */
+    margin-top: 20px; /* Espacio superior para los botones */
+}
+
+/* Estilos generales para los botones y enlaces */
+.actions a, .actions button {
+    background-color: #007bff; /* Color de fondo azul */
+    color: #fff; /* Color de texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 15px; /* Espaciado interno */
+    font-size: 1em; /* Tamaño de fuente */
+    cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
+    text-decoration: none; /* Sin subrayado en enlaces */
+    margin: 0 10px; /* Espacio entre botones */
+    display: inline-flex; /* Para alinear el icono y el texto */
+    align-items: center; /* Centrar verticalmente el contenido */
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+}
+
+/* Efecto hover para los botones */
+.actions a:hover, .actions button:hover {
+    background-color: #0056b3; /* Color de fondo más oscuro al pasar el mouse */
+    transform: translateY(-2px); /* Efecto de elevación */
+}
+
+/* Estilo específico para el botón de eliminar */
+#delete-button {
+    background-color: #dc3545; /* Color de fondo rojo */
+}
+
+#delete-button:hover {
+    background-color: #c82333; /* Color de fondo más oscuro al pasar el mouse */
+}
+
+/* Estilos para el footer */
+.footer {
+    text-align: center; /* Centrar el texto del footer */
+    padding: 20px;
+    background-color: #000; /* Mismo fondo que en otras páginas */
+    color: #fff; /* Asegurarnos de que el texto sea blanco */
+    position: relative; /* Asegurarse de que esté en su lugar */
+    bottom: 0;
+    width: 100%;
+}

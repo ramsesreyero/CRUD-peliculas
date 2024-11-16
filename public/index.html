@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD de Películas</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="./css/index.css"> <!-- Cambia la ruta según corresponda -->
+</head>
+<body>
+    <header class="header">
+        <h1>Lista de Películas</h1>
+    </header>
+    <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="addmovie.html">Agregar Película</a>
+        <a href="team.html">Equipo</a>
+    </nav>
+    <main class="container">
+        <section class="movie-list">
+            <!-- Se generarán dinámicamente las películas aquí -->
+        </section>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2024 CRUD de Películas. Todos los derechos reservados.</p>
+    </footer>
+    
+    <script>
+        async function obtenerPeliculas() {
+            const response = await fetch('http://localhost:8080/peliculas');
+            const peliculas = await response.json();
+            const movieList = document.querySelector('.movie-list');
+            movieList.innerHTML = ''; // Limpiar la lista antes de agregar nuevas películas
+            peliculas.forEach(pelicula => {
+                const movieItem = document.createElement('div');
+                movieItem.className = 'movie-item';
+                movieItem.innerHTML = `
+                    <div class="movie-content" onclick="window.location.href='details.html?id=${pelicula.id}'">
+                        <img src="${pelicula.imageUrl}" alt="Poster de ${pelicula.titulo}" />
+                        <h3>${pelicula.titulo}</h3>
+                    </div>
+                `;
+                movieList.appendChild(movieItem);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', obtenerPeliculas);
+    </script>
+</body>
+</html>
