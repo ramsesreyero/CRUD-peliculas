@@ -1,10 +1,10 @@
 const mysql = require('mysql2');
 
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root', // Cambia esto por tu usuario de MySQL
-    password: '4Q5@YJM$PHb#8dS%', // Cambia esto por tu contraseña de MySQL
-    database: 'movie_db' // Asegúrate de que esta base de datos exista
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
 db.connect(err => {
