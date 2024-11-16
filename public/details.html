@@ -33,15 +33,24 @@
         </div>
     </main>
 
-
     <script>
         async function obtenerDetallesPelicula() {
             const urlParams = new URLSearchParams(window.location.search);
             const id = urlParams.get('id');
-            const response = await fetch(`http://localhost:8080/peliculas/${id}`);
-            const pelicula = await response.json();
 
-            document.getElementById('movie-poster').src = pelicula.imageUrl;
+            // Fetch movie details from the API
+            const response = await fetch(`http://localhost:8080/api/peliculas/${id}`);
+            
+            if (!response.ok) {
+                console.error('Error fetching movie details:', response.statusText);
+                document.body.innerHTML = '<p>Error fetching movie details. Please try again later.</p>';
+                return;
+            }
+
+            const pelicula = await response.json();
+            console.log(pelicula); // Log the response to check its structure
+
+            document.getElementById('movie-poster').src = pelicula.imageUrl; // Ensure this matches your API response
             document.getElementById('movie-title').innerText = pelicula.titulo;
             document.getElementById('movie-contenido').innerText = pelicula.contenido;
             document.getElementById('movie-categoria').innerText = pelicula.categoria;
@@ -49,22 +58,28 @@
             document.getElementById('movie-genero').innerText = pelicula.genero;
             document.getElementById('edit-button').href = `edit.html?id=${pelicula.id}`;
 
+            // Handle delete button click
             document.getElementById('delete-button').onclick = async () => {
                 const confirmDelete = confirm('¿Estás seguro de que deseas eliminar esta película?');
                 if (confirmDelete) {
-                    await fetch(`http://localhost:8080/peliculas/${id}`, {
+                    const deleteResponse = await fetch(`http://localhost:8080/api/peliculas/${id}`, {
                         method: 'DELETE'
                     });
-                    alert('Película eliminada con éxito');
-                    window.location.href = 'index.html';
+                    if (deleteResponse.ok) {
+                        alert('Película eliminada con éxito');
+                        window.location.href = 'index.html';
+                    } else {
+                        alert('Error al eliminar la película. Inténtalo de nuevo.');
+                    }
                 }
             };
         }
 
         document.addEventListener('DOMContentLoaded', obtenerDetallesPelicula);
     </script>
-        <footer class="footer">
-            <p>&copy; 2024 CRUD de Películas. Todos los derechos reservados.</p>
-        </footer>
+    
+    <footer class="footer">
+        <p>&copy; 2024 CRUD de Películas. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>

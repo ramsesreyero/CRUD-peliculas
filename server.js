@@ -5,17 +5,16 @@ const cors = require('cors');
 const mysql = require('mysql2');
 const peliculasRoutes = require('./routes/peliculas');
 const { createProxyMiddleware } = require('http-proxy-middleware');
+const multer = require('multer');
+const morgan = require('morgan');
 
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
-// Verificar las variables de entorno
-console.log('DB_HOST:', process.env.DB_HOST);
-console.log('DB_USER:', process.env.DB_USER);
-console.log('DB_PASSWORD:', process.env.DB_PASSWORD);
-console.log('DB_NAME:', process.env.DB_NAME);
+// Middleware for logging requests
+app.use(morgan('dev'));
 
-// Middleware
+// Middleware for CORS
 app.use(cors({
     origin: [
         'https://crud-peliculas-pyyp388wu-ramsesreyeros-projects.vercel.app',
@@ -25,28 +24,28 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+// Middleware for parsing JSON bodies
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
 
-// Rutas para manejar las películas desde la base de datos local
-app.use('/api/peliculas', peliculasRoutes); // Local routes should come first
+// Set up multer for file uploads
+const upload = multer({ storage: multer.memoryStorage() }); // Store files in memory
 
-// Configura el proxy para redirigir a la API externa
+// Routes for handling movies
+app.use('/api/peliculas', peliculasRoutes); // Use the router directly
+
+// Proxy setup for external API
 app.use('/api', createProxyMiddleware({ 
     target: 'https://crud-peliculas-omega.vercel.app/', 
     changeOrigin: true,
     pathRewrite: {
-        '^/api': '', // Reescribe la ruta para que no incluya /api
+        '^/api': '', // Rewrites the path to exclude /api
     },
 }));
 
-app.use((req, res, next) => {
-    console.log(`${req.method} ${req.url}`);
-    next();
-});
-
-// Configuración de la conexión a la base de datos
+// Database connection
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -54,34 +53,27 @@ const db = mysql.createConnection({
     database: process.env.DB_NAME
 });
 
-// Conectar a la base de datos
+// Connect to the database
 db.connect(err => {
     if (err) {
-        console.error('Error conectando a la base de datos:', err);
+        console.error('Error connecting to the database:', err);
         return;
     }
-    console.log('Conectado a la base de datos MySQL');
+    console.log('Connected to the MySQL database');
 });
 
-// Iniciar el servidor
+// Start the server
 app.listen(PORT, () => {
-    console.log(`Servidor escuchando en http://localhost:${PORT}`);
+    console.log(`Server listening on http://localhost:${PORT}`);
 });
 
-// Función asíncrona para obtener datos
-async function fetchData() {
-    try {
-        const response = await fetch('http://localhost:8080/api/peliculas');
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        // Process the data here
-    } catch (error) {
-        console.error('Fetch error:', error);
-        // Handle the error (e.g., show a user-friendly message)
-    }
-}
+// Handle 404 errors
+app.use((req, res, next) => {
+    res.status( 404).json({ error: 'Not Found' });
+});
 
-// Llamar a la función asíncrona
-fetchData().catch(error => console.error(error));
+// Global error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ error: 'Something went wrong!' });
+});

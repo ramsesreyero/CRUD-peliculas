@@ -9,28 +9,42 @@ const db = mysql.createConnection({
     database: process.env.DB_NAME
 });
 
-// Function to get all movies
-const getAllMovies = (req, res) => {
-    db.query('SELECT * FROM peliculas', (err, results) => {
-        if (err) {
-            return res.status(500).json({ error: 'Database error' });
-        }
-        res.status(200).json(results);
+// Promisify the database query for better error handling
+const queryDatabase = (query, values) => {
+    return new Promise((resolve, reject) => {
+        db.query(query, values, (err, results) => {
+            if (err) {
+                return reject(err);
+            }
+            resolve(results);
+        });
     });
 };
 
+// Function to get all movies
+const getAllMovies = async (req, res) => {
+    try {
+        const results = await queryDatabase('SELECT * FROM peliculas');
+        res.status(200).json(results);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Database error while fetching movies' });
+    }
+};
+
 // Function to get a movie by ID
-const getMovieById = (req, res) => {
+const getMovieById = async (req, res) => {
     const { id } = req.params; // Use params instead of query for cleaner URL
-    db.query('SELECT * FROM peliculas WHERE id = ?', [id], (err, results) => {
-        if (err) {
-            return res.status(500).send(err);
-        }
+    try {
+        const results = await queryDatabase('SELECT * FROM peliculas WHERE id = ?', [id]);
         if (results.length === 0) {
-            return res.status(404).send('Película no encontrada');
+            return res.status(404).json({ error: 'Película no encontrada' });
         }
         res.json(results[0]);
-    });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Database error while fetching movie' });
+    }
 };
 
 // Function to add a movie
@@ -38,11 +52,11 @@ const addMovie = async (req, res) => {
     const { titulo, contenido, categoria, anio, genero } = req.body;
 
     if (!titulo || !contenido || !categoria || !anio || !genero) {
-        return res.status(400).send('Todos los campos son requeridos');
+        return res.status(400).json({ error: 'Todos los campos son requeridos' });
     }
 
     if (!req.file) {
-        return res.status(400).send('La imagen es requerida');
+        return res.status(400).json({ error: 'La imagen es requerida' });
     }
 
     try {
@@ -52,16 +66,11 @@ const addMovie = async (req, res) => {
         const query = 'INSERT INTO peliculas (titulo, contenido, categoria, anio, genero, imageUrl) VALUES (?, ?, ?, ?, ?, ?)';
         const values = [titulo, contenido, categoria, anio, genero, imageUrl];
 
-        db.query(query, values, (err) => {
-            if (err) {
-                console.error(err);
-                return res.status(500).send(err);
-            }
-            res.status(201).send('Película agregada con éxito');
-        });
+        await queryDatabase(query, values);
+        res.status(201).json({ message: 'Película agregada con éxito' });
     } catch (error) {
         console.error(error);
-        res.status(500).send('Error al subir la imagen a Cloudinary');
+        res.status(500).json({ error: 'Error al subir la imagen a Cloudinary' });
     }
 };
 
@@ -79,29 +88,30 @@ const updateMovie = async (req, res) => {
         const query = 'UPDATE peliculas SET ? WHERE id = ?';
         const values = [peliculaActualizada, id];
 
-        db.query(query, values, (err) => {
-            if (err) {
-                console.error(err);
-                return res.status(500).json({ error: 'Error al actualizar la película' });
-            }
-            res.json({ id, ...peliculaActualizada });
-        });
+        const results = await queryDatabase(query, values);
+        if (results.affectedRows === 0) {
+            return res.status(404).json({ error: 'Película no encontrada para actualizar' });
+        }
+        res.json({ message: 'Película actualizada con éxito', id, ...peliculaActualizada });
     } catch (error) {
         console.error(error);
-        res.status(500).send('Error al subir la imagen a Cloudinary');
+        res.status(500).json({ error: 'Error al subir la imagen a Cloudinary o al actualizar la película' });
     }
 };
 
 // Function to delete a movie
-const deleteMovie = (req, res) => {
+const deleteMovie = async (req, res) => {
     const { id } = req.params; // Use params for consistency
-    const query = 'DELETE FROM peliculas WHERE id = ?';
-    const values = [id];
-
-    db.query(query, values, (err) => {
-        if (err) return res.status(500).send(err);
+    try {
+        const results = await queryDatabase('DELETE FROM peliculas WHERE id = ?', [id]);
+        if (results.affectedRows === 0) {
+            return res.status(404).json({ error: 'Película no encontrada para eliminar' });
+        }
         res.status(204).send();
-    });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Error al eliminar la película' });
+    }
 };
 
 // Export the functions
