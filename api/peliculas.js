@@ -60,17 +60,26 @@ const addMovie = async (req, res) => {
     }
 
     try {
-        const result = await cloudinary.uploader.upload_stream(req.file.buffer);
+        const uploadImage = (buffer) => {
+            return new Promise((resolve, reject) => {
+                cloudinary.uploader.upload_stream((error, result) => {
+                    if (error) return reject (error);
+                    resolve(result);
+                }).end(buffer);
+            });
+        };
+
+        const result = await uploadImage(req.file.buffer);
         const imageUrl = result.secure_url;
 
         const query = 'INSERT INTO peliculas (titulo, contenido, categoria, anio, genero, imageUrl) VALUES (?, ?, ?, ?, ?, ?)';
-        const values = [titulo, contenido, categoria, anio, genero, imageUrl];
+        const values = [titulo, contenido, categoria, parseInt(anio, 10), genero, imageUrl];
 
         await queryDatabase(query, values);
         res.status(201).json({ message: 'Película agregada con éxito' });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Error al subir la imagen a Cloudinary' });
+        console.error('Error al agregar película:', error);
+        res.status(500).json({ error: 'Error al agregar la película' });
     }
 };
 
