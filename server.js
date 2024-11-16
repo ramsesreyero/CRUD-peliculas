@@ -16,11 +16,7 @@ console.log('DB_PASSWORD:', process.env.DB_PASSWORD);
 console.log('DB_NAME:', process.env.DB_NAME);
 
 // Middleware
-app.use(cors({
-    origin: 'http://localhost:8080', // Permitir solo este origen
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
-    allowedHeaders: ['Content-Type'], // Encabezados permitidos
-}));
+app.use(cors({ origin: 'https://crud-peliculas-pyyp388wu-ramsesreyeros-projects.vercel.app' }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
