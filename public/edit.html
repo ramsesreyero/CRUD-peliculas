@@ -18,30 +18,30 @@
     <main>
         <h2>Editar Datos de la Película</h2>
         <form id="edit-movie-form" enctype="multipart/form-data">
-            <input type="hidden" id="movie-id" />
+            <input type="hidden" id="movie-id" name="movie-id" />
             <div class="form-group">
                 <label for="titulo">Título</label>
-                <input type="text" id="titulo" placeholder="Título" required />
+                <input type="text" id="titulo" name="titulo" placeholder="Título" required />
             </div>
             <div class="form-group">
                 <label for="contenido">Descripción</label>
-                <textarea id="contenido" placeholder="Descripción" required></textarea>
+                <textarea id="contenido" name="contenido" placeholder="Descripción" required></textarea>
             </div>
             <div class="form-group">
                 <label for="categoria">Categoría</label>
-                <input type="text" id="categoria" placeholder="Categoría" required />
+                <input type="text" id="categoria" name="categoria" placeholder="Categoría" required />
             </div>
             <div class="form-group">
                 <label for="anio">Año</label>
-                <input type="number" id="anio" placeholder="Año" required min="1888" max="2100" />
+                <input type="number" id="anio" name="anio" placeholder="Año" required min="1888" max="2100" />
             </div>
             <div class="form-group">
                 <label for="genero">Género</label>
-                <input type="text" id="genero" placeholder="Género" required />
+                <input type="text" id="genero" name="genero" placeholder="Género" required />
             </div>
             <div class="form-group">
                 <label for="image">Imagen</label>
-                <input type="file" id="image" accept="image/*" />
+                <input type="file" id="image" name="image" accept="image/*" />
             </div>
             <button type="submit">Actualizar Película</button>
         </form>
@@ -49,7 +49,7 @@
     
     <script>
         async function cargarPelicula(id) {
-            const response = await fetch(`http://localhost:8080/peliculas/${id}`);
+            const response = await fetch(`http://localhost:8080/api/peliculas/${id}`); // Cambiado a GET
             if (!response.ok) {
                 console.error('Error al cargar la película:', response.statusText);
                 return;
@@ -62,10 +62,10 @@
             document.getElementById('anio').value = pelicula.anio;
             document.getElementById('genero').value = pelicula.genero;
         }
-        
+    
         document.getElementById('edit-movie-form').addEventListener('submit', async function(event) {
             event.preventDefault(); // Evitar el envío del formulario
-
+    
             const id = document.getElementById('movie-id').value;
             const titulo = document.getElementById('titulo').value;
             const contenido = document.getElementById('contenido').value;
@@ -73,7 +73,7 @@
             const anio = document.getElementById('anio').value;
             const genero = document.getElementById('genero').value;
             const imageFile = document.getElementById('image').files[0]; // Obtener el archivo de imagen
-
+    
             const formData = new FormData();
             formData.append('titulo', titulo);
             formData.append('contenido', contenido);
@@ -83,15 +83,15 @@
             if (imageFile) {
                 formData.append('image', imageFile); // Agregar el archivo de imagen si existe
             }
-
+    
             try {
-                const response = await fetch(`http://localhost:8080/peliculas/${id}`, {
+                const response = await fetch(`http://localhost:8080/api/peliculas/${id}`, {
                     method: 'PUT',
                     body: formData
                 });
-
+    
                 // Verificar el estado de la respuesta
-                if (response .ok) {
+                if (response.ok) {
                     const data = await response.json(); // Solo intenta convertir a JSON si la respuesta es OK
                     alert('Película actualizada con éxito');
                     window.location.href = 'index.html'; // Redirigir a la lista de películas
@@ -105,7 +105,7 @@
                 alert('Error en la solicitud: ' + error.message);
             }
         });
-        
+    
         // Cargar la película al cargar la página
         const movieId = new URLSearchParams(window.location.search).get('id');
         if (movieId) {

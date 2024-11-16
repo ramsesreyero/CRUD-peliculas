@@ -85,13 +85,22 @@ const addMovie = async (req, res) => {
 
 // Function to update a movie
 const updateMovie = async (req, res) => {
-    const { id } = req.params; // Use params for consistency
+    const { id } = req.params; // Obtener el ID de los parámetros
     const peliculaActualizada = req.body;
 
     try {
+        // Validar que los campos requeridos estén presentes
+        if (!peliculaActualizada.titulo || !peliculaActualizada.contenido || !peliculaActualizada.categoria || !peliculaActualizada.anio || !peliculaActualizada.genero) {
+            return res.status(400).json({ error: 'Todos los campos son requeridos' });
+        }
+
+        // Manejo de la imagen
         if (req.file) {
             const result = await cloudinary.uploader.upload_stream(req.file.buffer);
-            peliculaActualizada.imageUrl = result.secure_url; // Ensure imageUrl is updated
+            peliculaActualizada.imageUrl = result.secure_url; // Actualiza solo si hay nueva imagen
+        } else {
+            // Si no se sube nueva imagen, no sobrescribir imageUrl
+            delete peliculaActualizada.imageUrl;
         }
 
         const query = 'UPDATE peliculas SET ? WHERE id = ?';
@@ -103,7 +112,7 @@ const updateMovie = async (req, res) => {
         }
         res.json({ message: 'Película actualizada con éxito', id, ...peliculaActualizada });
     } catch (error) {
-        console.error(error);
+        console.error('Error en la actualización:', error);
         res.status(500).json({ error: 'Error al subir la imagen a Cloudinary o al actualizar la película' });
     }
 };
