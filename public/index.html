@@ -28,7 +28,8 @@
     <script>
         async function obtenerPeliculas() {
             try {
-                const response = await fetch('https://crud-peliculas-omega.vercel.app/peliculas');
+                // Cambiar la URL a la del proxy
+                const response = await fetch('https://crud-peliculas-pyyp388wu-ramsesreyeros-projects.vercel.app/api/peliculas'); // Cambiado aquí
                 if (!response.ok) {
                     throw new Error('Error en la respuesta de la API');
                 }

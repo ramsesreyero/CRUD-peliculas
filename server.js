@@ -16,13 +16,16 @@ console.log('DB_PASSWORD:', process.env.DB_PASSWORD);
 console.log('DB_NAME:', process.env.DB_NAME);
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:8080', // Permitir solo este origen
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+}));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
 
 // Configura el proxy para redirigir a la API externa
-app.use('/api/peliculas', createProxyMiddleware({ 
+app.use('/api', createProxyMiddleware({ 
     target: 'https://crud-peliculas-omega.vercel.app', 
     changeOrigin: true,
     pathRewrite: {

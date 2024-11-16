@@ -67,7 +67,9 @@ router.get('/:id', (req, res) => {
 // Obtener todas las películas
 router.get('/', (req, res) => {
     db.query('SELECT * FROM peliculas', (err, results) => {
-        if (err) return res.status(500).send(err);
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
         res.json(results);
     });
 });
