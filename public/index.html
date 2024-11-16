@@ -27,7 +27,7 @@
     
     <script>
         async function obtenerPeliculas() {
-            const response = await fetch('http://localhost:8080/peliculas');
+            const response = await fetch('https://crud-peliculas-omega.vercel.app/peliculas');
             const peliculas = await response.json();
             const movieList = document.querySelector('.movie-list');
             movieList.innerHTML = ''; // Limpiar la lista antes de agregar nuevas películas
