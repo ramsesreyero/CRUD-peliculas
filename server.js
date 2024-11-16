@@ -19,6 +19,7 @@ console.log('DB_NAME:', process.env.DB_NAME);
 app.use(cors({
     origin: 'http://localhost:8080', // Permitir solo este origen
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+    allowedHeaders: ['Content-Type'], // Encabezados permitidos
 }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
@@ -26,12 +27,14 @@ app.use('/uploads', express.static('uploads'));
 
 // Configura el proxy para redirigir a la API externa
 app.use('/api', createProxyMiddleware({ 
-    target: 'https://crud-peliculas-omega.vercel.app', 
+    target: 'https://crud-peliculas-pyyp388wu-ramsesreyeros-projects.vercel.app/', 
     changeOrigin: true,
     pathRewrite: {
         '^/api': '', // Reescribe la ruta para que no incluya /api
     },
 }));
+app.use('/api/peliculas', peliculasRoutes); // Aquí es donde defines la ruta
+
 
 // Configuración de la conexión a la base de datos
 const db = mysql.createConnection({
