@@ -18,6 +18,7 @@ console.log('DB_NAME:', process.env.DB_NAME);
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static('public'));
+app.use('/uploads', express.static('uploads'));
 
 // Configuración de la conexión a la base de datos
 const db = mysql.createConnection({
