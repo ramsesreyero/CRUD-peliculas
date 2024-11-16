@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql2/promise'); // Usar promesas para facilitar el manejo
 const peliculasRoutes = require('./routes/peliculas');
+const categoriasRoutes = require('./api/generos'); // Importar las rutas de categorías
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const multer = require('multer');
 const morgan = require('morgan');
@@ -45,6 +46,7 @@ const upload = multer({
 
 // Routes for handling movies
 app.use('/api/peliculas', peliculasRoutes); // Apply multer only to specific routes
+app.use('/api/generos', categoriasRoutes); // Usar las rutas de categorías
 
 // Proxy setup for external API
 app.use('/api', createProxyMiddleware({ 

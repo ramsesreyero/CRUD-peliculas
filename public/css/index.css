@@ -12,6 +12,7 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: #141414; /* Color de fondo */
     color: #fff; /* Color del texto */
+    overflow-x: hidden; /* Ocultar scrollbar horizontal */
 }
 
 /* Estilos para el encabezado */
@@ -43,10 +44,12 @@ body {
 /* Contenedor principal */
 .container {
     flex: 1; /* Esto permite que el contenedor principal ocupe el espacio restante */
-    display: flex; /* Asegurarse de que la lista de películas use flexbox */
-    flex-wrap: wrap; /* Permitir que las películas se ajusten a la siguiente línea */
-    justify-content: center; /* Centrar las películas */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
     padding: 20px;
+    width: 100%; /* Asegura que el contenedor ocupe el ancho completo */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
 }
 
 /* Estilos para la lista de películas */
@@ -54,14 +57,17 @@ body {
     display: flex; /* Asegurarse de que la lista de películas use flexbox */
     flex-wrap: wrap; /* Permitir que las películas se ajusten a la siguiente línea */
     justify-content: center; /* Centrar las películas */
+    width: 100%; /* Asegúrate de que ocupe el ancho completo */
+    max-width: 1800px; /* Establecer un ancho máximo para que no se expanda demasiado */
 }
 
 /* Estilos para cada elemento de película */
 .movie-item {
     margin: 10px;
     cursor: pointer;
-    text-align: center; /* Centrar el texto dentro del contenedor de la película */
+    text-align: center; 
     width: 200px; /* Establecer un ancho fijo para cada elemento de película */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
 }
 
 .movie-item img {
@@ -85,4 +91,80 @@ body {
     position: relative; /* Asegurarse de que esté en su lugar */
     bottom: 0;
     width: 100%;
+    margin-top: auto; /* Asegura que el footer se empuje hacia el fondo */
+}
+
+/* Estilos generales para inputs y selects */
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #444; /* Borde del campo */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #333; /* Fondo del campo oscuro */
+    color: #fff; /* Color del texto */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+    margin-bottom: 15px; /* Espacio inferior entre elementos */
+}
+
+/* Estilo específico para el área de texto */
+textarea {
+    height: 100px; /* Altura específica para el área de descripción */
+    resize: vertical; /* Permitir que el usuario cambie la altura */
+}
+
+/* Estilo para el botón de búsqueda */
+button {
+    background-color: #007bff; /* Color de fondo azul */
+    color: #fff; /* Color de texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 1em; /* Tamaño de fuente */
+    cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+}
+
+/* Efecto hover para el botón */
+button:hover {
+    background-color: #0056b3; /* Color de fondo más oscuro al pasar el mouse */
+    transform: translateY(-2px); /* Efecto de elevación */
+}
+
+/* Estilos para la barra de búsqueda */
+.search {
+    display: flex; /* Usar flexbox para alinear los elementos */
+    justify-content: center; /* Centrar los elementos horizontalmente */
+    align-items: center; /* Centrar los elementos verticalmente */
+    margin-bottom: 20px; /* Espacio inferior entre la búsqueda y la lista de películas */
+}
+
+.search-container {
+    display: flex; /* Usar flexbox para alinear el input y el select */
+    align-items: center; /* Centrar verticalmente */
+}
+
+.search input[type="text"],
+.search select {
+    width: 200px; /* Ancho fijo para mantener la consistencia */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #444; /* Borde del campo */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #333; /* Fondo del campo oscuro */
+    color: #fff; /* Color del texto */
+    margin: 0 10px; /* Espacio lateral entre los elementos */
+}
+
+@media (max-width: 600px) {
+    .search-container {
+        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+        align-items: center; /* Centrar elementos en columna */
+    }
+
+    .search input[type="text"],
+    .search select {
+        width: 100%; /* Ancho completo en pantallas pequeñas */
+        margin: 10px 0; /* Espacio vertical entre elementos */
+    }
 }

@@ -17,46 +17,23 @@
         <a href="team.html">Equipo</a>
     </nav>
     <main class="container">
+        <section class="search">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Buscar películas..." />
+                <select id="genreSelect">
+                    <option value="">Todos los géneros</option>
+                    <!-- Las opciones de géneros se llenarán automáticamente desde la base de datos -->
+                </select>
+            </div>
+        </section>
         <section class="movie-list">
             <!-- Se generarán dinámicamente las películas aquí -->
         </section>
     </main>
     <footer class="footer">
-        <p>&copy; 2024 CRUD de Películas. Todos los derechos reservados.</p>
+        <p>&copy; 2024 chenpagnepapi. Todos los derechos reservados.</p>
     </footer>
     
-    <script>
-        async function obtenerPeliculas() {
-            try {
-                const response = await fetch('http://localhost:8080/api/peliculas');                if (!response.ok) {
-                    // Captura el estado y el texto de la respuesta
-                    const errorText = await response.text();
-                    throw new Error(`Error en la respuesta de la API: ${response.status} ${response.statusText}. Detalles: ${errorText}`);
-                }
-                const peliculas = await response.json();
-                const movieList = document.querySelector('.movie-list');
-                movieList.innerHTML = ''; // Limpiar la lista antes de agregar nuevas películas
-                peliculas.forEach(pelicula => {
-                    const movieItem = document.createElement('div');
-                    movieItem.className = 'movie-item';
-                    movieItem.innerHTML = `
-                        <div class="movie-content" onclick="window.location.href='details.html?id=${pelicula.id}'">
-                            <img src="${pelicula.imageUrl}" alt="Poster de ${pelicula.titulo}" />
-                            <h3>${pelicula.titulo}</h3>
-                        </div>
-                    `;
-                    movieList.appendChild(movieItem);
-                });
-            } catch (error) {
-                console.error('Error al obtener las películas:', error);
-                alert('No se pudieron cargar las películas. Intenta de nuevo más tarde.');
-            }
-        }
-
-document.addEventListener('DOMContentLoaded', obtenerPeliculas);
-
-
-        document.addEventListener('DOMContentLoaded', obtenerPeliculas);
-    </script>
+    <script src="./js/index.js"></script> <!-- Incluye el archivo JavaScript externo -->
 </body>
 </html>
