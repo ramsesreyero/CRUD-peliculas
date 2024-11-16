@@ -19,6 +19,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
+app.use('/peliculas', peliculasRoutes);
 
 // Configuración de la conexión a la base de datos
 const db = mysql.createConnection({
