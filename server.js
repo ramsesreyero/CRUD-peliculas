@@ -1,11 +1,18 @@
+require('dotenv').config(); // Asegúrate de que esto esté al principio
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql2');
 const peliculasRoutes = require('./routes/peliculas');
+
 const app = express();
 const PORT = 8080;
-require('dotenv').config(); // Cargar variables de entorno
+
+// Verificar las variables de entorno
+console.log('DB_HOST:', process.env.DB_HOST);
+console.log('DB_USER:', process.env.DB_USER);
+console.log('DB_PASSWORD:', process.env.DB_PASSWORD);
+console.log('DB_NAME:', process.env.DB_NAME);
 
 // Middleware
 app.use(cors());
@@ -31,8 +38,6 @@ db.connect(err => {
 
 // Rutas
 app.use('/peliculas', peliculasRoutes);
-
-app.use('/uploads', express.static('uploads'));
 
 // Iniciar el servidor
 app.listen(PORT, () => {
