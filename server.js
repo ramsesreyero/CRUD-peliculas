@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql2');
 const peliculasRoutes = require('./routes/peliculas');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const app = express();
 const PORT = 8080;
@@ -19,7 +20,15 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
-app.use('/peliculas', peliculasRoutes);
+
+// Configura el proxy para redirigir a la API externa
+app.use('/api/peliculas', createProxyMiddleware({ 
+    target: 'https://crud-peliculas-omega.vercel.app', 
+    changeOrigin: true,
+    pathRewrite: {
+        '^/api': '', // Reescribe la ruta para que no incluya /api
+    },
+}));
 
 // Configuración de la conexión a la base de datos
 const db = mysql.createConnection({
@@ -38,7 +47,7 @@ db.connect(err => {
     console.log('Conectado a la base de datos MySQL');
 });
 
-// Rutas
+// Rutas para manejar las películas desde la base de datos local
 app.use('/peliculas', peliculasRoutes);
 
 // Iniciar el servidor
