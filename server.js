@@ -5,8 +5,13 @@ const cors = require('cors');
 const mysql = require('mysql2');
 const peliculasRoutes = require('./routes/peliculas');
 const { createProxyMiddleware } = require('http-proxy-middleware');
-const response = await fetch('/api/peliculas');
+async function fetchData() {
+    const response = await fetch('/api/peliculas');
+    // Handle the response here
+}
 
+// Call the async function
+fetchData().catch(error => console.error(error));
 const app = express();
 const PORT = 8080;
 
