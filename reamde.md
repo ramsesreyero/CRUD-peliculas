@@ -11,5 +11,5 @@ Esta es una aplicación web para gestionar una colección de películas. Permite
 ## Instalación
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/tu_usuario/tu_repositorio.git
+   git clone https://github.com/ramsesreyero/CRUD-peliculas
    cd tu_repositorio
