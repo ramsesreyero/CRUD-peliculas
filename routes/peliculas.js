@@ -3,7 +3,6 @@ const multer = require('multer');
 const cloudinary = require('../config/cloudinary'); // Asegúrate de importar la configuración de Cloudinary
 const path = require('path');
 const db = require('../config/db');
-
 const router = express.Router();
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
