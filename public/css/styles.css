@@ -1,78 +1,67 @@
+/* Estilos generales para el cuerpo */
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif; /* Usar la misma fuente que en index.css */
     background-color: #252525; /* Color de fondo */
-    color: #fff;
+    color: #fff; /* Color de texto blanco */
     margin: 0;
     padding: 0;
+    box-sizing: border-box; /* Ajustar el tamaño del cuerpo */
 }
 
 /* Estilos para el encabezado */
 .header {
-    background-color: #000;
-    padding: 10px; /* Reduce el padding para hacer el encabezado más pequeño */
-    text-align: center;
-}
-
-.header h1 {
-    margin: 0; /* Eliminar márgenes */
-    font-size: 1.8em; /* Ajustar el tamaño de la fuente a un tamaño más pequeño */
-}
-
-.nav {
     display: flex;
-    justify-content: center;
-    background-color: #333;
-    padding: 10px 0;
+    flex-direction: column; /* Alinear el contenido en columna */
+    background-color: #000; /* Fondo negro para el encabezado */
+    padding: 10px 20px; /* Padding superior e inferior de 10px, y 20px a los lados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para el encabezado */
 }
 
-.nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    font-size: 1.2em;
+.header .nav {
+    display: flex; /* Usar flexbox para alinear los enlaces horizontalmente */
+    justify-content: space-between; /* Espacio entre los enlaces y el contenedor de búsqueda */
+    align-items: center; /* Alinear verticalmente todos los elementos */
 }
 
-.nav a:hover {
-    background-color: #555;
-}
-
+/* Contenedor principal */
 .container {
+    flex: 1; /* Esto permite que el contenedor principal ocupe el espacio restante */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
     padding: 20px;
+    width: 100%; /* Asegura que el contenedor ocupe el ancho completo */
+    overflow-y: auto; /* Ajustar el desplazamiento vertical */
 }
 
-.movie-list {
-    display: flex; /* Usar flexbox para alinear horizontalmente */
-    flex-wrap: wrap; /* Permitir que los elementos se ajusten a la siguiente línea si no hay suficiente espacio */
-    justify-content: center; /* Centrar las películas en el contenedor */
-}
-
-.movie-item {
-    background-color: #222; /* Color de fondo del recuadro */
-    border-radius: 10px; /* Bordes redondeados */
-    overflow: hidden; /* Para evitar que el contenido se desborde */
-    width: 300px; /* Ancho fijo para cada película */
-    margin: 10px; /* Espaciado entre películas */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidad */
-}
-
-.movie-item img {
-    width: 100%; /* Asegurar que la imagen ocupe todo el ancho del contenedor */
-    height: auto; /* Mantener la proporción de la imagen */
-}
-
-.movie-details {
-    background-color: rgba(0, 0, 0, 0.8); /* Fondo semi-transparente */
-    color: #fff;
-    padding: 10px;
-}
-
-.movie-item:hover {
-    background-color: #333; /* Cambiar color de fondo al pasar el mouse */
-}
-
+/* Estilos para el footer */
 .footer {
-    text-align: center;
+    text-align: center; /* Centrar el texto del footer */
     padding: 20px;
-    background-color: #000;
-    color: #fff;
+    background-color: #000; /* Mismo fondo que en otras páginas */
+    color: #fff; /* Asegurarnos de que el texto sea blanco */
+    position: relative; /* Asegurarse de que esté en su lugar */
+    bottom: 0;
+    width: 100%;
+    margin-top: auto; /* Asegura que el footer se empuje hacia el fondo */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Sombra para el footer */
+}
+
+/* Estilos para botones */
+button {
+    background-color: #007bff; /* Color de fondo azul */
+    color: #fff; /* Color de texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 1em; /* Tamaño de fuente */
+    cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para el botón */
+}
+
+button:hover {
+    background-color: #0056b3; /* Color de fondo más oscuro al pasar el mouse */
+    transform: translateY(-2px); /* Efecto de elevación */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más oscura al pasar el mouse */
 }

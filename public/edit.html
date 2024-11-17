@@ -4,19 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Película</title>
-    <link rel="stylesheet" href="./css/edit.css"> <!-- Asegúrate de que la ruta sea correcta -->
+    <link rel="stylesheet" href="./css/edit.css"> <!-- Usar el mismo CSS que addmovie -->
 </head>
 <body>
     <header class="header">
-        <h1>Editar Película</h1>
+        <nav class="nav">
+            <a href="index.html">Volver al Inicio</a>
+        </nav>
     </header>
-    <nav class="nav">
-        <a href="index.html">Inicio</a>
-        <a href="addmovie.html">Agregar Película</a>
-    </nav>
-
-    <main>
-        <h2>Editar Datos de la Película</h2>
+    
+    <main class="container">
+        <h1 class="titulo">Editar datos de la pelicula</h1>
         <form id="edit-movie-form" enctype="multipart/form-data">
             <input type="hidden" id="movie-id" name="movie-id" />
             <div class="form-group">
@@ -43,13 +41,19 @@
                 <label for="image">Imagen</label>
                 <input type="file" id="image" name="image" accept="image/*" />
             </div>
-            <button type="submit">Actualizar Película</button>
+            <div class="button-container">
+                <button type="submit">Actualizar Película</button>
+            </div>
         </form>
     </main>
     
+    <footer class="footer">
+        <p>&copy; 2024 Clase de Programación Web. Todos los derechos reservados.</p>
+    </footer>
+
     <script>
         async function cargarPelicula(id) {
-            const response = await fetch(`http://localhost:8080/api/peliculas/${id}`); // Cambiado a GET
+            const response = await fetch(`http://localhost:8080/api/peliculas/${id}`);
             if (!response.ok) {
                 console.error('Error al cargar la película:', response.statusText);
                 return;
@@ -62,10 +66,10 @@
             document.getElementById('anio').value = pelicula.anio;
             document.getElementById('genero').value = pelicula.genero;
         }
-    
+        
         document.getElementById('edit-movie-form').addEventListener('submit', async function(event) {
             event.preventDefault(); // Evitar el envío del formulario
-    
+        
             const id = document.getElementById('movie-id').value;
             const titulo = document.getElementById('titulo').value;
             const contenido = document.getElementById('contenido').value;
@@ -73,7 +77,7 @@
             const anio = document.getElementById('anio').value;
             const genero = document.getElementById('genero').value;
             const imageFile = document.getElementById('image').files[0]; // Obtener el archivo de imagen
-    
+        
             const formData = new FormData();
             formData.append('titulo', titulo);
             formData.append('contenido', contenido);
@@ -83,18 +87,17 @@
             if (imageFile) {
                 formData.append('image', imageFile); // Agregar el archivo de imagen si existe
             }
-    
+        
             try {
                 const response = await fetch(`http://localhost:8080/api/peliculas/${id}`, {
                     method: 'PUT',
                     body: formData
                 });
-    
-                // Verificar el estado de la respuesta
+
                 if (response.ok) {
-                    const data = await response.json(); // Solo intenta convertir a JSON si la respuesta es OK
+                    const data = await response.json(); // Obtener los datos de la respuesta
                     alert('Película actualizada con éxito');
-                    window.location.href = 'index.html'; // Redirigir a la lista de películas
+                    window.location.href = `details.html?id=${data.id}`; // Redirigir a detalles de la película
                 } else {
                     const errorText = await response.text(); // Obtener el texto del error
                     console.error('Error:', errorText); // Log del error
@@ -105,7 +108,7 @@
                 alert('Error en la solicitud: ' + error.message);
             }
         });
-    
+
         // Cargar la película al cargar la página
         const movieId = new URLSearchParams(window.location.search).get('id');
         if (movieId) {

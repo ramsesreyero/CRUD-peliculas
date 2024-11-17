@@ -7,9 +7,15 @@
         }
         /* Estilos para el encabezado */
         .header {
-            background-color: #000;
-            padding: 10px; /* Reduce el padding para hacer el encabezado más pequeño */
-            text-align: center;
+            position: fixed; /* Fijar el encabezado en la parte superior */
+            top: 0; /* Alinear en la parte superior */
+            left: 0; /* Alinear a la izquierda */
+            right: 0; /* Alinear a la derecha */
+            z-index: 1000; /* Asegurarse de que esté sobre otros elementos */
+            display: flex;
+            flex-direction: column; /* Alinear el contenido en columna */
+            background-color: #000; /* Fondo negro para el encabezado */
+            padding: 10px 10px; /* Padding alrededor del encabezado */
         }
 
         .header h1 {

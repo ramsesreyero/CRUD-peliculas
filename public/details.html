@@ -4,82 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalles de la Película</title>
-    <link rel="stylesheet" href="./css/details.css"> <!-- Asegúrate de que la ruta sea correcta -->
+    <link rel="stylesheet" href="./css/details.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
 </head>
 <body>
     <header class="header">
-        <h1>Detalles de la Película</h1>
+        <nav class="nav">
+            <a href="index.html">Inicio</a>
+        </nav>
     </header>
-    <nav class="nav">
-        <a href="index.html">Inicio</a>
-        <a href="addmovie.html">Agregar Película</a>
-    </nav>
 
-    <main class="container">
-        <div class="movie-details">
-            <img id="movie-poster" src="" alt="Poster de la película" />
-            <div class="info">
-                <h3 id="movie-title"></h3>
-                <p><strong>Descripción:</strong> <span id="movie-contenido"></span></p>
-                <p><strong>Categoría:</strong> <span id="movie-categoria"></span></p>
-                <p><strong>Año:</strong> <span id="movie-anio"></span></p>
-                <p><strong>Género:</strong> <span id="movie-genero"></span></p>
-                <div class="actions">
-                    <a id="edit-button" href="#"><i class="fas fa-edit"></i> Editar</a>
-                    <button id="delete-button"><i class="fas fa-trash-alt"></i> Eliminar</button>
+    <main class="movie-details">
+        <div class="details-container"> <!-- Contenedor para el contenido -->
+            <div class="details-content"> <!-- Nuevo contenedor para la disposición -->
+                <img id="movie-poster" src="" alt="Poster de la película" />
+                <div class="info">
+                    <h3 id="movie-title"></h3>
+                    <p><strong>Descripción:</strong> <span id="movie-contenido"></span></p>
+                    <p><strong>Categoría:</strong> <span id="movie-categoria"></span></p>
+                    <p><strong>Año:</strong> <span id="movie-anio"></span></p>
+                    <p><strong>Género:</strong> <span id="movie-genero"></span></p>
+                    <div class="actions">
+                        <a id="edit-button" href="#"><i class="fas fa-edit"></i> Editar</a>
+                        <button id="delete-button"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
+    <footer class="footer">
+        <p>&copy; 2024 Clase de Programación Web. Todos los derechos reservados.</p>
+    </footer>
+
     <script>
-        async function obtenerDetallesPelicula() {
+        document.addEventListener('DOMContentLoaded', () => {
+            const movieId = getMovieIdFromUrl(); // Función para obtener el ID de la película de la URL
+            loadMovieDetails(movieId); // Cargar detalles de la película
+
+            document.getElementById('edit-button').addEventListener('click', () => {
+                window.location.href = `edit.html?id=${movieId}`; // Redirigir a la página de edición
+            });
+
+            document.getElementById('delete-button').addEventListener('click', () => {
+                deleteMovie(movieId); // Función para eliminar la película
+            });
+        });
+
+        function getMovieIdFromUrl() {
             const urlParams = new URLSearchParams(window.location.search);
-            const id = urlParams.get('id');
-
-            // Fetch movie details from the API
-            const response = await fetch(`http://localhost:8080/api/peliculas/${id}`);
-            
-            if (!response.ok) {
-                console.error('Error fetching movie details:', response.statusText);
-                document.body.innerHTML = '<p>Error fetching movie details. Please try again later.</p>';
-                return;
-            }
-
-            const pelicula = await response.json();
-            console.log(pelicula); // Log the response to check its structure
-
-            document.getElementById('movie-poster').src = pelicula.imageUrl; // Ensure this matches your API response
-            document.getElementById('movie-title').innerText = pelicula.titulo;
-            document.getElementById('movie-contenido').innerText = pelicula.contenido;
-            document.getElementById('movie-categoria').innerText = pelicula.categoria;
-            document.getElementById('movie-anio').innerText = pelicula.anio;
-            document.getElementById('movie-genero').innerText = pelicula.genero;
-            document.getElementById('edit-button').href = `edit.html?id=${pelicula.id}`;
-
-            // Handle delete button click
-            document.getElementById('delete-button').onclick = async () => {
-                const confirmDelete = confirm('¿Estás seguro de que deseas eliminar esta película?');
-                if (confirmDelete) {
-                    const deleteResponse = await fetch(`http://localhost:8080/api/peliculas/${id}`, {
-                        method: 'DELETE'
-                    });
-                    if (deleteResponse.ok) {
-                        alert('Película eliminada con éxito');
-                        window.location.href = 'index.html';
-                    } else {
-                        alert('Error al eliminar la película. Inténtalo de nuevo.');
-                    }
-                }
-            };
+            return urlParams.get('id'); // Obtener el ID de la película de la URL
         }
 
-        document.addEventListener('DOMContentLoaded', obtenerDetallesPelicula);
+        async function loadMovieDetails(id) {
+            try {
+                const response = await fetch(`http://localhost:8080/api/peliculas/${id}`); // Ajusta la URL según tu API
+                if (!response.ok) {
+                    throw new Error('Error al cargar los detalles de la película');
+                }
+                const pelicula = await response.json(); // Obtener los detalles de la película
+                document.getElementById('movie-title').innerText = pelicula.titulo;
+                document.getElementById('movie-contenido').innerText = pelicula.contenido;
+                document.getElementById('movie-categoria').innerText = pelicula.categoria;
+                document.getElementById('movie-anio').innerText = pelicula.anio;
+                document.getElementById('movie-genero').innerText = pelicula.genero;
+                document.getElementById('movie-poster').src = pelicula.imageUrl; // Mostrar la imagen
+            } catch (error) {
+                console.error('Error al cargar los detalles de la película:', error);
+            }
+        }
+
+        async function deleteMovie(id) {
+            const confirmDelete = confirm('¿Estás seguro de que deseas eliminar esta película?');
+            if (confirmDelete) {
+                try {
+                    const response = await fetch(`http://localhost:8080/api/peliculas/${id}`, {
+                        method: 'DELETE'
+                    });
+                    if (response.ok) {
+                        alert('Película eliminada con éxito');
+                        window.location.href = 'index.html'; // Redirigir a la página principal
+                    } else {
+                        alert('Error al eliminar la película. Inténtalo de nuevo más tarde.');
+                    }
+                } catch (error) {
+                    console.error('Error al eliminar la película:', error);
+                }
+            }
+        }
     </script>
-    
-    <footer class="footer">
-        <p>&copy; 2024 CRUD de Películas. Todos los derechos reservados.</p>
-    </footer>
 </body>
 </html>

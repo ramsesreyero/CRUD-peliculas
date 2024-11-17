@@ -8,14 +8,13 @@
 </head>
 <body>
     <header class="header">
-        <h1>Agregar Nueva Película</h1>
+        <nav class="nav">
+            <a href="index.html">Volver al Inicio</a>
+        </nav>
     </header>
-    <nav class="nav">
-        <a href="index.html">Inicio</a>
-        <a href="addmovie.html">Agregar Película</a>
-    </nav>
 
-    <main>
+    <main class="container">
+        <h1>Agregar Nueva Película</h1>
         <form id="add-movie-form" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="titulo">Título</label>
@@ -27,7 +26,7 @@
             </div>
             <div class="form-group">
                 <label for="categoria">Categoría</label>
-                <input type="text" id="categoria" name="categoria" placeholder="Categoría" required />
+                <input type="text" id="categoria" name="categoria" placeholder="Categoría (pelicula, serie)" required />
             </div>
             <div class="form-group">
                 <label for="anio">Año</label>
@@ -41,34 +40,40 @@
                 <label for="image">Imagen</label>
                 <input type="file" id="image" name="image" accept="image/*" required />
             </div>
-            <button type="submit">Guardar Película</button>
+            <div class="button-container">
+                <button type="submit">Guardar Película</button>
+            </div>        
         </form>
     </main>
 
+    <footer class="footer">
+        <p>&copy; 2024 Clase de Programación Web. Todos los derechos reservados.</p>
+    </footer>
+
     <script>
         document.getElementById('add-movie-form').addEventListener('submit', async function(event) {
-                event.preventDefault(); // Evitar el envío del formulario
+            event.preventDefault(); // Evitar el envío del formulario
 
-                const formData = new FormData(this); // Crear FormData a partir del formulario
+            const formData = new FormData(this); // Crear FormData a partir del formulario
 
-                try {
-                    const response = await fetch('http://localhost:8080/api/peliculas', {
-                        method: 'POST',
-                        body: formData // Enviar FormData
-                    });
+            try {
+                const response = await fetch('http://localhost:8080/api/peliculas', {
+                    method: 'POST',
+                    body: formData // Enviar FormData
+                });
 
-                    if (response.ok) {
-                        alert('Película agregada con éxito');
-                        window.location.href = 'index.html'; // Redirigir a la lista de películas
-                    } else {
-                        const errorData = await response.json(); // Obtener el mensaje de error del servidor
-                        alert('Error al agregar la película: ' + (errorData.error || 'Error desconocido'));
-                    }
-                } catch (error) {
-                    console.error('Error al agregar la película:', error);
-                    alert('Error al agregar la película: ' + error.message);
+                if (response.ok) {
+                    alert('Película agregada con éxito');
+                    window.location.href = 'index.html'; // Redirigir a la lista de películas
+                } else {
+                    const errorData = await response.json(); // Obtener el mensaje de error del servidor
+                    alert('Error al agregar la película: ' + (errorData.error || 'Error desconocido'));
                 }
-            });
+            } catch (error) {
+                console.error('Error al agregar la película:', error);
+                alert('Error al agregar la película: ' + error.message);
+            }
+        });
     </script>
 </body>
 </html>

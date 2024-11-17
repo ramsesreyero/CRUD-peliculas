@@ -5,52 +5,68 @@ html, body {
     padding: 0;
 }
 
-/* Alinear el contenido en columna */
+/* Estilos generales para el cuerpo */
 body {
     display: flex;
-    flex-direction: column; /* Alinear el contenido en columna */
-    font-family: 'Roboto', sans-serif;
-    background-color: #252525; /* Color de fondo */
-    color: #fff; /* Color del texto */
+    flex-direction: column;
+    font-family: 'San Francisco', sans-serif;
+    background-color: #2c2c2c; /* Color de fondo gris oscuro */
+    color: #ffffff; /* Color del texto blanco */
+    overflow-x: hidden; /* Ocultar scrollbar horizontal */
+}
+
+.details-content {
+    margin-top: 70px; /* Espacio suficiente para el header fijo */
 }
 
 /* Estilos para el encabezado */
 .header {
-    background-color: #000;
-    padding: 10px; /* Reduce el padding para hacer el encabezado más pequeño */
-    text-align: center;
+    position: fixed; /* Fijar el encabezado en la parte superior */
+    top: 0; /* Alinear en la parte superior */
+    left: 0; /* Alinear a la izquierda */
+    right: 0; /* Alinear a la derecha */
+    z-index: 1000; /* Asegurarse de que esté sobre otros elementos */
+    display: flex;
+    flex-direction: column; /* Alinear el contenido en columna */
+    background-color: #000; /* Fondo negro para el encabezado */
+    padding: 0px 0px; /* Padding alrededor del encabezado */
 }
 
 .header h1 {
-    margin: 0; /* Eliminar márgenes */
-    font-size: 1.8em; /* Ajustar el tamaño de la fuente a un tamaño más pequeño */
+    margin: 0px 0px; /* Reducir márgenes para acercar el texto */
+    font-size: 1.8em; /* Ajustar el tamaño de la fuente a un tamaño más grande */
+    color: #fff; /* Color del texto en el encabezado */
 }
 
 /* Estilos para la navegación */
 .nav {
     display: flex;
-    justify-content: center;
-    background-color: #333;
-    padding: 10px 0;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    background-color: #000; /* Color de fondo negro */
+    padding: 13px 0; /* Padding para dar más espacio vertical */
 }
 
 .nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    font-size: 1.2em;
+    color: #666; /* Color gris oscuro para los enlaces */
+    text-decoration: none; /* Sin subrayado */
+    padding: 10px 20px; /* Espaciado interno de los enlaces */
+    font-size: 1.2em; /* Tamaño de fuente */
+    font-weight: bold; /* Hacer que la fuente sea bold */
+    transition: color 0.3s; /* Transición suave para el cambio de color */
+    margin: 0; /* Asegúrate de que no haya márgenes */
 }
 
 .nav a:hover {
-    background-color: #575757;
+    color: #fff; /* Color de texto blanco al pasar el mouse */
 }
 
 /* Contenedor principal para los detalles de la película */
 .movie-details {
     flex: 1; /* Esto permite que el contenedor principal ocupe el espacio restante */
-    display: flex; 
-    flex-direction: column; /* Alinear el contenido verticalmente */
-    align-items: center; /* Centrar horizontalmente */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
 }
 
@@ -64,56 +80,118 @@ body {
 /* Estilos para la información de la película */
 .info {
     max-width: 600px; /* Limitar el ancho de la información */
-    text-align: center; /* Centrar el texto */
+    text-align: left; /* Centrar el texto */
     margin-top: 20px; /* Espacio superior */
 }
 
 /* Estilos para los botones de acción */
-/* Estilos para el contenedor de los botones */
 .actions {
-    display: flex; /* Usar flexbox para alinear los botones */
-    justify-content: center; /* Centrar los botones */
+    display: flex;
+    justify-content: left; /* Centrar los botones */
     margin-top: 20px; /* Espacio superior para los botones */
 }
 
-/* Estilos generales para los botones y enlaces */
 .actions a, .actions button {
-    background-color: #007bff; /* Color de fondo azul */
-    color: #fff; /* Color de texto blanco */
+    background-color: #007bff; /* Color de fondo del botón */
+    color: white; /* Color del texto */
     border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
     padding: 10px 15px; /* Espaciado interno */
-    font-size: 1em; /* Tamaño de fuente */
-    cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
-    text-decoration: none; /* Sin subrayado en enlaces */
-    margin: 0 10px; /* Espacio entre botones */
-    display: inline-flex; /* Para alinear el icono y el texto */
-    align-items: center; /* Centrar verticalmente el contenido */
-    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+    margin: 0 10px; /* Espaciado entre botones */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar cursor al pasar el mouse */
+    text-decoration: none; /* Sin subrayado en el enlace */
 }
 
-/* Efecto hover para los botones */
 .actions a:hover, .actions button:hover {
-    background-color: #0056b3; /* Color de fondo más oscuro al pasar el mouse */
-    transform: translateY(-2px); /* Efecto de elevación */
+    background-color: #0056b3; /* Color de fondo al pasar el mouse */
 }
 
-/* Estilo específico para el botón de eliminar */
-#delete-button {
-    background-color: #dc3545; /* Color de fondo rojo */
-}
-
-#delete-button:hover {
-    background-color: #c82333; /* Color de fondo más oscuro al pasar el mouse */
-}
-
-/* Estilos para el footer */
+/* Estilos para el pie de página */
 .footer {
     text-align: center; /* Centrar el texto del footer */
     padding: 20px;
-    background-color: #000; /* Mismo fondo que en otras páginas */
-    color: #fff; /* Asegurarnos de que el texto sea blanco */
+    background-color: #2c2c2c; /* Mismo fondo que en otras páginas */
+    color: #8a8a8a; /* Asegurarnos de que el texto sea blanco */
     position: relative; /* Asegurarse de que esté en su lugar */
     bottom: 0;
     width: 100%;
+    margin-top: auto; /* Asegura que el footer se empuje hacia el fondo */
+}
+
+.details-content {
+    display: flex; /* Usar flexbox para alinear la imagen y el texto */
+    align-items: center; /* Centrar verticalmente */
+}
+.details-content img {
+    width: 700px; /* Ancho fijo para la imagen */
+    height: 1000px; /* Altura fija para la imagen */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+    border-radius: 8px; /* Bordes redondeados para un mejor aspecto */
+    margin-right: 35px; /* Espacio entre la imagen y el texto */
+}
+
+.movie-item img {
+    width: 220px; /* Ancho fijo para cada imagen de película */
+    height: 300px; /* Altura fija para cada imagen de película */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+    border-radius: 8px; /* Bordes redondeados para un mejor aspecto */
+}
+
+.info h3 {
+    font-size: 4em; /* Aumentar el tamaño del título */
+    font-family: "San Francisco", sans-serif; /* Aplicar la fuente al título */
+    margin-bottom: 20px; /* Espacio inferior entre el título y el siguiente párrafo */
+}
+
+.info p {
+    font-size: 1.3em; /* Aumentar el tamaño de los párrafos */
+    font-family: "San Francisco", sans-serif; /* Aplicar la fuente a los párrafos */
+    margin-bottom: 35px; /* Espacio inferior entre párrafos */
+}
+
+.info {
+    margin-top: 0;
+    max-width: 600px; /* Limitar el ancho de la información */
+    text-align: left; /* Alinear el texto a la izquierda */
+    margin-left: 20px; /* Agregar margen a la izquierda */
+    padding: 10px; /* Espaciado interno */
+}
+
+.actions a, .actions button {
+    align-items: right;
+    text-align: right;
+    margin-top: 30px;
+    font-size: 1em; /* Aumentar el tamaño de los botones */
+    padding: 10px 30px; /* Asegúrate de que el padding sea adecuado */
+    font-family: "San Francisco", sans-serif; /* Aplicar la fuente a los botones */
+}
+
+
+@font-face {
+    font-family: "San Francisco";
+    font-weight: 400;
+    src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+  }
+
+  #delete-button {
+    background-color: #c90000; /* Color de fondo rojo */
+    color: white; /* Color del texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 1em; /* Tamaño de fuente */
+    cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+}
+
+#delete-button:hover {
+    background-color: #c70000; /* Color de fondo más oscuro al pasar el mouse */
+    transform: translateY(-2px); /* Efecto de elevación al pasar el mouse */
+}
+
+#movie-title {
+    margin-top: 0;  /* Eliminar el margen superior */
+    margin-bottom: 60px; /* Puedes ajustar este valor según sea necesario */
+    font-size: 4em; /* Ajustar el tamaño de la fuente si es necesario */
+    font-family: "San Francisco", sans-serif; /* Asegúrate de que esté usando la fuente correcta */
 }

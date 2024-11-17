@@ -63,7 +63,7 @@ const addMovie = async (req, res) => {
         const uploadImage = (buffer) => {
             return new Promise((resolve, reject) => {
                 cloudinary.uploader.upload_stream((error, result) => {
-                    if (error) return reject (error);
+                    if (error) return reject(error);
                     resolve(result);
                 }).end(buffer);
             });
@@ -84,6 +84,7 @@ const addMovie = async (req, res) => {
 };
 
 // Function to update a movie
+// Function to update a movie
 const updateMovie = async (req, res) => {
     const { id } = req.params; // Obtener el ID de los parámetros
     const peliculaActualizada = req.body;
@@ -94,17 +95,42 @@ const updateMovie = async (req, res) => {
             return res.status(400).json({ error: 'Todos los campos son requeridos' });
         }
 
-        // Manejo de la imagen
-        if (req.file) {
-            const result = await cloudinary.uploader.upload_stream(req.file.buffer);
-            peliculaActualizada.imageUrl = result.secure_url; // Actualiza solo si hay nueva imagen
-        } else {
-            // Si no se sube nueva imagen, no sobrescribir imageUrl
-            delete peliculaActualizada.imageUrl;
+        // Primero, obtenemos la película existente
+        const existingMovie = await queryDatabase('SELECT * FROM peliculas WHERE id = ?', [id]);
+        if (existingMovie.length === 0) {
+            return res.status(404).json({ error: 'Película no encontrada' });
         }
 
-        const query = 'UPDATE peliculas SET ? WHERE id = ?';
-        const values = [peliculaActualizada, id];
+        // Si no se sube nueva imagen, mantener la URL de la imagen existente
+        if (req.file) {
+            console.log('Archivo recibido:', req.file); // Verifica que el archivo esté presente
+            try {
+                // Usar el buffer para cargar la imagen a Cloudinary
+                const result = await new Promise((resolve, reject) => {
+                    const uploadStream = cloudinary.uploader.upload_stream((error, result) => {
+                        if (error) {
+                            return reject(error);
+                        }
+                        resolve(result);
+                    });
+                    // Finaliza el stream con el buffer de la imagen
+                    uploadStream.end(req.file.buffer); // Envía el buffer a Cloudinary
+                });
+
+                console.log('Resultado de la carga en Cloudinary:', result); // Verifica el resultado de Cloudinary
+                peliculaActualizada.imageUrl = result.secure_url; // Actualiza solo si hay nueva imagen
+            } catch (uploadError) {
+                console.error('Error al subir la imagen a Cloudinary:', uploadError); // Captura el error de Cloudinary
+                return res.status(500).json({ error: 'Error al subir la imagen a Cloudinary' });
+            }
+        } else {
+            // Si no se sube nueva imagen, mantener la URL de la imagen existente
+            peliculaActualizada.imageUrl = existingMovie[0].imageUrl; // Mantener la imagen existente
+        }
+
+        // Realiza la actualización en la base de datos
+        const query = 'UPDATE peliculas SET titulo = ?, contenido = ?, categoria = ?, anio = ?, genero = ?, imageUrl = ? WHERE id = ?';
+        const values = [peliculaActualizada.titulo, peliculaActualizada.contenido, peliculaActualizada.categoria, parseInt(peliculaActualizada.anio, 10), peliculaActualizada.genero, peliculaActualizada.imageUrl, id];
 
         const results = await queryDatabase(query, values);
         if (results.affectedRows === 0) {
