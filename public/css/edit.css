@@ -1,18 +1,23 @@
 /* Estilos generales para el cuerpo */
 body {
     font-family: 'Roboto', sans-serif; /* Usar la misma fuente que en index.css */
-    background-color: #141414; /* Color de fondo oscuro */
+    background-color: #252525; /* Color de fondo */
     color: #fff; /* Color de texto blanco */
     margin: 0;
     padding: 0;
 }
 
 /* Estilos para el encabezado */
+/* Estilos para el encabezado */
 .header {
-    background-color: #000; /* Color de fondo negro */
-    color: #fff; /* Color de texto blanco */
-    padding: 20px;
+    background-color: #000;
+    padding: 10px; /* Reduce el padding para hacer el encabezado más pequeño */
     text-align: center;
+}
+
+.header h1 {
+    margin: 0; /* Eliminar márgenes */
+    font-size: 1.8em; /* Ajustar el tamaño de la fuente a un tamaño más pequeño */
 }
 
 /* Estilos para la navegación */

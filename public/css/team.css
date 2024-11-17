@@ -1,80 +1,89 @@
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #141414;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-        }
-        .header {
-            background-color: #000;
-            padding: 20px;
-            text-align: center;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-        .nav {
-            display: flex;
-            justify-content: center;
-            background-color: #333;
-            padding: 10px 0;
-        }
-        .nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 20px;
-            font-size: 1.2em;
-        }
-        .nav a:hover {
-            background-color: #575757;
-        }
-        .container {
-            padding: 20px;
-        }
-        .movie-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-        .movie-item {
-            background-color: #222;
-            border-radius: 10px;
-            overflow: hidden;
-            width: 200px;
-            text-align: center;
-        }
-        .movie-item img {
-            width: 100%;
-            height: auto;
-        }
-        .movie-item h3 {
-            margin: 10px 0;
-            font-size: 1.2em;
-        }
-        .movie-item p {
-            margin: 0 10px 10px;
-            font-size: 0.9em;
-        }
-        .movie-item .actions {
-            display: flex;
-            justify-content: space-around;
-            padding: 10px 0;
-        }
-        .movie-item .actions a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.2em;
-        }
-        .movie-item .actions a:hover {
-            color: #ff0000;
-        }
-        .footer {
-            background-color: #000;
-            text-align: center;
-            padding: 20px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
+/* Asegurarse de que el html y el body ocupen toda la altura */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Ocultar el scrollbar horizontal */
+}
+
+/* Alinear el contenido en columna */
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    background-color: #252525; /* Color de fondo */
+    color: #fff; /* Color del texto */
+}
+
+/* Estilos para el encabezado */
+.header {
+    background-color: #000;
+    padding: 10px; /* Reduce el padding para hacer el encabezado más pequeño */
+    text-align: center;
+}
+
+.header h1 {
+    margin: 0; /* Eliminar márgenes */
+    font-size: 1.8em; /* Ajustar el tamaño de la fuente a un tamaño más pequeño */
+}
+
+/* Estilos para la navegación */
+.nav {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    padding: 10px 0;
+}
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+}
+
+.nav a:hover {
+    background-color: #575757;
+}
+
+/* Contenedor principal */
+.container {
+    flex: 1; /* Esto permite que el contenedor principal ocupe el espacio restante */
+    padding: 20px;
+    text-align: center; /* Centrar el texto en el contenedor principal */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+}
+
+/* Estilo para el equipo */
+.team {
+    display: flex;
+    flex-wrap: wrap; /* Permitir que los miembros del equipo se ajusten a varias líneas */
+    justify-content: center; /* Centrar los miembros del equipo */
+    gap: 20px; /* Espacio entre las tarjetas */
+}
+
+/* Estilos para cada miembro del equipo */
+.team-member {
+    background-color: #222; /* Fondo de las tarjetas */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    width: 250px; /* Ancho fijo para las tarjetas */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidad */
+    transition: transform 0.2s; /* Transición suave para el efecto hover */
+}
+
+.team-member:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+}
+
+/* Estilos para el footer */
+.footer {
+    text-align: center; /* Centrar el texto del footer */
+    padding: 20px;
+    background-color: #000; /* Mismo fondo que en otras páginas */
+    color: #fff; /* Asegurarnos de que el texto sea blanco */
+    position: relative; /* Asegurarse de que esté en su lugar */
+    bottom: 0;
+    width: 100%;
+    margin-top: auto; /* Asegura que el footer se empuje hacia el fondo */
+}
