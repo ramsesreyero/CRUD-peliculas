@@ -89,38 +89,56 @@ body {
 /* Imagen de película */
 .details-content img {
     width: 100%; /* Escalable al 100% del contenedor */
-    max-width: 1600px; /* Controla el tamaño máximo de la imagen */
-    height: auto; /* Mantiene la relación de aspecto */
-    border-radius: 0px 0px 20px 20px; /* Bordes redondeados solo en la parte inferior */
+    max-width: 80%;
+    height: 500px; /* Establece una altura fija para todas las imágenes */
+    object-fit: cover; /* Asegura que la imagen cubra el contenedor sin distorsionarse */
+    display: block; /* Asegúrate de que sea un bloque para evitar espacios innecesarios */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+.details-row {
+    display: flex; /* Habilita flexbox para alinear acciones y descripción en fila */
+    align-items: flex-start; /* Alinea los elementos al inicio (parte superior) */
+    gap: 20px; /* Espacio entre acciones y descripción */
 }
 
-/* Estilos generales para .info */
 .info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    max-width: 100%;
-    padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.5);
+    display: flex; 
+    flex-direction: column; 
+    width: 100%; /* Asegúrate de que ocupe todo el ancho disponible */
+    max-width: 80%; /* Limita el ancho máximo a 80% */
+    padding: 1rem; /* Añade espacio interno alrededor del contenido */
+    background-color: #000; 
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     border-radius: 0px 0px 20px 20px;
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem; /* Añadimos espacio entre los contenedores */
+    gap: 1rem; 
+    overflow: hidden; 
+    margin-top: 0px; /* Ajusta este valor según sea necesario */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
 }
-
 .info h3 {
     font-size: 2em; /* Escalable */
-    margin-bottom: 0.1rem;
+    margin: 1rem 0; /* Añade margen superior e inferior */
 }
 
 .info p {
-    margin: 0.5rem 0;
+    margin: 0.5rem 0; /* Ajusta el margen superior e inferior para los párrafos */
     font-size: 1em;
     color: #ddd;
+}
+
+#movie-title {
+    margin: 0; /* Elimina el margen superior e inferior */
+    padding: 0; /* Asegúrate de que no haya padding */
+    font-size: 2em; /* Ajusta el tamaño de la fuente según sea necesario */
+    color: #fff; /* Asegúrate de que el color del texto sea el deseado */
+}
+
+.movie-title-description {
+    display: flex; /* Habilita flexbox para el título y la descripción */
+    flex-direction: column; /* Mantiene el texto en columna */
+    margin-left: 20px; /* Ajusta este valor para alinear con movie-meta */
 }
 
 /* Descripción */
@@ -131,30 +149,42 @@ body {
 }
 
 /* Asegura que el contenedor .actions esté alineado correctamente */
+/* Alinea las acciones (botones) a la derecha */
 .actions {
-    display: flex;                  /* Hacer que los botones se alineen en fila */
-    flex-direction: row;            /* Alinea los botones horizontalmente */
-    justify-content: flex-start;    /* Los botones se alinean a la izquierda */
-    align-items: center;            /* Alinea los botones verticalmente */
-    gap: 10px;                      /* Espacio entre los botones */
-    margin-top: 1rem;               /* Margen superior */
+    display: flex; /* Habilita flexbox */
+    flex-direction: column; /* Coloca los botones uno encima del otro */
+    gap: 10px; /* Espacio entre los botones */
+    align-items: stretch; /* Alinea los botones para que ocupen el ancho completo */
 }
-
-/* Botones dentro de .actions */
 .actions a, .actions button {
-    background-color: #000;
-    color: white;
+    text-align: center;
+    background-color: #ffffff; /* Fondo blanco */
+    color: #000000; /* Texto negro */
     border: none;
-    padding: 0.75rem 1.5rem; /* Aumenta el padding para hacer los botones más grandes */
+    padding: 0.5rem 1.5rem; /* Ajusta el padding para mantener la altura deseada */
     border-radius: 8px; /* Aumenta el radio de los bordes si lo deseas */
     cursor: pointer;
     text-decoration: none;
-    font-size: 1.2em; /* Aumenta el tamaño de la fuente */
+    font-size: 1.2em; /* Tamaño de la fuente */
+    width: 300px; /* Establece un ancho fijo para todos los botones */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
 }
 
 /* Efecto hover en los botones */
 .actions a:hover, .actions button:hover {
-    background-color: #444;
+    background-color: #444; /* Color de fondo en hover */
+    color: #ffffff; /* Texto blanco en hover para contraste */
+}
+
+/* Efecto hover en los botones */
+.actions a:hover, .actions button:hover {
+    background-color: #444; /* Color de fondo en hover */
+    color: #ffffff; /* Texto blanco en hover para contraste */
+}
+/* Efecto hover en los botones */
+.actions a:hover, .actions button:hover {
+    background-color: #444; /* Color de fondo en hover */
+    color: #ffffff; /* Texto blanco en hover para contraste */
 }
 /* Pie de página */
 .footer {
@@ -176,9 +206,10 @@ body {
 }
 
 .movie-meta.row {
-    display: flex; /* Usar flexbox */
-    justify-content: flex-start; /* Alinear a la izquierda */
-    margin-bottom: 5px; /* Espacio inferior entre grupos de formularios */
+    display: flex; /* Habilita flexbox */
+    flex-direction: column; /* Cambia a columna para apilar los elementos verticalmente */
+    gap: 10px; /* Espacio entre los elementos de metadatos */
+    margin-top: 25px; /* Espacio superior para separar de otros elementos */
 }
 
 .movie-meta.row .col {
@@ -197,16 +228,19 @@ body {
     line-height: 1.2; /* Ajustar el interlineado si es necesario */
 }
 
-/* Si quieres que los textos estén más cerca, considera usar un contenedor adicional */
-.movie-meta.row .col {
-    display: flex; /* Hacer que el contenido de la columna esté en línea */
-    align-items: center; /* Centrar verticalmente */
+/* Agregar margen derecho al elemento strong */
+.movie-meta.row .col strong {
+    margin-right: 0.5rem; /* Espacio a la derecha del texto fuerte (Categoría:, Año:, Género:) */
 }
-/* Media Queries */
 @media (max-width: 768px) {
+    .details-content img, 
     .info {
-        width: 100%; /* Asegura que se ajuste en pantallas pequeñas */
-        padding: 0.5rem; /* Ajuste en padding para pantallas pequeñas */
+        max-width: 90%; /* Ajusta el ancho máximo a 90% en pantallas pequeñas */
+    }
+
+    .actions a, .actions button {
+        padding: 0.5rem 1.5rem; /* Mantén el mismo padding en pantallas pequeñas */
+        font-size: 1em; /* Ajusta el tamaño de la fuente si es necesario */
     }
 
     .nav a {
@@ -215,6 +249,8 @@ body {
     }
 
     .details-content img, .movie-details img {
-        max-width: 90%;
+        width: 100%; /* Cambia a width: 100% para que ocupe todo el espacio disponible */
+        max-width: none; /* Elimina el max-width para evitar el salto */
+        height: auto; /* Mantiene la relación de aspecto */
     }
 }

@@ -19,29 +19,29 @@
             <div class="details-content">
                 <img id="movie-banner" src="" alt="Banner de la película">
                 <div class="info">
-                    <!-- Contenedor de los botones -->
-                    <div class="actions">
-                        <a id="watch-button" class="button">Ver en [Nombre del Servicio]</a>
-                        <a id="edit-button" class="button">Editar</a>
-                        <button id="delete-button" class="button">Eliminar</button>
-                    </div>
-                    
-                    <!-- Contenedor del título y descripción -->
-                    <div class="movie-title-description">
-                        <h3 id="movie-title"></h3>
-                        <p id="movie-description"><strong></strong> <span id="movie-contenido"></span></p>
-                    </div>
-                    
-                    <!-- Contenedor de los metadatos de la película -->
-                    <div class="movie-meta row"> <!-- Agregamos la clase "row" aquí -->
-                        <div class="col"> <!-- Contenedor para la categoría -->
-                            <strong>Categoría:</strong> <span id="movie-categoria"></span>
+                    <div class="details-row"> <!-- Contenedor flex para acciones y descripción -->
+                        <div class="actions">
+                            <a id="watch-button" class="button">Ver en [Nombre del Servicio]</a>
+                            <a id="edit-button" class="button">Editar</a>
+                            <button id="delete-button" class="button">Eliminar</button>
                         </div>
-                        <div class="col"> <!-- Contenedor para el año -->
-                            <strong>Año:</strong> <span id="movie-anio"></span>
+                        
+                        <div class="movie-title-description">
+                            <h3 id="movie-title"></h3>
+                            <p id="movie-description"><strong></strong> <span id="movie-contenido"></span></p>
                         </div>
-                        <div class="col"> <!-- Contenedor para el género -->
-                            <strong>Género:</strong> <span id="movie-genero"></span>
+    
+                        <!-- Mover movie-meta aquí, al lado de movie-title-description -->
+                        <div class="movie-meta row">
+                            <div class="col">
+                                <strong>Categoría: </strong> <span id="movie-categoria"></span>
+                            </div>
+                            <div class="col">
+                                <strong>Año: </strong> <span id="movie-anio"></span>
+                            </div>
+                            <div class="col">
+                                <strong>Género: </strong> <span id="movie-genero"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
