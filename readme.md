@@ -13,16 +13,15 @@ Esta es una aplicación web para gestionar una colección de películas. Permite
    ```bash
    git clone https://github.com/ramsesreyero/CRUD-peliculas.git
    cd CRUD-peliculas
+```
 Instala las dependencias del proyecto:
-
 ```bash
 npm install
 ```
 Configura la base de datos:
-
 Crea una base de datos en MySQL y ejecuta el script `movie_db_peliculas.sql` que se encuentra en la carpeta `bd` para crear las tablas necesarias.
-Configura las variables de entorno:
 
+Configura las variables de entorno:
 Entra al archivo `.env` en la raíz del proyecto y añade las siguientes variables:
 ```bash
 DB_HOST=localhost
@@ -32,26 +31,45 @@ DB_NAME=nombre_de_tu_base_de_datos
 CLOUDINARY_URL=tu_url_de_cloudinary
 ```
 Inicia el servidor:
-
 ```bash
 npm start
 ```
 Abre tu navegador y visita `http://localhost:8080` para acceder a la aplicación.
 
-## Uso
+Uso
 Agregar una Película: Navega a la página "Agregar Película" y completa el formulario.
 Listar Películas: La página principal muestra todas las películas. Puedes hacer clic en el título de una película para ver más detalles.
 Editar una Película: Haz clic en el botón "Editar" en la página de detalles de la película.
 Eliminar una Película: En la página de detalles, puedes eliminar la película.
 
-## Contribuciones
+Estructura del Proyecto
+public/: Contiene los archivos estáticos de la aplicación, incluyendo CSS, JavaScript y HTML.
+css/: Archivos CSS para estilizar la aplicación.
+js/: Archivos JavaScript para la lógica del cliente.
+html/: Archivos HTML para las diferentes vistas de la aplicación.
+bd/: Contiene el script SQL para crear la base de datos y las tablas necesarias.
+server.js: Archivo principal del servidor que configura Express y las rutas de la API.
+
+API
+La aplicación proporciona una API para interactuar con la base de datos de películas. Las rutas principales son:
+
+GET /api/peliculas: Obtener todas las películas.
+GET /api/peliculas/:id: Obtener una película específica por ID.
+POST /api/peliculas: Agregar una nueva película.
+PUT /api/peliculas/:id: Actualizar una película existente.
+DELETE /api/peliculas/:id: Eliminar una película.
+
+Contribuciones
 Las contribuciones son bienvenidas. Si deseas contribuir, por favor sigue estos pasos:
 
 Haz un fork del proyecto.
-Crea una nueva rama (`git checkout -b nueva-caracteristica`).
-Realiza tus cambios y haz commit (`git commit -m 'Añadir nueva característica'`).
-Haz push a la rama (`git push origin nueva-caracteristica`).
+Crea una nueva rama (git checkout -b nueva-caracteristica).
+Realiza tus cambios y haz commit (git commit -m 'Añadir nueva característica').
+Haz push a la rama (git push origin nueva-caracteristica).
 Abre un Pull Request.
 
-## Licencia
+Licencia
 Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
+
+### Notas
+- Asegúrate de reemplazar `tu_usuario`, `tu_contraseña`, y `nombre_de_tu_base_de_datos` en la sección de configuración con los valores reales que uses.
