@@ -18,44 +18,48 @@ body {
 
 /* Estilos para el encabezado */
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
+    position: fixed; /* Fijar el encabezado en la parte superior */
+    top: 0; /* Alinear en la parte superior */
+    left: 0; /* Alinear a la izquierda */
+    right: 0; /* Alinear a la derecha */
+    z-index: 1000; /* Asegurarse de que esté sobre otros elementos */
     display: flex;
-    flex-direction: column;
-    background-color: #000;
-    padding: 0;
-    height: 50px; /* Altura fija del encabezado */
+    flex-direction: column; /* Alinear el contenido en columna */
+    background-color: #000; /* Fondo negro para el encabezado */
+    padding: 2px 0px; /* Padding alrededor del encabezado */
+}
+
+.container {
+    margin-top: 0px; /* Espacio suficiente para el header fijo */
 }
 
 .header h1 {
-    margin: 0;
-    font-size: 2em; /* Escalable */
-    color: #fff;
+    margin: 0px 0px; /* Reducir márgenes para acercar el texto */
+    font-size: 1.2em; /* Ajustar el tamaño de la fuente a un tamaño más pequeño */
+    color: #fff; /* Color del texto en el encabezado */
 }
 
 /* Estilos para la navegación */
 .nav {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #000;
-    padding: 1rem 0;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    background-color: #000000; /* Color de fondo negro */
+    padding: 0px 0px; /* Aumentar el padding para dar más espacio vertical */
 }
 
 .nav a {
-    color: #666;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    font-size: 1.2em;
-    font-weight: bold;
-    transition: color 0.3s;
+    color: #666; /* Color gris oscuro para los enlaces */
+    text-decoration: none; /* Sin subrayado */
+    padding: 10px 20px; /* Espaciado interno de los enlaces */
+    font-size: 1.2em; /* Tamaño de fuente */
+    font-weight: bold; /* Hacer que la fuente sea bold */
+    transition: color 0.3s; /* Transición suave para el cambio de color */
+    margin: 0; /* Asegúrate de que no haya márgenes */
 }
 
 .nav a:hover {
-    color: #fff;
+    color: #fff; /* Color de texto blanco al pasar el mouse */
 }
 
 /* Contenedor principal */
@@ -65,7 +69,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 0;
-    margin-top: calc(50px + 20px); /* Ajusta según el tamaño del encabezado */
+    margin-top: calc(26px + 20px); /* Ajusta según el tamaño del encabezado */
 }
 
 /* Ajustamos el diseño de movie-details */

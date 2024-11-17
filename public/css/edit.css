@@ -16,7 +16,7 @@ body {
 }
 
 .container {
-    margin-top: 120px; /* Espacio suficiente para el header fijo */
+    margin-top: 100px; /* Espacio suficiente para el header fijo */
 }
 
 /* Estilos para el encabezado */
@@ -29,7 +29,7 @@ body {
     display: flex;
     flex-direction: column; /* Alinear el contenido en columna */
     background-color: #000; /* Fondo negro para el encabezado */
-    padding: 0px 0px; /* Padding alrededor del encabezado */
+    padding: 2px 0px; /* Padding alrededor del encabezado */
 }
 
 .header h1 {
@@ -44,7 +44,7 @@ body {
     justify-content: center; /* Centrar horizontalmente */
     align-items: center; /* Centrar verticalmente */
     background-color: #000000; /* Color de fondo negro */
-    padding: 13px 0px; /* Aumentar el padding para dar más espacio vertical */
+    padding: 0px 0px; /* Aumentar el padding para dar más espacio vertical */
 }
 
 .nav a {

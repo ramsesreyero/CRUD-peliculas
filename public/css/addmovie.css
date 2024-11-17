@@ -25,7 +25,7 @@ body {
     display: flex;
     flex-direction: column; /* Alinear el contenido en columna */
     background-color: #000; /* Fondo negro para el encabezado */
-    padding: 10px 10px; /* Padding alrededor del encabezado */
+    padding: 2px 0px; /* Padding alrededor del encabezado */
 }
 
 .container {

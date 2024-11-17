@@ -25,13 +25,15 @@ body {
     display: flex;
     flex-direction: column; /* Alinear el contenido en columna */
     background-color: #000; /* Fondo negro para el encabezado */
-    padding: 10px 10px; /* Padding alrededor del encabezado */
+    padding: 0em; /* Usar unidades relativas para el padding */
+    height: auto; /* Permitir que el encabezado ajuste su altura automáticamente */
 }
 
 .header .nav {
     display: flex; /* Usar flexbox para alinear los enlaces horizontalmente */
     justify-content: space-between; /* Espacio entre los enlaces y el contenedor de búsqueda */
     align-items: center; /* Alinear verticalmente todos los elementos */
+    padding: 0 2em; /* Usar unidades relativas para el padding */
 }
 .header .nav-title {
     margin: 0; /* Eliminar márgenes */
@@ -223,7 +225,7 @@ button:hover {
 
 /* Estilos para el carrusel */
 .carousel {
-    margin-top: 20px;
+    margin-top: 5px;
     margin-bottom: 10px; /* Espacio inferior entre el carrusel y la lista de películas */
     width: 100%; /* Asegura que el carrusel ocupe todo el ancho del contenedor */
     max-width: 1670px;
@@ -253,7 +255,7 @@ button:hover {
 .carousel-inner img {
     width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
     height: 600px; 
-    border-radius: 10px; /* Bordes redondeados para un mejor aspecto */
+    border-radius: 0px 0px 10px 10px; /* Bordes redondeados para un mejor aspecto */
     object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
 }
 
@@ -286,9 +288,10 @@ button:hover {
 }
 
 .genre-link:hover {
-    color: #fff; /* Cambiar a blanco al pasar el mouse */
+    color: #fff; 
+    transform: scale(1.1); 
+    transition: color 0.3s, transform 0.3s;
 }
-
 #showAllMovies {
     margin-left: 10px; /* Espacio a la izquierda del botón */
     font-size: 1.4em; /* Tamaño de fuente */
