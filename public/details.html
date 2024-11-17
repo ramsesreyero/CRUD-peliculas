@@ -15,18 +15,34 @@
     </header>
 
     <main class="movie-details">
-        <div class="details-container"> <!-- Contenedor para el contenido -->
-            <div class="details-content"> <!-- Nuevo contenedor para la disposición -->
-                <img id="movie-poster" src="" alt="Poster de la película" />
+        <div class="details-container">
+            <div class="details-content">
+                <img id="movie-banner" src="" alt="Banner de la película">
                 <div class="info">
-                    <h3 id="movie-title"></h3>
-                    <p><strong>Descripción:</strong> <span id="movie-contenido"></span></p>
-                    <p><strong>Categoría:</strong> <span id="movie-categoria"></span></p>
-                    <p><strong>Año:</strong> <span id="movie-anio"></span></p>
-                    <p><strong>Género:</strong> <span id="movie-genero"></span></p>
+                    <!-- Contenedor de los botones -->
                     <div class="actions">
-                        <a id="edit-button" href="#"><i class="fas fa-edit"></i> Editar</a>
-                        <button id="delete-button"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                        <a id="watch-button" class="button">Ver en [Nombre del Servicio]</a>
+                        <a id="edit-button" class="button">Editar</a>
+                        <button id="delete-button" class="button">Eliminar</button>
+                    </div>
+                    
+                    <!-- Contenedor del título y descripción -->
+                    <div class="movie-title-description">
+                        <h3 id="movie-title"></h3>
+                        <p id="movie-description"><strong></strong> <span id="movie-contenido"></span></p>
+                    </div>
+                    
+                    <!-- Contenedor de los metadatos de la película -->
+                    <div class="movie-meta row"> <!-- Agregamos la clase "row" aquí -->
+                        <div class="col"> <!-- Contenedor para la categoría -->
+                            <strong>Categoría:</strong> <span id="movie-categoria"></span>
+                        </div>
+                        <div class="col"> <!-- Contenedor para el año -->
+                            <strong>Año:</strong> <span id="movie-anio"></span>
+                        </div>
+                        <div class="col"> <!-- Contenedor para el género -->
+                            <strong>Género:</strong> <span id="movie-genero"></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -39,7 +55,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const movieId = getMovieIdFromUrl(); // Función para obtener el ID de la película de la URL
+            const movieId = getMovieIdFromUrl(); // Obtener el ID de la película de la URL
             loadMovieDetails(movieId); // Cargar detalles de la película
 
             document.getElementById('edit-button').addEventListener('click', () => {
@@ -58,20 +74,67 @@
 
         async function loadMovieDetails(id) {
             try {
-                const response = await fetch(`http://localhost:8080/api/peliculas/${id}`); // Ajusta la URL según tu API
+                const response = await fetch(`http://localhost:8080/api/peliculas/${id}`);
                 if (!response.ok) {
                     throw new Error('Error al cargar los detalles de la película');
                 }
                 const pelicula = await response.json(); // Obtener los detalles de la película
+
+                // Asignar los valores a los elementos HTML
                 document.getElementById('movie-title').innerText = pelicula.titulo;
                 document.getElementById('movie-contenido').innerText = pelicula.contenido;
                 document.getElementById('movie-categoria').innerText = pelicula.categoria;
                 document.getElementById('movie-anio').innerText = pelicula.anio;
                 document.getElementById('movie-genero').innerText = pelicula.genero;
-                document.getElementById('movie-poster').src = pelicula.imageUrl; // Mostrar la imagen
+                document.getElementById('movie-banner').src = pelicula.bannerUrl; // Asignar URL del banner
+
+                // Establecer la URL del botón "Ver en"
+                const watchButton = document.getElementById('watch-button');
+                watchButton.href = pelicula.watchUrl; // Establecer la URL para ver la película
+
+                // Extraer y mostrar el nombre del servicio
+                const serviceName = getServiceNameFromUrl(pelicula.watchUrl);
+                watchButton.innerText = `Ver en ${serviceName}`; // Actualizar el texto del botón
+
             } catch (error) {
                 console.error('Error al cargar los detalles de la película:', error);
             }
+        }
+        // Función para obtener el nombre del servicio a partir del URL
+        function getServiceNameFromUrl(url) {
+                const services = {
+                'max.com': 'Max',
+                'netflix.com': 'Netflix',
+                'hulu.com': 'Hulu',
+                'disneyplus.com': 'Disney+',
+                'primevideo.com': 'Amazon Prime Video',
+                'apple.com': 'Apple TV+',
+                'tv.apple.com': 'Apple TV+',
+                'appletv.com': 'Apple TV+',
+                'hbo.com': 'HBO',
+                'youtube.com': 'YouTube',
+                'peacocktv.com': 'Peacock',
+                'paramountplus.com': 'Paramount+',
+                'starz.com': 'Starz',
+                'showtime.com': 'Showtime',
+                'crunchyroll.com': 'Crunchyroll',
+                'funimation.com': 'Funimation',
+                'tubitv.com': 'TubiTV',
+                'vudu.com': 'Vudu', 
+                'fandango.com': 'FandangoNOW',
+                'sling.com': 'Sling TV',
+                'roku.com': 'Roku', 
+                'pluto.tv': 'Pluto TV',
+                'crackle.com': 'Crackle', 
+                'mubi.com': 'Mubi', 
+                'hoopladigital.com': 'Hoopla',
+                // Agregar más servicios según sea necesario
+            };
+
+            const urlObject = new URL(url);
+            const hostname = urlObject.hostname.replace('www.', ''); // Obtener el hostname
+
+            return services[hostname] || 'Desconocido'; // Retorna el nombre del servicio o 'Desconocido'
         }
 
         async function deleteMovie(id) {

@@ -14,9 +14,9 @@
     </header>
     
     <main class="container">
-        <h1 class="titulo">Editar datos de la pelicula</h1>
+        <h1 class="titulo">Editar datos de la película</h1>
         <form id="edit-movie-form" enctype="multipart/form-data">
-            <input type="hidden" id="movie-id" name="movie-id" />
+            <input type="hidden" id="movie-id" value="1"> <!-- Asegúrate de que esto tenga un valor válido -->
             <div class="form-group">
                 <label for="titulo">Título</label>
                 <input type="text" id="titulo" name="titulo" placeholder="Título" required />
@@ -38,8 +38,22 @@
                 <input type="text" id="genero" name="genero" placeholder="Género" required />
             </div>
             <div class="form-group">
-                <label for="image">Imagen</label>
-                <input type="file" id="image" name="image" accept="image/*" />
+                <label for="watchUrl">URL para Ver</label>
+                <input type="text" id="watchUrl" name="watchUrl" placeholder="URL para ver la película" required />
+            </div>
+            <div class="form-group">
+                <label for="image">Portada</label>
+                <div class="input-image-container">
+                    <input type="file" id="image" name="image" accept="image/*" />
+                    <img id="current-image" src="" alt="Imagen Actual" style="max-width: 200px; display: none;" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="bannerUrl">Banner</label>
+                <div class="input-image-container">
+                    <input type="file" id="bannerUrl" name="bannerUrl" accept="image/*" />
+                    <img id="current-banner" src="" alt="Banner Actual" style="max-width: 200px; display: none;" />
+                </div>
             </div>
             <div class="button-container">
                 <button type="submit">Actualizar Película</button>
@@ -59,35 +73,58 @@
                 return;
             }
             const pelicula = await response.json();
+            
+            // Completar los campos del formulario
             document.getElementById('movie-id').value = pelicula.id;
             document.getElementById('titulo').value = pelicula.titulo;
             document.getElementById('contenido').value = pelicula.contenido;
             document.getElementById('categoria').value = pelicula.categoria;
             document.getElementById('anio').value = pelicula.anio;
             document.getElementById('genero').value = pelicula.genero;
+            document.getElementById('watchUrl').value = pelicula.watchUrl;
+
+            // Mostrar la imagen actual si existe
+            if (pelicula.imageUrl) {
+                const currentImage = document.getElementById('current-image');
+                currentImage.src = pelicula.imageUrl;
+                currentImage.style.display = 'block'; // Mostrar la imagen
+            }
+
+            // Mostrar el banner actual si existe
+            if (pelicula.bannerUrl) {
+                const currentBanner = document.getElementById('current-banner');
+                currentBanner.src = pelicula.bannerUrl;
+                currentBanner.style.display = 'block'; // Mostrar el banner
+            }
         }
-        
+
         document.getElementById('edit-movie-form').addEventListener('submit', async function(event) {
             event.preventDefault(); // Evitar el envío del formulario
-        
+
             const id = document.getElementById('movie-id').value;
             const titulo = document.getElementById('titulo').value;
             const contenido = document.getElementById('contenido').value;
             const categoria = document.getElementById('categoria').value;
             const anio = document.getElementById('anio').value;
             const genero = document.getElementById('genero').value;
-            const imageFile = document.getElementById('image').files[0]; // Obtener el archivo de imagen
-        
+            const watchUrl = document.getElementById('watchUrl').value;
+            const imageFile = document.getElementById('image').files[0]; // Obtener la portada
+            const bannerFile = document.getElementById('bannerUrl').files[0]; // Obtener el banner
+
             const formData = new FormData();
             formData.append('titulo', titulo);
             formData.append('contenido', contenido);
             formData.append('categoria', categoria);
             formData.append('anio', anio);
             formData.append('genero', genero);
+            formData.append('watchUrl', watchUrl);
             if (imageFile) {
-                formData.append('image', imageFile); // Agregar el archivo de imagen si existe
+                formData.append('image', imageFile); // Agregar la portada si existe
             }
-        
+            if (bannerFile) {
+                formData.append('bannerUrl', bannerFile); // Agregar el banner si existe
+            }
+
             try {
                 const response = await fetch(`http://localhost:8080/api/peliculas/${id}`, {
                     method: 'PUT',
@@ -95,17 +132,14 @@
                 });
 
                 if (response.ok) {
-                    const data = await response.json(); // Obtener los datos de la respuesta
-                    alert('Película actualizada con éxito');
-                    window.location.href = `details.html?id=${data.id}`; // Redirigir a detalles de la película
+                    alert("Película actualizada exitosamente.");
+                    window.location.href = `details.html?id=${id}`; // Redirigir a la página de detalles
                 } else {
-                    const errorText = await response.text(); // Obtener el texto del error
-                    console.error('Error:', errorText); // Log del error
-                    alert(`Error al actualizar la película: ${errorText}`);
+                    alert("Error al actualizar la película.");
                 }
             } catch (error) {
-                console.error('Error en la solicitud:', error);
-                alert('Error en la solicitud: ' + error.message);
+                console.error("Error en la solicitud:", error);
+                alert("Ocurrió un error al intentar actualizar la película.");
             }
         });
 

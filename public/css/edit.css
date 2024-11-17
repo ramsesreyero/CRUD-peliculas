@@ -153,3 +153,19 @@ button:hover {
     src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
   }
 
+  .input-image-container {
+    display: flex; /* Usar flexbox para alinear los elementos en una fila */
+    align-items: center; /* Centrar verticalmente los elementos */
+}
+
+.input-image-container input {
+    margin-right: 10px; /* Espacio entre el input y la imagen */
+}
+
+.input-image-container img {
+    margin-left: 10px; /* Espacio entre el input y la imagen */
+    max-width: 200px; /* Asegúrate de que la imagen no sea demasiado grande */
+    height: auto; /* Mantener la proporción de la imagen */
+    border: 1px solid #ccc; /* Opcional: agregar un borde a la imagen */
+    border-radius: 4px; /* Opcional: bordes redondeados para un mejor aspecto */
+}

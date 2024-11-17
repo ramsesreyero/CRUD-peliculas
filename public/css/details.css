@@ -3,6 +3,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-size: 100%; /* Tamaño base ajustable */
 }
 
 /* Estilos generales para el cuerpo */
@@ -10,188 +11,210 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'San Francisco', sans-serif;
-    background-color: #2c2c2c; /* Color de fondo gris oscuro */
-    color: #ffffff; /* Color del texto blanco */
-    overflow-x: hidden; /* Ocultar scrollbar horizontal */
-}
-
-.details-content {
-    margin-top: 70px; /* Espacio suficiente para el header fijo */
+    background-color: #2c2c2c;
+    color: #ffffff;
+    overflow-x: hidden;
 }
 
 /* Estilos para el encabezado */
 .header {
-    position: fixed; /* Fijar el encabezado en la parte superior */
-    top: 0; /* Alinear en la parte superior */
-    left: 0; /* Alinear a la izquierda */
-    right: 0; /* Alinear a la derecha */
-    z-index: 1000; /* Asegurarse de que esté sobre otros elementos */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
     display: flex;
-    flex-direction: column; /* Alinear el contenido en columna */
-    background-color: #000; /* Fondo negro para el encabezado */
-    padding: 0px 0px; /* Padding alrededor del encabezado */
+    flex-direction: column;
+    background-color: #000;
+    padding: 0;
+    height: 50px; /* Altura fija del encabezado */
 }
 
 .header h1 {
-    margin: 0px 0px; /* Reducir márgenes para acercar el texto */
-    font-size: 1.8em; /* Ajustar el tamaño de la fuente a un tamaño más grande */
-    color: #fff; /* Color del texto en el encabezado */
+    margin: 0;
+    font-size: 2em; /* Escalable */
+    color: #fff;
 }
 
 /* Estilos para la navegación */
 .nav {
     display: flex;
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
-    background-color: #000; /* Color de fondo negro */
-    padding: 13px 0; /* Padding para dar más espacio vertical */
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    padding: 1rem 0;
 }
 
 .nav a {
-    color: #666; /* Color gris oscuro para los enlaces */
-    text-decoration: none; /* Sin subrayado */
-    padding: 10px 20px; /* Espaciado interno de los enlaces */
-    font-size: 1.2em; /* Tamaño de fuente */
-    font-weight: bold; /* Hacer que la fuente sea bold */
-    transition: color 0.3s; /* Transición suave para el cambio de color */
-    margin: 0; /* Asegúrate de que no haya márgenes */
+    color: #666;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: color 0.3s;
 }
 
 .nav a:hover {
-    color: #fff; /* Color de texto blanco al pasar el mouse */
+    color: #fff;
 }
 
-/* Contenedor principal para los detalles de la película */
+/* Contenedor principal */
 .movie-details {
-    flex: 1; /* Esto permite que el contenedor principal ocupe el espacio restante */
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 0;
+    margin-top: calc(50px + 20px); /* Ajusta según el tamaño del encabezado */
 }
 
-/* Estilos para la imagen de la película */
-.movie-details img {
-    width: 300px; /* Ajusta el tamaño según lo necesites */
-    height: auto; /* Mantener la proporción de la imagen */
-    border-radius: 8px; /* Bordes redondeados para un mejor aspecto */
-}
-
-/* Estilos para la información de la película */
-.info {
-    max-width: 600px; /* Limitar el ancho de la información */
-    text-align: left; /* Centrar el texto */
-    margin-top: 20px; /* Espacio superior */
-}
-
-/* Estilos para los botones de acción */
-.actions {
+/* Ajustamos el diseño de movie-details */
+.details-container {
     display: flex;
-    justify-content: left; /* Centrar los botones */
-    margin-top: 20px; /* Espacio superior para los botones */
+    flex-direction: row; /* Alineación horizontal */
+    flex-wrap: wrap; /* Asegura que la imagen se ajuste a dispositivos pequeños */
+    justify-content: flex-start;
+    gap: 10px;
 }
 
-.actions a, .actions button {
-    background-color: #007bff; /* Color de fondo del botón */
-    color: white; /* Color del texto */
-    border: none; /* Sin borde */
-    padding: 10px 15px; /* Espaciado interno */
-    margin: 0 10px; /* Espaciado entre botones */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambiar cursor al pasar el mouse */
-    text-decoration: none; /* Sin subrayado en el enlace */
-}
-
-.actions a:hover, .actions button:hover {
-    background-color: #0056b3; /* Color de fondo al pasar el mouse */
-}
-
-/* Estilos para el pie de página */
-.footer {
-    text-align: center; /* Centrar el texto del footer */
-    padding: 20px;
-    background-color: #2c2c2c; /* Mismo fondo que en otras páginas */
-    color: #8a8a8a; /* Asegurarnos de que el texto sea blanco */
-    position: relative; /* Asegurarse de que esté en su lugar */
-    bottom: 0;
-    width: 100%;
-    margin-top: auto; /* Asegura que el footer se empuje hacia el fondo */
-}
-
+/* Contenedor principal que rodea la imagen y la información */
 .details-content {
-    display: flex; /* Usar flexbox para alinear la imagen y el texto */
-    align-items: center; /* Centrar verticalmente */
-}
-.details-content img {
-    width: 700px; /* Ancho fijo para la imagen */
-    height: 1000px; /* Altura fija para la imagen */
-    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
-    border-radius: 8px; /* Bordes redondeados para un mejor aspecto */
-    margin-right: 35px; /* Espacio entre la imagen y el texto */
+    position: relative; /* Contenedor relativo para anclar los detalles */
+    display: flex;
+    flex-direction: column; /* Mantener los detalles abajo de la imagen */
+    align-items: center;
+    width: 100%;
 }
 
-.movie-item img {
-    width: 220px; /* Ancho fijo para cada imagen de película */
-    height: 300px; /* Altura fija para cada imagen de película */
-    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
-    border-radius: 8px; /* Bordes redondeados para un mejor aspecto */
+/* Imagen de película */
+.details-content img {
+    width: 100%; /* Escalable al 100% del contenedor */
+    max-width: 1600px; /* Controla el tamaño máximo de la imagen */
+    height: auto; /* Mantiene la relación de aspecto */
+    border-radius: 0px 0px 20px 20px; /* Bordes redondeados solo en la parte inferior */
+}
+
+/* Estilos generales para .info */
+.info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 0px 0px 20px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Añadimos espacio entre los contenedores */
 }
 
 .info h3 {
-    font-size: 4em; /* Aumentar el tamaño del título */
-    font-family: "San Francisco", sans-serif; /* Aplicar la fuente al título */
-    margin-bottom: 20px; /* Espacio inferior entre el título y el siguiente párrafo */
+    font-size: 2em; /* Escalable */
+    margin-bottom: 0.1rem;
 }
 
 .info p {
-    font-size: 1.3em; /* Aumentar el tamaño de los párrafos */
-    font-family: "San Francisco", sans-serif; /* Aplicar la fuente a los párrafos */
-    margin-bottom: 35px; /* Espacio inferior entre párrafos */
+    margin: 0.5rem 0;
+    font-size: 1em;
+    color: #ddd;
 }
 
-.info {
-    margin-top: 0;
-    max-width: 600px; /* Limitar el ancho de la información */
-    text-align: left; /* Alinear el texto a la izquierda */
-    margin-left: 20px; /* Agregar margen a la izquierda */
-    padding: 10px; /* Espaciado interno */
+/* Descripción */
+#movie-description {
+    font-size: 1.2em;
+    margin: 1rem 0;
+    color: #ddd;
 }
 
+/* Asegura que el contenedor .actions esté alineado correctamente */
+.actions {
+    display: flex;                  /* Hacer que los botones se alineen en fila */
+    flex-direction: row;            /* Alinea los botones horizontalmente */
+    justify-content: flex-start;    /* Los botones se alinean a la izquierda */
+    align-items: center;            /* Alinea los botones verticalmente */
+    gap: 10px;                      /* Espacio entre los botones */
+    margin-top: 1rem;               /* Margen superior */
+}
+
+/* Botones dentro de .actions */
 .actions a, .actions button {
-    align-items: right;
-    text-align: right;
-    margin-top: 30px;
-    font-size: 1em; /* Aumentar el tamaño de los botones */
-    padding: 10px 30px; /* Asegúrate de que el padding sea adecuado */
-    font-family: "San Francisco", sans-serif; /* Aplicar la fuente a los botones */
+    background-color: #000;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem; /* Aumenta el padding para hacer los botones más grandes */
+    border-radius: 8px; /* Aumenta el radio de los bordes si lo deseas */
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1.2em; /* Aumenta el tamaño de la fuente */
 }
 
-
-@font-face {
-    font-family: "San Francisco";
-    font-weight: 400;
-    src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
-  }
-
-  #delete-button {
-    background-color: #c90000; /* Color de fondo rojo */
-    color: white; /* Color del texto blanco */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    padding: 10px 20px; /* Espaciado interno */
-    font-size: 1em; /* Tamaño de fuente */
-    cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
-    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+/* Efecto hover en los botones */
+.actions a:hover, .actions button:hover {
+    background-color: #444;
+}
+/* Pie de página */
+.footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #2c2c2c;
+    color: #8a8a8a;
+    width: 100%;
+    margin-top: auto;
 }
 
-#delete-button:hover {
-    background-color: #c70000; /* Color de fondo más oscuro al pasar el mouse */
-    transform: translateY(-2px); /* Efecto de elevación al pasar el mouse */
+.movie-meta {
+    margin: 5px 0; /* Reduce el margen superior e inferior del contenedor de metadatos */
 }
 
-#movie-title {
-    margin-top: 0;  /* Eliminar el margen superior */
-    margin-bottom: 60px; /* Puedes ajustar este valor según sea necesario */
-    font-size: 4em; /* Ajustar el tamaño de la fuente si es necesario */
-    font-family: "San Francisco", sans-serif; /* Asegúrate de que esté usando la fuente correcta */
+.movie-meta p {
+    margin: 2px 0; /* Reduce el margen superior e inferior de cada párrafo dentro de .movie-meta */
+    line-height: 1.2; /* Ajusta el interlineado si es necesario */
+}
+
+.movie-meta.row {
+    display: flex; /* Usar flexbox */
+    justify-content: flex-start; /* Alinear a la izquierda */
+    margin-bottom: 5px; /* Espacio inferior entre grupos de formularios */
+}
+
+.movie-meta.row .col {
+    display: flex; /* Hacer que el contenido de la columna esté en línea */
+    align-items: center; /* Centrar verticalmente */
+    margin-right: 50px; /* Espacio entre columnas, ajusta según sea necesario */
+}
+
+.movie-meta.row .col:last-child {
+    margin-right: 0; /* Eliminar margen derecho en la última columna */
+}
+
+/* Eliminar márgenes de los párrafos dentro de las columnas */
+.movie-meta.row .col p {
+    margin: 0; /* Eliminar márgenes */
+    line-height: 1.2; /* Ajustar el interlineado si es necesario */
+}
+
+/* Si quieres que los textos estén más cerca, considera usar un contenedor adicional */
+.movie-meta.row .col {
+    display: flex; /* Hacer que el contenido de la columna esté en línea */
+    align-items: center; /* Centrar verticalmente */
+}
+/* Media Queries */
+@media (max-width: 768px) {
+    .info {
+        width: 100%; /* Asegura que se ajuste en pantallas pequeñas */
+        padding: 0.5rem; /* Ajuste en padding para pantallas pequeñas */
+    }
+
+    .nav a {
+        font-size: 1em;
+        padding: 0.5rem;
+    }
+
+    .details-content img, .movie-details img {
+        max-width: 90%;
+    }
 }

@@ -9,20 +9,18 @@ const {
     deleteMovie
 } = require('../api/peliculas');
 
-// Setup multer for file uploads
-const storage = multer.memoryStorage(); // Use memory storage for serverless functions
+// Configuración de multer para manejar archivos
+const storage = multer.memoryStorage(); // Almacenamiento en memoria
 const upload = multer({ storage });
 
-// Middleware to handle file uploads
-const uploadMiddleware = upload.single('image');
-
+// Crear el enrutador
 const router = express.Router();
 
-// Define routes
+// Definir rutas
 router.get('/', getAllMovies);
 router.get('/:id', getMovieById);
-router.post('/', uploadMiddleware, addMovie);
-router.put('/:id', uploadMiddleware, updateMovie);
+router.post('/', upload.fields([{ name: 'image' }, { name: 'bannerUrl' }]), addMovie); // Cambiado a upload.fields()
+router.put('/:id', upload.fields([{ name: 'image' }, { name: 'bannerUrl' }]), updateMovie); // Cambiado a upload.fields()
 router.delete('/:id', deleteMovie);
 
 module.exports = router;

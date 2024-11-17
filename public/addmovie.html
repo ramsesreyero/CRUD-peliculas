@@ -37,8 +37,16 @@
                 <input type="text" id="genero" name="genero" placeholder="Género" required />
             </div>
             <div class="form-group">
-                <label for="image">Imagen</label>
+                <label for="watchUrl">URL para Ver</label>
+                <input type="text" id="watchUrl" name="watchUrl" placeholder="URL para ver la película" required />
+            </div>
+            <div class="form-group">
+                <label for="image">Portada</label>
                 <input type="file" id="image" name="image" accept="image/*" required />
+            </div>
+            <div class="form-group">
+                <label for="banner">Banner</label>
+                <input type="file" id="banner" name="banner" accept="image/*" required />
             </div>
             <div class="button-container">
                 <button type="submit">Guardar Película</button>
@@ -53,15 +61,18 @@
     <script>
         document.getElementById('add-movie-form').addEventListener('submit', async function(event) {
             event.preventDefault(); // Evitar el envío del formulario
-
+    
             const formData = new FormData(this); // Crear FormData a partir del formulario
+            const submitButton = event.target.querySelector('button[type="submit"]');
+            submitButton.disabled = true; // Deshabilitar el botón para evitar envíos múltiples
 
+            
             try {
                 const response = await fetch('http://localhost:8080/api/peliculas', {
                     method: 'POST',
                     body: formData // Enviar FormData
                 });
-
+    
                 if (response.ok) {
                     alert('Película agregada con éxito');
                     window.location.href = 'index.html'; // Redirigir a la lista de películas
@@ -72,6 +83,8 @@
             } catch (error) {
                 console.error('Error al agregar la película:', error);
                 alert('Error al agregar la película: ' + error.message);
+            } finally {
+                submitButton.disabled = false; // Rehabilitar el botón
             }
         });
     </script>

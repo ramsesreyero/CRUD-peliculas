@@ -113,7 +113,7 @@ body {
 
 .movie-item img {
     width: 100%; /* Asegurar que la imagen ocupe todo el ancho del contenedor */
-    height: 300px; /* Establecer una altura fija para todas las imágenes */
+    height: 325px; /* Establecer una altura fija para todas las imágenes */
     object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
     border-radius: 8px; /* Bordes redondeados para un mejor aspecto */
 }
@@ -222,12 +222,11 @@ button:hover {
 }
 
 /* Estilos para el carrusel */
-/* Estilos para el carrusel */
 .carousel {
     margin-top: 20px;
     margin-bottom: 10px; /* Espacio inferior entre el carrusel y la lista de películas */
     width: 100%; /* Asegura que el carrusel ocupe todo el ancho del contenedor */
-    max-width: 1905px;
+    max-width: 1670px;
     height: 600px; /* Establecer una altura fija para el carrusel */
     overflow: hidden; /* Evita que las imágenes se salgan del contenedor */
 }
@@ -240,12 +239,24 @@ button:hover {
     transition: transform 0.5s ease; /* Transición para el deslizamiento */
 }
 
+.carousel-item.active {
+    display: block; /* Mostrar solo el activo */
+}
+
+.carousel-item a {
+    display: block; /* Asegúrate de que el enlace ocupe todo el espacio */
+    width: 100%; /* Ocupa todo el ancho */
+    height: 100%; /* Ocupa toda la altura del carrusel */
+}
+
+
 .carousel-inner img {
     width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
     height: 600px; 
     border-radius: 10px; /* Bordes redondeados para un mejor aspecto */
     object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
 }
+
 
 .genres {
     margin: 20px 0; /* Espaciado superior e inferior */
