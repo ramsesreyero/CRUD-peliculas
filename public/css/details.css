@@ -177,8 +177,8 @@ html,body {
     }
     
     .actions a:hover,.actions button:hover {
-    background-color:#444;
-    color:#fff
+    background-color:#e6e6e6;
+    color:#000
     }
     
     .footer {
