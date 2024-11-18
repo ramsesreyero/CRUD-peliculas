@@ -1,156 +1,141 @@
-/* Asegurarse de que el html y el body ocupen toda la altura */
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-/* Estilos generales para el cuerpo */
-body {
-    display: flex;
-    flex-direction: column;
-    font-family: 'San Francisco', sans-serif;
-    background-color: #2c2c2c; /* Color de fondo blanco */
-    color: #ffffff; /* Color del texto negro */
-    overflow-x: hidden; /* Ocultar scrollbar horizontal */
-}
-
-/* Estilos para el encabezado */
-.header {
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    right: 0; 
-    z-index: 1000; 
-    display: flex;
-    flex-direction: column; 
-    background-color: #000; 
-    padding: 0; /* Puedes ajustar el padding aquí */
-    height: 45px; /* Establecer una altura fija */
-    overflow: hidden; /* Evitar que el contenido empuje el tamaño del header */
-}
-
-.container {
-    margin-top: 100px; /* Espacio suficiente para el header fijo */
-}
-
-.header h1 {
-    margin: 0px 0px; /* Reducir márgenes para acercar el texto */
-    font-size: 1.2em; /* Ajustar el tamaño de la fuente a un tamaño más pequeño */
-    color: #fff; /* Color del texto en el encabezado */
-}
-
-/* Estilos para la navegación */
-.nav {
-    display: flex;
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
-    background-color: #000000; /* Color de fondo negro */
-    padding: 0px 0px; /* Aumentar el padding para dar más espacio vertical */
-}
-
-.nav a {
-    color: #666; /* Color gris oscuro para los enlaces */
-    text-decoration: none; /* Sin subrayado */
-    padding: 10px 20px; /* Espaciado interno de los enlaces */
-    font-size: 1.2em; /* Tamaño de fuente */
-    font-weight: bold; /* Hacer que la fuente sea bold */
-    transition: color 0.3s; /* Transición suave para el cambio de color */
-    margin: 0; /* Asegúrate de que no haya márgenes */
-}
-
-.nav a:hover {
-    color: #fff; /* Color de texto blanco al pasar el mouse */
-}
-
-label {
-    font-family: "San Francisco", sans-serif; /* Aplica la fuente al cuerpo del documento */
-    font-size: 1em; /* Tamaño de fuente para las etiquetas */
-}
-
-/* Estilos para el contenedor principal */
-main {
-    text-align: center;
-    font-family: "San Francisco", sans-serif; /* Aplica la fuente al cuerpo del documento */
-    font-size: 1.5em; /* Tamaño de fuente */
-    max-width: 800px; /* Aumentar el ancho máximo a 1000px */
-    width: 100%; /* Ocupar todo el ancho disponible */
-    margin: 40px auto; /* Centrar el contenedor */
-    padding: 60px; /* Espaciado interno */
-    background-color: #222; /* Fondo gris más oscuro */
-    border-radius: 15px; /* Bordes redondeados */
-    box-shadow: none; /* Eliminar sombra para un diseño más plano */
-    color: #585858;
-}
-main h1 {
-    margin-top: 10px;
-    font-family: "San Francisco", sans-serif; /* Aplica la fuente al cuerpo del documento */
-    color: white;
-    text-align: center; /* Centrar el texto del título */
-}
-/* Estilos para los campos del formulario */
-input[type="text"],
-input[type="number"],
-input[type="file"],
-textarea {
-    font-size: 0.8em; /* Tamaño de fuente */
-    width: 100%; /* Ancho completo */
-    padding: 12px; /* Espaciado interno */
-    border: 1px solid #444; /* Borde suave */
-    border-radius: 4px; /* Bordes redondeados */
-    background-color: #252525; /* Fondo oscuro para los campos */
-    color: #fff; /* Color del texto */
-    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
-    margin-bottom: 15px; /* Espacio inferior entre elementos */
-    transition: border-color 0.3s; /* Transición suave para el cambio de color del borde */
-}
-
-/* Efecto al enfocar los campos */
-input[type="text"]:focus,
-input[type="number"]:focus,
-textarea:focus {
-    border-color: #007bff; /* Color del borde al enfocar */
-    outline: none; /* Eliminar el contorno por defecto */
-}
-
-/* Estilo para el botón de envío */
-button {
-    background-color: #007bff; /* Color de fondo azul */
-    color: #fff; /* Color de texto blanco */
-    border: none; /* Sin borde */
-    border-radius: 12px; /* Bordes redondeados */
-    padding: 12px 20px; /* Espaciado interno */
-    font-size: 1em; /* Tamaño de fuente */
-    cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
-    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
-}
-
-/* Efecto hover para el botón */
-button:hover {
-    background-color: #0056b3; /* Color de fondo más oscuro al pasar el mouse */
-    transform: translateY(-2px); /* Efecto de elevación */
-}
-
-/* Estilos para el pie de página */
-.footer {
-    text-align: center; /* Centrar el texto del footer */
-    padding: 20px;
-    background-color: #2c2c2c; /* Color de fondo del footer */
-    color: #fff; /* Color del texto en el footer */
-    position: relative; /* Asegurarse de que esté en su lugar */
-    bottom: 0;
-    width: 100%;
-    margin-top: auto; /* Asegura que el footer se empuje hacia el fondo */
-}
-
-.button-container {
-    display: flex; /* Usar flexbox para centrar el contenido */
-    justify-content: center; /* Centrar horizontalmente */
-    margin-top: 20px; /* Opcional: agregar un margen superior */
-}
-
-@font-face {
-    font-family: "San Francisco";
-    font-weight: 400;
-    src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
-  }
+html,body {
+    height:100%;
+    margin:0;
+    padding:0
+    }
+    
+    body {
+    display:flex;
+    flex-direction:column;
+    font-family:'San Francisco',sans-serif;
+    background-color:#2c2c2c;
+    color:#fff;
+    overflow-x:hidden
+    }
+    
+    .header {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
+    display:flex;
+    flex-direction:column;
+    background-color:#000;
+    padding:0;
+    height:45px;
+    overflow:hidden
+    }
+    
+    .container {
+    margin-top:100px
+    }
+    
+    .header h1 {
+    margin:0;
+    font-size:1.2em;
+    color:#fff
+    }
+    
+    .nav {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:#000;
+    padding:0
+    }
+    
+    .nav a {
+    color:#666;
+    text-decoration:none;
+    padding:10px 20px;
+    font-size:1.2em;
+    font-weight:700;
+    transition:color .3s;
+    margin:0
+    }
+    
+    .nav a:hover {
+    color:#fff
+    }
+    
+    label {
+    font:1em "San Francisco",sans-serif
+    }
+    
+    main {
+    text-align:center;
+    max-width:800px;
+    width:100%;
+    margin:40px auto;
+    padding:60px;
+    background-color:#222;
+    border-radius:15px;
+    box-shadow:none;
+    color:#585858;
+    font:1.5em "San Francisco",sans-serif
+    }
+    
+    main h1 {
+    margin-top:10px;
+    font-family:"San Francisco",sans-serif;
+    color:#fff;
+    text-align:center
+    }
+    
+    input[type="text"],input[type="number"],input[type="file"],textarea {
+    font-size:.8em;
+    width:100%;
+    padding:12px;
+    border:1px solid #444;
+    border-radius:4px;
+    background-color:#252525;
+    color:#fff;
+    box-sizing:border-box;
+    margin-bottom:15px;
+    transition:border-color .3s
+    }
+    
+    input[type="text"]:focus,input[type="number"]:focus,textarea:focus {
+    border-color:#007bff;
+    outline:none
+    }
+    
+    button {
+    background-color:#007bff;
+    color:#fff;
+    border:none;
+    border-radius:12px;
+    padding:12px 20px;
+    font-size:1em;
+    cursor:pointer;
+    transition:background-color 0.3s,transform .2s
+    }
+    
+    button:hover {
+    background-color:#0056b3;
+    transform:translateY(-2px)
+    }
+    
+    .footer {
+    text-align:center;
+    padding:20px;
+    background-color:#2c2c2c;
+    color:#fff;
+    position:relative;
+    bottom:0;
+    width:100%;
+    margin-top:auto
+    }
+    
+    .button-container {
+    display:flex;
+    justify-content:center;
+    margin-top:20px
+    }
+    
+    @font-face {
+    font-family:"San Francisco";
+    font-weight:400;
+    src:url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff)
+    }
