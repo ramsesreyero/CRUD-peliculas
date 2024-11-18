@@ -55,7 +55,8 @@ async function loadMovieDetails(id) {
 // Definición de la función para cargar películas similares
 async function loadSimilarMovies(genero, currentMovieId) {
     try {
-        const response = await fetch(`http://localhost:8080/api/peliculas/by-genero?genero=${genero}&id=${currentMovieId}`);        if (!response.ok) {
+        const response = await fetch(`http://localhost:8080/api/peliculas/by-genero?genero=${genero}&id=${currentMovieId}`);
+        if (!response.ok) {
             throw new Error('Error al cargar películas similares');
         }
         const peliculasSimilares = await response.json();
@@ -65,7 +66,10 @@ async function loadSimilarMovies(genero, currentMovieId) {
         // Verifica si hay películas similares
         if (peliculasSimilares.length === 0) {
             similarMovieList.innerHTML = '<p>No se encontraron películas similares.</p>';
+            similarMovieList.classList.add('empty'); // Agregar clase para alinear a la derecha
             return;
+        } else {
+            similarMovieList.classList.remove('empty'); // Remover clase si hay elementos
         }
 
         peliculasSimilares.forEach(pelicula => {
@@ -85,7 +89,6 @@ async function loadSimilarMovies(genero, currentMovieId) {
         similarMovieList.innerHTML = '<p>Error al cargar películas similares. Intenta de nuevo más tarde.</p>';
     }
 }
-
 // Función para obtener el nombre del servicio a partir del URL
 function getServiceNameFromUrl(url) {
     const services = {
