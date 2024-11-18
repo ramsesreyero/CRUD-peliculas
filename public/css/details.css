@@ -18,15 +18,17 @@ body {
 
 /* Estilos para el encabezado */
 .header {
-    position: fixed; /* Fijar el encabezado en la parte superior */
-    top: 0; /* Alinear en la parte superior */
-    left: 0; /* Alinear a la izquierda */
-    right: 0; /* Alinear a la derecha */
-    z-index: 1000; /* Asegurarse de que esté sobre otros elementos */
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    z-index: 1000; 
     display: flex;
-    flex-direction: column; /* Alinear el contenido en columna */
-    background-color: #000; /* Fondo negro para el encabezado */
-    padding: 2px 0px; /* Padding alrededor del encabezado */
+    flex-direction: column; 
+    background-color: #000; 
+    padding: 0; /* Puedes ajustar el padding aquí */
+    height: 45px; /* Establecer una altura fija */
+    overflow: hidden; /* Evitar que el contenido empuje el tamaño del header */
 }
 
 .container {
@@ -103,35 +105,43 @@ img {
 }
 .details-row {
     display: flex; /* Habilita flexbox para alinear acciones y descripción en fila */
-    align-items: flex-start; /* Alinea los elementos al inicio (parte superior) */
+    align-items: center; /* Alinea los elementos verticalmente al centro */
     gap: 20px; /* Espacio entre acciones y descripción */
+    width: 100%; /* Asegúrate de que ocupe todo el ancho del contenedor padre */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+    margin: 0; /* Elimina márgenes que puedan afectar el tamaño */
 }
 
 .info {
     display: flex; 
     flex-direction: column; 
+    flex-grow: 1; /* Permite que el contenedor de información crezca para ocupar el espacio disponible */
     width: 100%; /* Asegúrate de que ocupe todo el ancho disponible */
-    max-width: 1200px; /* Establece un ancho máximo fijo */
-    padding: 1rem; /* Añade espacio interno alrededor del contenido */
+    max-width: 1200px; /* Ancho máximo */
+    min-height: 150px; /* Altura mínima para evitar que se colapse */
+    padding: 1rem; /* Espacio interno */
     background-color: #000; 
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     border-radius: 0px 0px 20px 20px;
     box-sizing: border-box;
     gap: 1rem; 
-    overflow: hidden; 
-    margin-top: 0px; /* Ajusta este valor según sea necesario */
+    overflow: hidden; /* Evitar que el contenido empuje el tamaño */
+    margin-top: 10px; /* Espacio superior */
     margin: 0 auto; /* Centra el contenedor horizontalmente */
 }
+
 .info h3 {
     font-size: 2em; /* Escalable */
     margin: 1rem 0; /* Añade margen superior e inferior */
+    flex-shrink: 0; /* Evita que el título se encoja */
 }
 
 .info p {
     margin: 0.5rem 0; /* Ajusta el margen superior e inferior para los párrafos */
     font-size: 1em;
     color: #ddd;
+    flex-grow: 1; /* Permite que el párrafo crezca para ocupar el espacio disponible */
 }
 
 #movie-title {
@@ -144,7 +154,22 @@ img {
 .movie-title-description {
     display: flex; /* Habilita flexbox para el título y la descripción */
     flex-direction: column; /* Mantiene el texto en columna */
-    margin-left: 20px; /* Ajusta este valor para alinear con movie-meta */
+    margin-left: 10px; /* Ajusta este valor para reducir el espacio a la izquierda */
+    width: 600px; /* Establece un ancho fijo */
+    height: 150px; /* Establece una altura fija */
+    overflow: hidden; /* Oculta el contenido que excede el contenedor */
+    text-overflow: ellipsis; /* Agrega puntos suspensivos si el texto es demasiado largo */
+    white-space: normal; /* Permite que el texto se ajuste en varias líneas */
+}
+
+.movie-title-description h3 {
+    font-size: 1.5em; /* Tamaño de fuente ajustable */
+    margin: 0; /* Elimina márgenes */
+}
+
+.movie-title-description p {
+    font-size: 1em; /* Tamaño de fuente ajustable */
+    margin: 0; /* Elimina márgenes */
 }
 
 /* Descripción */
@@ -161,6 +186,8 @@ img {
     flex-direction: column; /* Coloca los botones uno encima del otro */
     gap: 10px; /* Espacio entre los botones */
     align-items: stretch; /* Alinea los botones para que ocupen el ancho completo */
+    width: 300px; /* Establece un ancho fijo para el contenedor de acciones */
+    margin: 0; /* Asegúrate de que no haya márgenes que empujen el contenido */
 }
 .actions a, .actions button {
     text-align: center;
@@ -214,8 +241,8 @@ img {
 .movie-meta.row {
     display: flex; /* Habilita flexbox */
     flex-direction: column; /* Cambia a columna para apilar los elementos verticalmente */
-    gap: 10px; /* Espacio entre los elementos de metadatos */
-    margin-top: 25px; /* Espacio superior para separar de otros elementos */
+    gap: 20px; /* Espacio entre los elementos de metadatos */
+    margin: 0px; /* Espacio superior para separar de otros elementos */
 }
 
 .movie-meta.row .col {
@@ -259,4 +286,59 @@ img {
         max-width: none; /* Elimina el max-width para evitar el salto */
         height: auto; /* Mantiene la relación de aspecto */
     }
+}
+
+.similar-movies {
+    margin-top: 40px; /* Espacio superior para separar de la sección anterior */
+    padding: 20px; /* Espaciado interno */
+    background-color: #2c2c2c; /* Fondo gris oscuro más suave */
+    border-radius: 10px; /* Bordes redondeados */
+    color: #fff; /* Color del texto */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.0); /* Sombra para profundidad */
+    margin-right: 300px;
+    margin-left: 300px;
+}
+
+.similar-movies h2 {
+    text-align: left; /* Centrar el título */
+    font-size: 1em; /* Aumentar el tamaño de fuente del título */
+    margin-left: 50px; /* Añadir margen a la izquierda */
+    margin-bottom: 20px; /* Espacio inferior */
+    font-weight: bold; /* Hacer el título más prominente */
+    letter-spacing: 1px; /* Espaciado entre letras */
+}
+
+.similar-movie-list {
+    display: flex; /* Usar flexbox para alinear horizontalmente */
+    flex-wrap: wrap; /* Permitir que los elementos se ajusten a la siguiente línea */
+    justify-content: center; /* Centrar los elementos */
+}
+
+.similar-movie-list .movie-item {
+    margin: 10px; /* Espacio entre los elementos de película */
+    text-align: center; /* Centrar el texto dentro de cada elemento */
+    width: 220px; /* Ancho fijo para cada elemento */
+    background-color: #2c2c2c; /* Fondo de cada elemento */
+    border-radius: 8px; /* Bordes redondeados */
+    overflow: hidden; /* Ocultar desbordamiento */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transiciones suaves para el efecto hover */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+}
+
+.similar-movie-list .movie-item:hover {
+    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra más prominente al hacer hover */
+}
+
+.similar-movie-list .movie-item img {
+    width: 100%; /* Asegurar que la imagen ocupe todo el ancho del contenedor */
+    height: 100px; /* Establecer una altura fija para todas las imágenes */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+}
+
+.similar-movie-list .movie-item h3 {
+    font-size: 1.2em; /* Tamaño de fuente del título de la película */
+    margin: 10px 0; /* Espacio superior e inferior */
+    color: #fff; /* Color del texto */
+    font-weight: 600; /* Hacer el texto más grueso */
 }

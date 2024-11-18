@@ -203,11 +203,32 @@ const deleteMovie = async (req, res) => {
     }
 };
 
-// Export the functions
+// Function to get movies by genre excluding the current movie
+const getMoviesByGenre = async (req, res) => {
+    const { genero } = req.query; // Obtener el género de los parámetros de consulta
+    const currentMovieId = req.params.id; // Obtener el ID de la película actual desde los parámetros
+
+    if (!genero) {
+        return res.status(400).json({ error: 'Género no proporcionado' });
+    }
+
+    try {
+        // Modificar la consulta para excluir la película actual
+        const results = await queryDatabase('SELECT * FROM peliculas WHERE genero = ? AND id != ?', [genero, currentMovieId]);
+        if (results.length === 0) {
+            return res.status(404).json({ error: 'No se encontraron películas para este género' });
+        }
+        res.status(200).json(results);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Error de base de datos al obtener películas por género' });
+    }
+};
 module.exports = {
     getAllMovies,
     getMovieById,
     addMovie,
     updateMovie,
-    deleteMovie
+    deleteMovie,
+    getMoviesByGenre // Asegúrate de que esta línea esté presente
 };

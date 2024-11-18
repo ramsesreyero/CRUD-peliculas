@@ -6,7 +6,9 @@ const {
     getMovieById,
     addMovie,
     updateMovie,
-    deleteMovie
+    deleteMovie,
+    getMoviesByCategory,
+    getMoviesByGenre
 } = require('../api/peliculas');
 
 // Configuración de multer para manejar archivos
@@ -18,6 +20,7 @@ const router = express.Router();
 
 // Definir rutas
 router.get('/', getAllMovies);
+router.get('/by-genero', getMoviesByGenre); // Obtener películas por categoría
 router.get('/:id', getMovieById);
 router.post('/', upload.fields([{ name: 'image' }, { name: 'bannerUrl' }]), addMovie); // Cambiado a upload.fields()
 router.put('/:id', upload.fields([{ name: 'image' }, { name: 'bannerUrl' }]), updateMovie); // Cambiado a upload.fields()

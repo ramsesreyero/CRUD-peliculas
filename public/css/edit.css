@@ -21,15 +21,17 @@ body {
 
 /* Estilos para el encabezado */
 .header {
-    position: fixed; /* Fijar el encabezado en la parte superior */
-    top: 0; /* Alinear en la parte superior */
-    left: 0; /* Alinear a la izquierda */
-    right: 0; /* Alinear a la derecha */
-    z-index: 1000; /* Asegurarse de que esté sobre otros elementos */
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    z-index: 1000; 
     display: flex;
-    flex-direction: column; /* Alinear el contenido en columna */
-    background-color: #000; /* Fondo negro para el encabezado */
-    padding: 2px 0px; /* Padding alrededor del encabezado */
+    flex-direction: column; 
+    background-color: #000; 
+    padding: 0; /* Puedes ajustar el padding aquí */
+    height: 45px; /* Establecer una altura fija */
+    overflow: hidden; /* Evitar que el contenido empuje el tamaño del header */
 }
 
 .header h1 {
