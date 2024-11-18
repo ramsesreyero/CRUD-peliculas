@@ -71,7 +71,6 @@
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get('id'); // Obtener el ID de la película de la URL
         }
-
         async function loadMovieDetails(id) {
             try {
                 const response = await fetch(`http://localhost:8080/api/peliculas/${id}`);
@@ -90,11 +89,15 @@
 
                 // Establecer la URL del botón "Ver en"
                 const watchButton = document.getElementById('watch-button');
-                watchButton.href = pelicula.watchUrl; // Establecer la URL para ver la película
 
-                // Extraer y mostrar el nombre del servicio
-                const serviceName = getServiceNameFromUrl(pelicula.watchUrl);
-                watchButton.innerText = `Ver en ${serviceName}`; // Actualizar el texto del botón
+                if (pelicula.watchUrl) {
+                    watchButton.href = pelicula.watchUrl; // Establecer la URL para ver la película
+                    const serviceName = getServiceNameFromUrl(pelicula.watchUrl);
+                    watchButton.innerText = `Ver en ${serviceName}`; // Actualizar el texto del botón
+                } else {
+                    watchButton.href = '#'; // Deshabilitar el enlace
+                    watchButton.innerText = 'No disponible'; // Texto alternativo
+                }
 
             } catch (error) {
                 console.error('Error al cargar los detalles de la película:', error);
@@ -107,7 +110,7 @@
                 'netflix.com': 'Netflix',
                 'hulu.com': 'Hulu',
                 'disneyplus.com': 'Disney+',
-                'primevideo.com': 'Amazon Prime Video',
+                'primevideo.com': 'Prime Video',
                 'apple.com': 'Apple TV+',
                 'tv.apple.com': 'Apple TV+',
                 'appletv.com': 'Apple TV+',

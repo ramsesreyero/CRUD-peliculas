@@ -33,7 +33,7 @@ body {
     display: flex; /* Usar flexbox para alinear los enlaces horizontalmente */
     justify-content: space-between; /* Espacio entre los enlaces y el contenedor de búsqueda */
     align-items: center; /* Alinear verticalmente todos los elementos */
-    padding: 0 2em; /* Usar unidades relativas para el padding */
+    padding: 0 12em; /* Usar unidades relativas para el padding */
 }
 .header .nav-title {
     margin: 0; /* Eliminar márgenes */

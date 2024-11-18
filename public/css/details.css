@@ -62,6 +62,12 @@ body {
     color: #fff; /* Color de texto blanco al pasar el mouse */
 }
 
+img {
+    display: block; /* Evita el espacio debajo de la imagen */
+    margin: 0; /* Elimina márgenes */
+    padding: 0; /* Elimina padding */
+}
+
 /* Contenedor principal */
 .movie-details {
     flex: 1;
@@ -83,21 +89,17 @@ body {
 
 /* Contenedor principal que rodea la imagen y la información */
 .details-content {
-    position: relative; /* Contenedor relativo para anclar los detalles */
-    display: flex;
-    flex-direction: column; /* Mantener los detalles abajo de la imagen */
-    align-items: center;
-    width: 100%;
+    max-width: 1200px; /* O cualquier otro valor que desees */
+    width: 100%; /* Asegúrate de que ocupe todo el ancho disponible hasta el máximo */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
 }
 
 /* Imagen de película */
 .details-content img {
-    width: 100%; /* Escalable al 100% del contenedor */
-    max-width: 80%;
-    height: 500px; /* Establece una altura fija para todas las imágenes */
+    width: 100%; /* Asegúrate de que la imagen ocupe todo el ancho del contenedor */
+    height: auto; /* Mantiene la relación de aspecto */
+    max-height: 500px; /* Establece una altura máxima si es necesario */
     object-fit: cover; /* Asegura que la imagen cubra el contenedor sin distorsionarse */
-    display: block; /* Asegúrate de que sea un bloque para evitar espacios innecesarios */
-    margin: 0 auto; /* Centra la imagen horizontalmente */
 }
 .details-row {
     display: flex; /* Habilita flexbox para alinear acciones y descripción en fila */
@@ -109,7 +111,7 @@ body {
     display: flex; 
     flex-direction: column; 
     width: 100%; /* Asegúrate de que ocupe todo el ancho disponible */
-    max-width: 80%; /* Limita el ancho máximo a 80% */
+    max-width: 1200px; /* Establece un ancho máximo fijo */
     padding: 1rem; /* Añade espacio interno alrededor del contenido */
     background-color: #000; 
     color: white;
