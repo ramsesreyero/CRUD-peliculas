@@ -76,9 +76,13 @@ async function loadSimilarMovies(genero, currentMovieId) {
             const movieItem = document.createElement('div');
             movieItem.className = 'movie-item';
             movieItem.innerHTML = `
-                <a href="details.html?id=${pelicula.id}">
-                    <img src="${pelicula.bannerUrl}" alt="Banner de ${pelicula.titulo}" />
-                    <h3>${pelicula.titulo}</h3>
+                <a href="details.html?id=${pelicula.id}" class="movie-link">
+                    <div class="movie-image-container">
+                        <img src="${pelicula.bannerUrl}" alt="Banner de ${pelicula.titulo}" />
+                        <div class="movie-info">
+                            <h3>${pelicula.titulo}</h3>
+                        </div>
+                    </div>
                 </a>
             `;
             similarMovieList.appendChild(movieItem);

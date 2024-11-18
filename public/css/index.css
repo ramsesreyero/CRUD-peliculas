@@ -1,336 +1,315 @@
-/* Asegurarse de que el html y el body ocupen toda la altura */
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-/* Alinear el contenido en columna */
-body {
-    display: flex;
-    flex-direction: column;
-    font-family: 'San Francisco', sans-serif;
-    background-color: #333333; /* Color de fondo blanco */
-    color: #ffffff; /* Color del texto negro */
-    overflow-x: hidden; /* Ocultar scrollbar horizontal */
-}
-
-/* Estilos para el encabezado */
-.header {
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    right: 0; 
-    z-index: 1000; 
-    display: flex;
-    flex-direction: column; 
-    background-color: #000; 
-    padding: 0; /* Puedes ajustar el padding aquí */
-    height: 45px; /* Establecer una altura fija */
-    overflow: hidden; /* Evitar que el contenido empuje el tamaño del header */
-}
-
-.header .nav {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 0 12em; /* Ajustar padding según sea necesario */
-    height: 100%; /* Asegúrate de que la nav ocupe toda la altura del header */
-}
-.header .nav-title {
-    margin: 0; /* Eliminar márgenes */
-    font-size: 1.2em; /* Ajustar el tamaño de la fuente para que coincida con los enlaces */
-    color: #fdfdfd; /* Color gris más claro para el título */
-    font-weight: bold; /* Hacer que el texto sea bold */
-    padding: 0 15px; /* Espaciado horizontal para separar el título de los enlaces */
-    cursor: pointer; /* Cambiar el cursor a puntero para indicar que es clickeable */
-}
-
-/* Eliminar el efecto hover para el título */
-.header .nav-title:hover {
-    color: #fdfdfd; /* Mantener el mismo color al pasar el mouse (sin efecto de hover) */
-}
-
-.header .nav a {
-    color: #666; /* Color gris oscuro para los enlaces */
-    text-decoration: none; /* Sin subrayado */
-    padding: 10px 20px; /* Espaciado interno de los enlaces */
-    font-size: 1.2em; /* Tamaño de fuente */
-    font-weight: bold; /* Hacer que la fuente sea bold */
-    transition: color 0.3s; /* Transición suave para el cambio de color */
-    margin: 0; /* Asegúrate de que no haya márgenes */
-
-}
-
-.header .nav a:hover {
-    color: #fff; /* Cambiar a blanco al pasar el mouse */
-}
-
-
-/* Contenedor principal */
-.container {
-    flex: 1; /* Esto permite que el contenedor principal ocupe el espacio restante */
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    padding: 20px;
-    width: 100%; /* Asegura que el contenedor ocupe el ancho completo */
-    max-width: 3000px; /* Ajustar el ancho máximo según sea necesario */
-    box-sizing: border-box; /* Incluye el padding en el ancho total */
-}
-
-/* Estilos para la lista de películas */
-.movie-list {
-    display: flex; /* Asegurarse de que la lista de películas use flexbox */
-    flex-wrap: wrap; /* Permitir que las películas se ajusten a la siguiente línea */
-    justify-content: center; /* Centrar las películas */
-    width: 100%; /* Asegúrate de que ocupe el ancho completo */
-    max-width: 3000px; /* Ajustar el ancho máximo según sea necesario */
-    margin: 20px auto; /* Centrar la lista de películas y agregar margen superior e inferior */
-}
-
-/* Estilos para cada elemento de película */
-.movie-item {
-    margin: 10px;
-    cursor: pointer;
-    text-align: center; 
-    width: 220px; /* Aumentar el ancho fijo para cada elemento de película */
-    box-sizing: border-box; /* Incluye el padding en el ancho total */
-    transition: transform 0.3s ease; /* Transición suave para el efecto hover */
-}
-
-.movie-item:hover {
-    transform: scale(1.05); /* Aumentar el tamaño un 5% al pasar el mouse */
-}
-
-.movie-item img {
-    width: 100%; /* Asegurar que la imagen ocupe todo el ancho del contenedor */
-    height: 300px; /* Establecer una altura fija para todas las imágenes */
-    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
-    border-radius: 8px; /* Bordes redondeados para un mejor aspecto */
-    transition: transform 0.3s ease; /* Transición suave para el efecto hover en la imagen */
-}
-
-.movie-item img:hover {
-    transform: scale(1.1); /* Aumentar el tamaño de la imagen un 10% al pasar el mouse */
-}
-
-.movie-item img {
-    width: 100%; /* Asegurar que la imagen ocupe todo el ancho del contenedor */
-    height: 325px; /* Establecer una altura fija para todas las imágenes */
-    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
-    border-radius: 8px; /* Bordes redondeados para un mejor aspecto */
-}
-
-.movie-item h3 {
-    font-size: 1.2em; /* Ajustar el tamaño de la fuente del título */
-    margin: 10px 0; /* Espaciado superior e inferior */
-}
-
-/* Estilos para el footer */
-.footer {
-    text-align: center; /* Centrar el texto del footer */
-    padding: 20px;
-    background-color: #333333; /* Mismo fondo que en otras páginas */
-    color: #8a8a8a; /* Asegurarnos de que el texto sea blanco */
-    position: relative; /* Asegurarse de que esté en su lugar */
-    bottom: 0;
-    width: 100%;
-    margin-top: auto; /* Asegura que el footer se empuje hacia el fondo */
-}
-
-/* Estilos generales para inputs y selects */
-input[type="text"],
-input[type="number"],
-select {
-    width: 100%; /* Ancho completo */
-    padding: 10px; /* Espaciado interno */
-    border: 1px solid #444; /* Borde del campo */
-    border-radius: 5px; /* Bordes redondeados */
-    background-color: #333; /* Fondo del campo oscuro */
-    color: #fff; /* Color del texto */
-    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
-    margin-bottom: 15px; /* Espacio inferior entre elementos */
-}
-
-/* Estilo específico para el área de texto */
-textarea {
-    height: 100px; /* Altura específica para el área de descripción */
-    resize: vertical; /* Permitir que el usuario cambie la altura */
-}
-
-/* Estilo para el botón de búsqueda */
-button {
-    background-color: #007bff; /* Color de fondo azul */
-    color: #fff; /* Color de texto blanco */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    padding: 10px 20px; /* Espaciado interno */
-    font-size: 1em; /* Tamaño de fuente */
-    cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
-    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
-}
-
-/* Efecto hover para el botón */
-button:hover {
-    background-color: #0056b3; /* Color de fondo más oscuro al pasar el mouse */
-    transform: translateY(-2px); /* Efecto de elevación */
-}
-
-/* Estilos para la barra de búsqueda */
-.search {
-    display: flex; /* Usar flexbox para alinear los elementos */
-    justify-content: center; /* Centrar los elementos horizontalmente */
-    align-items: center; /* Centrar los elementos verticalmente */
-    margin-bottom: 20px; /* Espacio inferior entre la búsqueda y la lista de películas */
-}
-
-.search-container {
-    display: flex; /* Us ar flexbox para alinear el input y el select */
-    align-items: center; /* Alinear verticalmente el input y el select */
-    margin-left: auto; /* Empujar el contenedor de búsqueda a la derecha */
-}
-
-#searchInput {
-    margin-right: 10px; /* Espacio entre el input y el select */
-    padding: 5px; /* Padding interno del input */
-}
-
-#genreSelect {
-    padding: 5px; /* Padding interno del select */
-}
-
-.search-container input[type="text"],
-.search-container select {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    margin-left: 10px; /* Espacio entre el input y el select */
-    padding: 5px; /* Padding para los campos */
-    border-radius: 5px; /* Bordes redondeados */
-    border: 1px solid #444; /* Borde del campo */
-    background-color: #000000; /* Fondo del campo oscuro */
-    color: #fff; /* Color del texto */
-}
-
-@media (max-width: 600px) {
+html,body {
+    height:100%;
+    margin:0;
+    padding:0
+    }
+    
+    body {
+    display:flex;
+    flex-direction:column;
+    font-family:'San Francisco',sans-serif;
+    background-color:#333;
+    color:#fff;
+    overflow-x:hidden
+    }
+    
+    .header {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
+    display:flex;
+    flex-direction:column;
+    background-color:#000;
+    padding:0;
+    height:45px;
+    overflow:hidden
+    }
+    
+    .header .nav {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 12em;
+    height:100%
+    }
+    
+    .header .nav-title {
+    margin:0;
+    font-size:1.2em;
+    color:#fdfdfd;
+    font-weight:700;
+    padding:0 15px;
+    cursor:pointer
+    }
+    
+    .header .nav-title:hover {
+    color:#fdfdfd
+    }
+    
+    .header .nav a {
+    color:#666;
+    text-decoration:none;
+    padding:10px 20px;
+    font-size:1.2em;
+    font-weight:700;
+    transition:color .3s;
+    margin:0
+    }
+    
+    .header .nav a:hover {
+    color:#fff
+    }
+    
+    .container {
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:20px;
+    width:100%;
+    max-width:3000px;
+    box-sizing:border-box
+    }
+    
+    .movie-list {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    width:100%;
+    max-width:3000px;
+    margin:20px auto
+    }
+    
+    .movie-item {
+    margin:10px;
+    cursor:pointer;
+    text-align:center;
+    width:220px;
+    box-sizing:border-box;
+    transition:transform .3s ease
+    }
+    
+    .movie-item:hover {
+    transform:scale(1.05)
+    }
+    
+    .movie-item img {
+    width:100%;
+    height:300px;
+    object-fit:cover;
+    border-radius:8px;
+    transition:transform .3s ease
+    }
+    
+    .movie-item img:hover {
+    transform:scale(1.1)
+    }
+    
+    .movie-item img {
+    width:100%;
+    height:325px;
+    object-fit:cover;
+    border-radius:8px
+    }
+    
+    .movie-item h3 {
+    font-size:1.2em;
+    margin:10px 0
+    }
+    
+    .footer {
+    text-align:center;
+    padding:20px;
+    background-color:#333;
+    color:#8a8a8a;
+    position:relative;
+    bottom:0;
+    width:100%;
+    margin-top:auto
+    }
+    
+    input[type="text"],input[type="number"],select {
+    width:100%;
+    padding:10px;
+    border:1px solid #444;
+    border-radius:5px;
+    background-color:#333;
+    color:#fff;
+    box-sizing:border-box;
+    margin-bottom:15px
+    }
+    
+    textarea {
+    height:100px;
+    resize:vertical
+    }
+    
+    button {
+    background-color:#007bff;
+    color:#fff;
+    border:none;
+    border-radius:5px;
+    padding:10px 20px;
+    font-size:1em;
+    cursor:pointer;
+    transition:background-color 0.3s,transform .2s
+    }
+    
+    button:hover {
+    background-color:#0056b3;
+    transform:translateY(-2px)
+    }
+    
+    .search {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:20px
+    }
+    
     .search-container {
-        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
-        align-items: center; /* Centrar elementos en columna */
+    display:flex;
+    align-items:center;
+    margin-left:auto
     }
-
-    .search input[type="text"],
-    .search select {
-        width: 100%; /* Ancho completo en pantallas pequeñas */
-        margin: 10px 0; /* Espacio vertical entre elementos */
+    
+    #searchInput {
+    margin-right:10px;
+    padding:5px
     }
-}
-
-/* Estilos para el carrusel */
-.carousel {
-    margin-top: 5px;
-    margin-bottom: 10px; /* Espacio inferior entre el carrusel y la lista de películas */
-    width: 100%; /* Asegura que el carrusel ocupe todo el ancho del contenedor */
-    max-width: 1670px;
-    height: 600px; /* Establecer una altura fija para el carrusel */
-    overflow: hidden; /* Evita que las imágenes se salgan del contenedor */
-}
-
-.carousel-inner {
-    overflow: hidden; /* Evita que las imágenes se salgan del contenedor */
-}
-
-.carousel-item {
-    transition: transform 0.5s ease; /* Transición para el deslizamiento */
-}
-
-.carousel-item.active {
-    display: block; /* Mostrar solo el activo */
-}
-
-.carousel-item a {
-    display: block; /* Asegúrate de que el enlace ocupe todo el espacio */
-    width: 100%; /* Ocupa todo el ancho */
-    height: 100%; /* Ocupa toda la altura del carrusel */
-}
-
-
-.carousel-inner img {
-    width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
-    height: 600px; 
-    border-radius: 0px 0px 10px 10px; /* Bordes redondeados para un mejor aspecto */
-    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
-}
-
-
-.genres {
-    margin: 20px 0; /* Espaciado superior e inferior */
-    text-align: center; /* Centrar el texto */
-}
-.genre-container {
-    display: flex; /* Usar flexbox para alinear horizontalmente */
-    align-items: center; /* Alinear verticalmente los elementos en el centro */
-    margin-top: 20px; /* Espacio superior si es necesario */
-}
-
-.genre-list {
-    display: flex; /* Usar flexbox para alinear horizontalmente */
-    justify-content: center; /* Centrar los elementos */
-    flex-wrap: wrap; /* Permitir que los elementos se ajusten a la siguiente línea */
-    gap: 10px; /* Espacio entre los géneros */
-}
-
-.genre-item {
-    background-color: #444; /* Color de fondo para los géneros */
-    color: #fff; /* Color del texto */
-    padding: 10px 20px; /* Espaciado interno */
-    margin: 0 10px; /* Espacio lateral para los elementos de género */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambiar el cursor al pasar sobre el elemento */
-    transition: background-color 0.3s; /* Transición suave para el cambio de color */
-}
-
-.genre-link:hover {
-    color: #fff; 
-    transform: scale(1.1); 
-    transition: color 0.3s, transform 0.3s;
-}
-#showAllMovies {
-    margin-left: 10px; /* Espacio a la izquierda del botón */
-    font-size: 1.4em; /* Tamaño de fuente */
-}
-
-.genre-link {
-    font-size: 1.2em; /* Ajusta el tamaño del texto del enlace */
-    color: #666; /* Color del texto */
-    text-decoration: none; /* Quita el subrayado */
-    margin-right: 20px; /* Espacio a la derecha del enlace */
-    font-weight: bold; /* Hacer que el texto sea bold */
-    transition: color 0.3s; /* Transición suave para el cambio de color */
-}
-
-.genre-link:hover {
-    color: #fff; /* Cambiar a blanco al pasar el mouse */
-    text-decoration: none; /* Sin subrayado */
-    cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
-
-}
-
-#genreList {
-    font-size: 1.2em; /* Aumenta el tamaño del texto dentro del contenedor de géneros */
-    color: #fff; /* Asegúrate de que el texto sea visible sobre el fondo */
-    display: flex; /* Usar flexbox para alinear los géneros */
-    gap: 10px; /* Espacio entre los géneros */
-}
-
-@font-face {
-    font-family: "San Francisco";
-    font-weight: 400;
-    src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
-  }
-
-  .movie-item h3 {
-    font-family: 'San Francisco', sans-serif;
-    font-size: 1.5em; /* Ajustar el tamaño de la fuente según sea necesario */
-    margin: 10px 0; /* Espacio superior e inferior */
-    color: #ffffff; /* Cambiar el color del texto si es necesario */
-}
+    
+    #genreSelect {
+    padding:5px
+    }
+    
+    .search-container input[type="text"],.search-container select {
+    margin-top:0;
+    margin-bottom:0;
+    margin-left:10px;
+    padding:5px;
+    border-radius:5px;
+    border:1px solid #444;
+    background-color:#000;
+    color:#fff
+    }
+    
+    @media (max-width: 600px) {
+    .search-container {
+    flex-direction:column;
+    align-items:center
+    }
+    
+    .search input[type="text"],.search select {
+    width:100%;
+    margin:10px 0
+    }
+    }
+    
+    .carousel {
+    margin-top:5px;
+    margin-bottom:10px;
+    width:100%;
+    max-width:1670px;
+    height:600px;
+    overflow:hidden
+    }
+    
+    .carousel-inner {
+    overflow:hidden
+    }
+    
+    .carousel-item {
+    transition:transform .5s ease
+    }
+    
+    .carousel-item.active {
+    display:block
+    }
+    
+    .carousel-item a {
+    display:block;
+    width:100%;
+    height:100%
+    }
+    
+    .carousel-inner img {
+    width:100%;
+    height:600px;
+    border-radius:0 0 10px 10px;
+    object-fit:cover
+    }
+    
+    .genres {
+    margin:20px 0;
+    text-align:center
+    }
+    
+    .genre-container {
+    display:flex;
+    align-items:center;
+    margin-top:20px
+    }
+    
+    .genre-list {
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px
+    }
+    
+    .genre-item {
+    background-color:#444;
+    color:#fff;
+    padding:10px 20px;
+    margin:0 10px;
+    border-radius:5px;
+    cursor:pointer;
+    transition:background-color .3s
+    }
+    
+    .genre-link:hover {
+    color:#fff;
+    transform:scale(1.1);
+    transition:color 0.3s,transform .3s
+    }
+    
+    #showAllMovies {
+    margin-left:10px;
+    font-size:1.4em
+    }
+    
+    .genre-link {
+    font-size:1.2em;
+    color:#666;
+    text-decoration:none;
+    margin-right:20px;
+    font-weight:700;
+    transition:color .3s
+    }
+    
+    .genre-link:hover {
+    color:#fff;
+    text-decoration:none;
+    cursor:pointer
+    }
+    
+    #genreList {
+    font-size:1.2em;
+    color:#fff;
+    display:flex;
+    gap:10px
+    }
+    
+    @font-face {
+    font-family:"San Francisco";
+    font-weight:400;
+    src:url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff)
+    }
+    
+    .movie-item h3 {
+    margin:10px 0;
+    color:#fff;
+    font:1.5em 'San Francisco',sans-serif
+    }

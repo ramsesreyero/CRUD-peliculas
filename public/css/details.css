@@ -1,403 +1,432 @@
-/* Asegurarse de que el html y el body ocupen toda la altura */
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-size: 100%; /* Tamaño base ajustable */
-}
-
-/* Estilos generales para el cuerpo */
-body {
-    display: flex;
-    flex-direction: column;
-    font-family: 'San Francisco', sans-serif;
-    background-color: #2c2c2c;
-    color: #ffffff;
-    overflow-x: hidden;
-}
-
-/* Estilos para el encabezado */
-.header {
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    right: 0; 
-    z-index: 1000; 
-    display: flex;
-    flex-direction: column; 
-    background-color: #000; 
-    padding: 0;
-    height: 45px;
-    overflow: hidden;
-}
-
-.container {
-    margin-top: 45px; /* Espacio suficiente para el header fijo */
-}
-
-.header h1 {
-    margin: 0; /* Reducir márgenes para acercar el texto */
-    font-size: 1.2em; /* Ajustar el tamaño de la fuente a un tamaño más pequeño */
-    color: #fff; /* Color del texto en el encabezado */
-}
-
-/* Estilos para la navegación */
-.nav {
-    display: flex;
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
-    background-color: #000000; /* Color de fondo negro */
-    padding: 0; /* Aumentar el padding para dar más espacio vertical */
-}
-
-.nav a {
-    color: #666; /* Color gris oscuro para los enlaces */
-    text-decoration: none; /* Sin subrayado */
-    padding: 10px 20px; /* Espaciado interno de los enlaces */
-    font-size: 1.2em; /* Tamaño de fuente */
-    font-weight: bold; /* Hacer que la fuente sea bold */
-    transition: color 0.3s; /* Transición suave para el cambio de color */
-    margin: 0; /* Asegúrate de que no haya márgenes */
-}
-
-.nav a:hover {
-    color: #fff; /* Color de texto blanco al pasar el mouse */
-}
-
-img {
-    display: block; /* Evita el espacio debajo de la imagen */
-    margin: 0; /* Elimina márgenes */
-    padding: 0; /* Elimina padding */
-}
-
-/* Contenedor principal */
-.movie-details {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 45px;
-}
-
-/* Ajustamos el diseño de movie-details */
-.details-content {
-    max-width: 1200px; /* O el valor que desees */
-    width: 100%; /* Asegúrate de que ocupe todo el ancho disponible */
-    margin: 0 auto; /* Centra el contenedor horizontalmente */
-}
-
-/* Imagen de película */
-.details-content img {
-    width: 100%; /* Asegúrate de que la imagen ocupe todo el ancho del contenedor */
-    height: auto; /* Mantiene la relación de aspecto */
-    max-height: 500px; /* Establece una altura máxima si es necesario */
-    object-fit: cover; /* Asegura que la imagen cubra el contenedor sin distorsionarse */
-}
-
-.details-row {
-    display: flex; /* Habilita flexbox para alinear acciones y descripción en fila */
-    align-items: center; /* Alinea los elementos verticalmente al centro */
-    gap: 20px; /* Espacio entre acciones y descripción */
-    width: 100%; /* Asegúrate de que ocupe todo el ancho del contenedor padre */
-    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
-    margin: 0; /* Elimina márgenes que puedan afectar el tamaño */
-}
-
-.info {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    background-color: #000;
-    color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    border-radius: 0 0 20px 20px;
-    margin: 0px auto;
-    box-sizing: border-box;
-    flex: 1; /* Permite que el contenedor crezca y se encoja */
-    min-width: 0; /* Permite que el contenedor se encoja */
-}
-
-.info h3 {
-    font-size: 2em; /* Escalable */
-    margin: 1rem 0; /* Añade margen superior e inferior */
-    flex-shrink: 1; /* Permite que el título se encoja */
-}
-
-.info p {
-    margin: 0.5rem 0; /* Ajusta el margen superior e inferior para los párrafos */
-    font-size: 1em; /* Tamaño de fuente base */
-    color: #ddd;
-    flex-shrink: 1; /* Permite que el párrafo se encoja */
-    overflow: hidden; /* Asegura que el contenido que exceda el contenedor se oculte */
-    text-overflow: ellipsis; /* Agrega puntos suspensivos si el texto es demasiado largo */
-    white-space: normal; /* Permite que el texto se ajuste en varias líneas */
-}
-
-
-.movie-title-description {
-    display: flex; /* Habilita flexbox para el título y la descripción */
-    flex-direction: column; /* Mantiene el texto en columna */
-    margin-left: 10px; /* Ajusta este valor para reducir el espacio a la izquierda */
-    width: 100%; /* Cambiado a 100% para ser más responsivo */
-    max-width: 600px; /* Establece un ancho máximo */
-    height: auto; /* Cambiado a auto para permitir flexibilidad */
-    overflow: hidden; /* Oculta el contenido que excede el contenedor */
-    text-overflow: ellipsis; /* Agrega puntos suspensivos si el texto es demasiado largo */
-    white-space: normal; /* Permite que el texto se ajuste en varias líneas */
-}
-
-.movie-title-description h3 {
-    font-size: 1.5em; /* Tamaño de fuente ajustable */
-    margin: 0; /* Elimina márgenes */
-}
-
-.movie-title-description p {
-    font-size: 1em; /* Tamaño de fuente ajustable */
-    margin: 0; /* Elimina márgenes */
-}
-
-
-
-/* Asegura que el contenedor .actions esté alineado correctamente */
-.actions {
-    display: flex; /* Habilita flexbox */
-    flex-direction: column; /* Coloca los botones uno encima del otro */
-    gap: 10px; /* Espacio entre los botones */
-    align-items: stretch; /* Alinea los botones para que ocupen el ancho completo */
-    width: 100%; /* Cambiado a 100% para ser más responsivo */
-    max-width: 300px; /* Establece un ancho máximo para el contenedor de acciones */
-    margin: 0; /* Asegúrate de que no haya márgenes que empujen el contenido */
-}
-
-.actions a, .actions button {
-    text-align: center;
-    background-color: #ffffff; /* Fondo blanco */
-    color: #000000; /* Texto negro */
-    border: none;
-    padding: 0.5rem 1.5rem; /* Ajusta el padding para mantener la altura deseada */
-    border-radius: 8px; /* Aumenta el radio de los bordes si lo deseas */
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 1.2em; /* Tamaño de la fuente */
-    width: 100%; /* Cambiado a 100% para ser más responsivo */
-    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
-}
-
-/* Efecto hover en los botones */
-.actions a:hover, .actions button:hover {
-    background-color: #444; /* Color de fondo en hover */
-    color: #ffffff; /* Texto blanco en hover para contraste */
-}
-
-/* Pie de página */
-.footer {
-    text-align: center;
-    padding: 1rem;
-    background-color: #2c2c2c;
-    color: #8a8a8a;
-    width: 100%;
-    margin-top: auto;
-}
-
-.movie-meta {
-    margin: 5px 0; /* Reduce el margen superior e inferior del contenedor de metadatos */
-}
-
-.movie-meta p {
-    margin: 2px 0; /* Reduce el margen superior e inferior de cada párrafo dentro de .movie-meta */
-    line-height: 1.2; /* Ajusta el interlineado si es necesario */
-}
-
-.movie-meta.row {
-    display: flex; /* Habilita flexbox */
-    flex-direction: column; /* Cambia a columna para apilar los elementos verticalmente */
-    gap: 10px; /* Espacio entre los elementos de metadatos */
-    margin: 0px; /* Espacio superior para separar de otros elementos */
-}
-
-.movie-meta.row .col {
-    display: flex; /* Hacer que el contenido de la columna esté en línea */
-    align-items: center; /* Centrar verticalmente */
-    margin-right: 50px; /* Espacio entre columnas, ajusta según sea necesario */
-}
-
-.movie-meta.row .col:last-child {
-    margin-right: 0; /* Eliminar margen derecho en la última columna */
-}
-
-/* Eliminar márgenes de los párrafos dentro de las columnas */
-.movie-meta.row .col p {
-    margin: 0; /* Eliminar márgenes */
-    line-height: 1.2; /* Ajustar el interlineado si es necesario */
-}
-
-/* Agregar margen derecho al elemento strong */
-.movie-meta.row .col strong {
-    margin-right: 0.5rem; /* Espacio a la derecha del texto fuerte (Categoría:, Año:, Género:) */
-}
-
-.similar-movies {
-    margin-top: 40px; /* Espacio superior para separar de la sección anterior */
-    padding: 20px; /* Espaciado interno */
-    background-color: #2c2c2c; /* Fondo gris oscuro más suave */
-    border-radius: 0px; /* Bordes redondeados */
-    color: #fff; /* Color del texto */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.0); /* Sombra para profundidad */
-    width: 100%; /* Asegurarte de que ocupe todo el ancho disponible */
-    max-width: 1200px; /* O el mismo ancho que el contenedor .info */
-    margin-left: auto; /* Centrar horizontalmente */
-    margin-right: auto; /* Centrar horizontalmente */
-    border-top: 3px solid #3a3a3a; /* Línea delgada gris claro en la parte superior */
-}
-
-.similar-movies h2 {
-    text-align: left; /* Centrar el título */
-    font-size: 1em; /* Aumentar el tamaño de fuente del título */
-    margin-bottom: 20px; /* Espacio inferior */
-    font-weight: bold; /* Hacer el título más prominente */
-    letter-spacing: 1px; /* Espaciado entre letras */
-}
-
-.similar-movie-list {
-    display: flex; /* Usar flexbox para alinear horizontalmente */
-    flex-wrap: wrap; /* Permitir que los elementos se ajusten a la siguiente línea */
-    justify-content: flex-start; /* Alinear a la izquierda */
-}
-
-.similar-movie-list .movie-item {
-    margin: 10px; /* Espacio entre los elementos de película */
-    text-align: center; /* Centrar el texto dentro de cada elemento */
-    width: 220px; /* Ancho fijo para cada elemento */
-    background-color: #2c2c2c; /* Fondo de cada elemento */
-    border-radius: 8px; /* Bordes redondeados */
-    overflow: hidden; /* Ocultar desbordamiento */
-    transition: transform 0.3s, box-shadow 0.3s; /* Transiciones suaves para el efecto hover */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra sutil */
-}
-
-.similar-movie-list.empty {
-    justify-content: flex-end; /* Alinear a la derecha si hay pocos elementos */
-}
-
-.similar-movie-list .movie-item:hover {
-    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra más prominente al hacer hover */
-}
-
-.similar-movie-list .movie-item img {
-    width: 100%; /* Asegurar que la imagen ocupe todo el ancho del contenedor */
-    height: 100px; /* Establecer una altura fija para todas las imágenes */
-    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
-}
-
-.similar-movie-list .movie-item h3 {
-    font-size: 1.2em; /* Tamaño de fuente del título de la película */
-    margin: 10px 0; /* Espacio superior e inferior */
-    color: #fff; /* Color del texto */
-    font-weight: 600; /* Hacer el texto más grueso */
-}
-
-/* Ajustes responsivos */
-@media (max-width: 768px) {
-    .details-content img {
-        max-width: 100%;
-        height: auto; /* Mantiene las proporciones */
-        margin: 0 auto; /* Centra la imagen horizontalmente */
+html,body {
+    height:100%;
+    margin:0;
+    padding:0;
+    font-size:100%
     }
-
-    .info {
-        max-width: 100%;
-        margin: 0px auto; /* Centra el contenedor */
-        display: flex;
-        flex-direction: column; /* Cambia a diseño vertical */
-        align-items: center; /* Centra el contenido horizontalmente */
-        text-align: center; /* Centra el texto */
+    
+    body {
+    display:flex;
+    flex-direction:column;
+    font-family:'San Francisco',sans-serif;
+    background-color:#2c2c2c;
+    color:#fff;
+    overflow-x:hidden
     }
-
-    .info > * {
-        margin-bottom: 10px; /* Espaciado entre los elementos */
-        max-width: 100%; /* Asegura que los elementos no excedan el ancho */
-    }
-
-    .actions {
-        width: 100%; /* Ocupa todo el ancho disponible */
-    }
-
-    .actions a, .actions button {
-        padding: 0.5rem;
-        font-size: 1em;
-    }
-
-    .nav {
-        flex-direction: column; /* Navegación vertical */
-        align-items: center;
-    }
-
-    .nav a {
-        font-size: 1em;
-        padding: 0.5rem;
-    }
-
-    .movie-title-description {
-        max-width: 100%; /* Permite que ocupe todo el ancho en pantallas más pequeñas */
-        margin-left: 0; /* Elimina el margen izquierdo para pantallas pequeñas */
-    }
-
-    .movie-title-description h3 {
-        font-size: 1.5em; /* Reduce el tamaño del título en pantallas pequeñas */
-    }
-
-    .movie-title-description p {
-        font-size: 0.9em; /* Reduce el tamaño del texto en párrafos en pantallas pequeñas */
-    }
-}
-
-@media (max-width: 480px) {
+    
     .header {
-        height: auto;
-        padding: 10px;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
+    display:flex;
+    flex-direction:column;
+    background-color:#000;
+    padding:0;
+    height:45px;
+    overflow:hidden
     }
-
+    
+    .container {
+    margin-top:45px
+    }
+    
     .header h1 {
-        font-size: 1em; /* Ajusta el tamaño del texto */
+    margin:0;
+    font-size:1.2em;
+    color:#fff
     }
-
-    .movie-title-description h3 {
-        font-size: 1.5em; /* Reduce el tamaño del título en pantallas pequeñas */
+    
+    .nav {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:#000;
+    padding:0
     }
-
-    .movie-title-description p {
-        font-size: 0.9em; /* Reduce el tamaño del texto en párrafos en pantallas pequeñas */
+    
+    .nav a {
+    color:#666;
+    text-decoration:none;
+    padding:10px 20px;
+    font-size:1.2em;
+    font-weight:700;
+    transition:color .3s;
+    margin:0
     }
-
-    .movie-meta.row .col {
-        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
-        align-items: flex-start; /* Alinea a la izquierda */
+    
+    .nav a:hover {
+    color:#fff
     }
-
-    .movie-meta.row .col p {
-        font-size: 0.9em; /* Reduce el tamaño del texto en párrafos en pantallas pequeñas */
+    
+    img {
+    display:block;
+    margin:0;
+    padding:0
     }
-
-    .movie-meta.row .col strong {
-        font-size: 1em; /* Ajusta el tamaño del texto fuerte */
+    
+    .movie-details {
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-top:45px
     }
-
+    
+    .details-content {
+    max-width:1600px;
+    width:100%;
+    margin:0 auto
+    }
+    
     .details-content img {
-        max-height: 300px; /* Ajusta la altura máxima */
+    min-width:1600px;
+    max-width:1600px;
+    min-height:730px;
+    max-height:730px;
+    width:100%;
+    height:auto;
+    object-fit:cover
     }
-
-    .info h3 {
-        font-size: 1.5em; /* Reduce el tamaño del título en pantallas pequeñas */
+    
+    .details-row {
+    display:flex;
+    align-items:center;
+    gap:20px;
+    width:100%;
+    box-sizing:border-box;
+    margin:0
     }
-    .info p {
-        font-size: 0.9em; /* Reduce el tamaño del texto en párrafos en pantallas pequeñas */
-    }
+    
     .info {
-        padding: 10px; /* Añade espacio interno */
+    display:flex;
+    flex-direction:column;
+    padding:1rem;
+    background-color:#000;
+    color:#fff;
+    box-shadow:0 4px 8px #00000080;
+    border-radius:0 0 20px 20px;
+    margin:0 auto;
+    box-sizing:border-box;
+    flex:1;
+    min-width:0
     }
-
-    .actions a, .actions button {
-        font-size: 0.9em;
+    
+    .info h3 {
+    font-size:2em;
+    margin:1rem 0;
+    flex-shrink:1
     }
-}
+    
+    .info p {
+    margin:.5rem 0;
+    font-size:1em;
+    color:#ddd;
+    flex-shrink:1;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:normal
+    }
+    
+    .movie-title-description {
+    display:flex;
+    flex-direction:column;
+    margin-left:10px;
+    width:100%;
+    max-width:1000px;
+    height:auto;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:normal
+    }
+    
+    .movie-title-description h3 {
+    font-size:1.5em;
+    margin:0;
+    margin-bottom:20px
+    }
+    
+    .movie-title-description p {
+    font-size:1em;
+    margin:0
+    }
+    
+    .actions {
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    align-items:stretch;
+    width:100%;
+    max-width:300px;
+    margin:0
+    }
+    
+    .actions a,.actions button {
+    text-align:center;
+    background-color:#fff;
+    color:#000;
+    border:none;
+    padding:.5rem 1.5rem;
+    border-radius:8px;
+    cursor:pointer;
+    text-decoration:none;
+    font-size:1.2em;
+    width:100%;
+    box-sizing:border-box
+    }
+    
+    .actions a:hover,.actions button:hover {
+    background-color:#444;
+    color:#fff
+    }
+    
+    .footer {
+    text-align:center;
+    padding:1rem;
+    background-color:#2c2c2c;
+    color:#8a8a8a;
+    width:100%;
+    margin-top:auto
+    }
+    
+    .movie-meta {
+    margin:5px 0
+    }
+    
+    .movie-meta p {
+    margin:2px 0;
+    line-height:1.2
+    }
+    
+    .movie-meta.row {
+    align-items:right;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin:0
+    }
+    
+    .movie-meta.row .col {
+    display:flex;
+    align-items:center;
+    margin-right:50px
+    }
+    
+    .movie-meta.row .col:last-child {
+    margin-right:0
+    }
+    
+    .movie-meta.row .col p {
+    margin:0;
+    line-height:1.2
+    }
+    
+    .movie-meta.row .col strong {
+    margin-right:.5rem
+    }
+    
+    .similar-movies {
+    margin-top:40px;
+    padding:20px;
+    background-color:#2c2c2c;
+    border-radius:0;
+    color:#fff;
+    box-shadow:0 4px 10px #0000;
+    width:100%;
+    max-width:1200px;
+    margin-left:auto;
+    margin-right:auto;
+    border-top:3px solid #3a3a3a
+    }
+    
+    .similar-movies h2 {
+    text-align:left;
+    font-size:1em;
+    margin-bottom:20px;
+    font-weight:700;
+    letter-spacing:1px
+    }
+    
+    .similar-movie-list {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-start
+    }
+    
+    .similar-movie-list .movie-item {
+    position:relative;
+    margin:10px;
+    text-align:center;
+    width:220px;
+    background-color:#1c1c1c;
+    border-radius:8px;
+    overflow:hidden;
+    transition:transform 0.3s,box-shadow .3s;
+    box-shadow:0 2px 5px #0000004d
+    }
+    
+    .similar-movie-list .movie-image-container {
+    position:relative
+    }
+    
+    .similar-movie-list.empty {
+    justify-content:flex-end
+    }
+    
+    .similar-movie-list .movie-item:hover {
+    transform:scale(1.05);
+    box-shadow:0 4px 10px #00000080
+    }
+    
+    .similar-movie-list .movie-item img {
+    width:100%;
+    height:115px;
+    object-fit:cover
+    }
+    
+    .similar-movie-list .movie-item h3 {
+    font-size:.7em;
+    margin:10px 0;
+    color:#fff
+    }
+    
+    .similar-movie-list .movie-info {
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    background-color:#0000004d;
+    color:#fff;
+    padding:0;
+    text-align:center
+    }
+    
+    @media (max-width: 1200px) {
+    .details-container {
+    min-width:100%
+    }
+    
+    .details-content img {
+    max-width:100%;
+    height:auto;
+    min-width:200px;
+    min-height:90px
+    }
+    }
+    
+    @media (max-width: 768px) {
+    .details-container {
+    min-width:100%
+    }
+    
+    .details-content img {
+    max-width:100%;
+    height:auto;
+    min-width:200px;
+    min-height:300px
+    }
+    
+    .info {
+    max-width:100%;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center
+    }
+    
+    .info > * {
+    margin-bottom:10px;
+    max-width:100%
+    }
+    
+    .actions {
+    width:100%
+    }
+    
+    .actions a,.actions button {
+    padding:.5rem;
+    font-size:1em
+    }
+    
+    .nav {
+    flex-direction:column;
+    align-items:center
+    }
+    
+    .nav a {
+    font-size:1em;
+    padding:.5rem
+    }
+    
+    .movie-title-description {
+    max-width:100%;
+    margin-left:0
+    }
+    
+    .movie-title-description h3 {
+    font-size:1.5em;
+    margin-bottom:10px
+    }
+    
+    .movie-title-description p {
+    font-size:.9em
+    }
+    }
+    
+    @media (max-width: 480px) {
+    .header {
+    height:auto;
+    padding:10px
+    }
+    
+    .header h1 {
+    font-size:1em
+    }
+    
+    .movie-title-description h3 {
+    font-size:1.5em;
+    margin-bottom:0
+    }
+    
+    .movie-title-description p {
+    font-size:.9em
+    }
+    
+    .movie-meta.row .col {
+    flex-direction:column;
+    align-items:flex-start
+    }
+    
+    .movie-meta.row .col p {
+    font-size:.9em
+    }
+    
+    .movie-meta.row .col strong {
+    font-size:1em
+    }
+    
+    .details-content img {
+    max-width:100%;
+    height:auto;
+    min-width:150px;
+    min-height:40px
+    }
+    
+    .info h3 {
+    font-size:1.5em
+    }
+    
+    .info p {
+    font-size:.9em
+    }
+    
+    .info {
+    padding:10px
+    }
+    
+    .actions a,.actions button {
+    font-size:.9em
+    }
+    }
