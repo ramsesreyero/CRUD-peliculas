@@ -55,8 +55,7 @@ async function loadMovieDetails(id) {
 // Definición de la función para cargar películas similares
 async function loadSimilarMovies(genero, currentMovieId) {
     try {
-        const response = await fetch(`http://localhost:8080/api/peliculas/by-genero?genero=${genero}&id=${currentMovieId}`);
-        if (!response.ok) {
+        const response = await fetch(`http://localhost:8080/api/peliculas/by-genero?genero=${genero}&id=${currentMovieId}`);        if (!response.ok) {
             throw new Error('Error al cargar películas similares');
         }
         const peliculasSimilares = await response.json();
