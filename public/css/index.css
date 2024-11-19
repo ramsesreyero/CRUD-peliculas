@@ -115,8 +115,9 @@ html,body {
     }
     
     .movie-item h3 {
-    font-size:1.2em;
-    margin:10px 0
+        font-size: 1.2em;
+        margin: 10px 0;
+        font-weight: bold; /* Agrega esta línea */
     }
     
     .footer {
