@@ -311,7 +311,7 @@ html,body {
     text-align:center
     }
 
-    @media (min-width: 1436px) and (max-width: 800px) {
+    @media (min-width: 1436px) and (max-height: 800px) {
         html, body {
             height: 100%;
             margin: 0;
@@ -380,6 +380,9 @@ html,body {
             margin-top: 20px; /* Espacio entre la imagen y las películas similares */
             padding: 1rem;
             background-color: #2c2c2c;
+            width: 90%;
+            margin:3% 5% 0% 4.5%;
+
         }
         
         .footer {
