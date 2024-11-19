@@ -311,7 +311,7 @@ html,body {
     text-align:center
     }
 
-    @media (max-width: 1436px){
+    @media (min-width: 1436px) and (max-width: 800px) {
         html, body {
             height: 100%;
             margin: 0;
@@ -366,7 +366,7 @@ html,body {
         
         #movie-banner {
             height: calc(100vh - 240px); /* Altura de la ventana menos la altura del header */
-            width: auto; /* Ancho completo */
+            width: 100%; /* Ancho completo */
             object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
         }
         
