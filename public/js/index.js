@@ -1,3 +1,5 @@
+import { host } from "./host.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
     await obtenerGeneros(); // Obtener géneros al cargar la página
     await obtenerPeliculas(); // Obtener películas
@@ -17,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function obtenerGeneros() {
     try {
-        const response = await fetch('http://localhost:8080/api/generos');
+        const response = await fetch(host + '/api/generos');
         if (!response.ok) {
             throw new Error(`Error al obtener los géneros: ${response.status} ${response.statusText}`);
         }
@@ -76,7 +78,7 @@ function filtrarPeliculasPorGenero(genero) {
 
 async function obtenerPeliculas() {
     try {
-        const response = await fetch('http://localhost:8080/api/peliculas');
+        const response = await fetch(host + '/api/peliculas');
         if (!response.ok) {
             throw new Error(`Error en la respuesta de la API: ${response.status} ${response.statusText}`);
         }

@@ -1,3 +1,5 @@
+import { host } from "./host.js";
+
 document.getElementById('add-movie-form').addEventListener('submit', async function(event) {
     event.preventDefault(); // Evitar el envío del formulario
 
@@ -7,7 +9,7 @@ document.getElementById('add-movie-form').addEventListener('submit', async funct
 
     
     try {
-        const response = await fetch('http://localhost:8080/api/peliculas', {
+        const response = await fetch(host + '/api/peliculas', {
             method: 'POST',
             body: formData // Enviar FormData
         });

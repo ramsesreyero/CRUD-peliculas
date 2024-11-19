@@ -54,15 +54,19 @@ const getMovieById = async (req, res) => {
 const addMovie = async (req, res) => {
     const { titulo, contenido, categoria, anio, genero } = req.body;
 
+    console.log(req)
+    console.log(req.body)
+    console.log(req.files)
+
     if (!titulo || !contenido || !categoria || !anio || !genero) {
         return res.status(400).json({ error: 'Todos los campos son requeridos' });
     }
 
-    if (!req.file) {
+    if (!req.files) {
         return res.status(400).json({ error: 'La imagen es requerida' });
     }
 
-    if (!req.body.banner) {
+    if (!req.files.banner) {
         return res.status(400).json({ error: 'El banner es requerido' });
     }
 
@@ -76,10 +80,10 @@ const addMovie = async (req, res) => {
             });
         };
 
-        const result = await uploadImage(req.file.buffer);
+        const result = await uploadImage(req.files.image[0].buffer);
         const imageUrl = result.secure_url;
 
-        const bannerResult = await uploadImage(req.body.banner.buffer); // Subir banner
+        const bannerResult = await uploadImage(req.files.banner[0].buffer); // Subir banner
         const bannerUrl = bannerResult.secure_url; // Obtener URL del banner
 
         const query = 'INSERT INTO peliculas (titulo, contenido, categoria, anio, genero, imageUrl, bannerUrl) VALUES (?, ?, ?, ?, ?, ?, ?)';

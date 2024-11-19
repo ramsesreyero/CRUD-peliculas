@@ -20,7 +20,8 @@ app.use(cors({
     origin: [
         'https://crud-peliculas-pyyp388wu-ramsesreyeros-projects.vercel.app',
         'https://crud-peliculas-omega.vercel.app',
-        'http://localhost:8080'
+        'http://localhost:8080',
+        'http://10.22.0.135:8080',
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']

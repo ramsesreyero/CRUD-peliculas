@@ -1,3 +1,5 @@
+import { host } from "./host.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     const movieId = getMovieIdFromUrl(); // Obtener el ID de la película de la URL
     loadMovieDetails(movieId); // Cargar detalles de la película
@@ -18,7 +20,7 @@ function getMovieIdFromUrl() {
 
 async function loadMovieDetails(id) {
     try {
-        const response = await fetch(`http://localhost:8080/api/peliculas/${id}`);
+        const response = await fetch(host + `/api/peliculas/${id}`);
         if (!response.ok) {
             throw new Error('Error al cargar los detalles de la película');
         }
@@ -55,7 +57,7 @@ async function loadMovieDetails(id) {
 // Definición de la función para cargar películas similares
 async function loadSimilarMovies(genero, currentMovieId) {
     try {
-        const response = await fetch(`http://localhost:8080/api/peliculas/by-genero?genero=${genero}&id=${currentMovieId}`);
+        const response = await fetch(host + `/api/peliculas/by-genero?genero=${genero}&id=${currentMovieId}`);
         if (!response.ok) {
             throw new Error('Error al cargar películas similares');
         }
@@ -135,7 +137,7 @@ async function deleteMovie(id) {
     const confirmDelete = confirm('¿Estás seguro de que deseas eliminar esta película?');
     if (confirmDelete) {
         try {
-            const response = await fetch(`http://localhost:8080/api/peliculas/${id}`, {
+            const response = await fetch(host + `/api/peliculas/${id}`, {
                 method: 'DELETE'
             });
             if (response.ok) {

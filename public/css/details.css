@@ -2,8 +2,8 @@ html,body {
     height:100%;
     margin:0;
     padding:0;
-    font-size:100%
-    }
+    font-size:100%;
+}
     
     body {
     display:flex;
@@ -11,7 +11,7 @@ html,body {
     font-family:'San Francisco',sans-serif;
     background-color:#2c2c2c;
     color:#fff;
-    overflow-x:hidden
+    overflow-x:hidden;
     }
     
   .header {
@@ -89,7 +89,8 @@ html,body {
   }
     
   .details-content img {
-    height: 720px; /* Altura fija */
+    height: 70vh;
+     /* Altura fija */
     width: 100%; /* Ancho del contenedor */
     object-fit: cover; /* Ajusta la imagen para cubrir el contenedor sin distorsionar */
 }
@@ -311,86 +312,188 @@ html,body {
     text-align:center
     }
 
-    @media (min-width: 1436px) and (max-height: 800px) {
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            font-size: 100%;
+    @media (min-width: 1236px) and (max-height: 800px) {
+        html,body {
+            height:100%;
+            margin:0;
+            padding:0;
+            font-size:100%;
+            width: 100vw;
+        }
+            
+    body {
+        display:flex;
+        flex-direction:column;
+        font-family:'San Francisco',sans-serif;
+        background-color:#2c2c2c;
+        color:#fff;
+        overflow-x:hidden;
         }
         
-        body {
-            display: flex;
-            flex-direction: column;
-            font-family: 'San Francisco', sans-serif;
-            background-color: #2c2c2c;
-            color: #fff;
-            overflow-x: hidden;
+      .header {
+        position:fixed;
+        top:0;
+        left:0;
+        right:0;
+        z-index:1000;
+        display:flex;
+        flex-direction:column;
+        background-color:#000;
+        padding:0;
+        height:45px;
+        overflow:hidden
         }
         
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            background-color: #000;
-            padding: 0;
-            height: 45px;
-            overflow: hidden;
-        }
         
         .container {
-            margin-top: 45px;
+        margin-top:45px
         }
         
-        .movie-details {
-            flex: 1; /* Permite que este contenedor ocupe el espacio restante */
-            display: flex;
-            flex-direction: column; /* Para apilar verticalmente */
+        .header h1 {
+        margin:0;
+        font-size:1.2em;
+        color:#fff
         }
         
+        .nav {
+        height: 20vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background-color:#000;
+        padding:0
+        }
+        
+        .nav a {
+        color:#666;
+        text-decoration:none;
+        padding:0px 0px;
+        font-size:1.2em;
+        font-weight:700;
+        transition:color .3s;
+        margin:0
+        }
+        
+        .nav a:hover {
+        color:#fff
+        }
+
         .details-container {
-            display: flex;
-            flex-direction: column; /* Para apilar verticalmente */
-            flex: 1; /* Permite que este contenedor ocupe el espacio restante */
+            min-width: 100%;
+            max-width: 100%;
         }
-        
-        .details-content {
-            display: flex;
-            flex-direction: column; /* Para apilar la imagen y los detalles */
-            flex: 1; /* Permite que este contenedor ocupe el espacio restante */
-        }
-        
-        #movie-banner {
-            height: calc(100vh - 240px); /* Altura de la ventana menos la altura del header */
-            width: 100%; /* Ancho completo */
-            object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
+
+        /*mover los 2 de abajo para el contenedor ocn el banner y la info y todo*/
+    
+        .details-content img {
+            width: 100%; /* Ajusta el ancho de la imagen al 100% del contenedor */
+            height: auto; /* Mantiene la proporción de la imagen */
+            max-height: 72vh; /* Limita la altura máxima de la imagen */
+            object-fit: cover; /* La imagen cubrirá el contenedor manteniendo su proporción */
         }
         
         .info {
-            padding: 1rem;
-            background-color: #000;
-            color: #fff;
-        }
-        
-        .similar-movies {
-            margin-top: 20px; /* Espacio entre la imagen y las películas similares */
-            padding: 1rem;
-            background-color: #2c2c2c;
-            width: 90%;
-            margin:3% 5% 0% 4.5%;
-
-        }
-        
-        .footer {
+            max-width: 150%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            padding: 1rem;
-            background-color: #2c2c2c;
-            color: #8a8a8a;
+        }
+    
+        .info > * {
+            margin-bottom: 0%; /* Cambiado a porcentaje */
+            max-width: 100%;
+        }
+    
+        .actions {
             width: 100%;
+        }
+    
+        .actions a, .actions button {
+            padding: 2%; /* Cambiado a porcentaje */
+            font-size: 100%; /* Cambiado a porcentaje */
+        }
+    
+        .nav {
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        .nav a {
+            font-size: 100%; /* Cambiado a porcentaje */
+            padding: 0%; /* Cambiado a porcentaje */
+        }
+    
+        .movie-title-description {
+            max-width: 100%;
+            margin-left: 0;
+        }
+    
+        .movie-title-description h3 {
+            text-align: left;
+            font-size: 100%; /* Cambiado a porcentaje */
+            margin-bottom: 2%; /* Cambiado a porcentaje */
+        }
+    
+        .movie-title-description p {
+            text-align: left;
+
+            font-size: 15px; /* Cambiado a porcentaje */
+        }
+  
+        .similar-movies {
+            margin-top: 2%; /* Agrega un margen superior del 5% */
+            margin-left: auto; /* Mantiene el margen izquierdo automático */
+            margin-right: auto; /* Mantiene el margen derecho automático */
+            max-width: 150%; /* Establece el mismo ancho máximo que .info */
+            display: flex; /* Si deseas que los elementos dentro de similar-movies se alineen en fila */
+            flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea si no hay suficiente espacio */
+            justify-content: center; /* Centra los elementos dentro del contenedor */
+            flex-direction: column; /* Alinea los elementos en columna (texto y lista de películas) */
+        }
+        .movie-meta.row{
+          max-width: 100%;
+        }
+        .similar-movie-list {
+            display: flex; /* Alinea los elementos en una fila */
+            flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea si no hay suficiente espacio */
+            justify-content: flex-start; /* Distribuye el espacio entre los elementos */
+        }
+        
+        .similar-movie-list .movie-item {
+            flex: 1 1 200px; /* Permite que los elementos crezcan y se reduzcan, con un ancho base de 200px */
+            margin: 20px; /* Espacio entre los elementos */
+            max-width: 240px; /* Establece un ancho máximo para los elementos */
+            background-color: #1c1c1c; /* Color de fondo para los ítems */
+            border-radius: 8px; /* Bordes redondeados */
+            overflow: hidden; /* Oculta el desbordamiento */
+            transition: transform 0.3s, box-shadow .3s; /* Efecto de transición */
+            display: flex; /* Permite alinear el contenido dentro del ítem */
+            flex-direction: column; /* Coloca los elementos en columna (imagen y texto) */
+            text-align: center; /* Centra el texto dentro de los ítems */
+        }
+
+        .similar-movie-list .movie-item img {
+            width: 100%; /* Ajusta el ancho de la imagen al 100% del contenedor */
+            height: 120px; /* Establece una altura fija para la imagen */
+            object-fit: cover; /* Mantiene la proporción de la imagen */
+        }
+        
+        
+        .similar-movie-list .movie-info {
+            padding: 0px; /* Espaciado interno para el texto */
+        }
+        
+        .similar-movie-list .movie-item:hover {
+            transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+            box-shadow: 0 4px 10px #00000080; /* Sombra al pasar el mouse */
+        }
+
+        .similar-movies h2 {
+            text-align: left; /* Alinea el texto a la izquierda */
+            font-size: 1em; /* Ajusta el tamaño de fuente según sea necesario */
+            margin-bottom: 20px; /* Espacio debajo del título */
         }
   
   }
@@ -399,25 +502,67 @@ html,body {
       .details-container {
           min-width: 100%;
       }
-      .details-content{
-        margin:0 0% 0% 7%;
-    }
   
-    .details-content {
-      max-width:110%;
-      width:90%;
-      margin:0 0% 0% 7%
+      .details-content img {
+          max-width: 100%;
+          height: auto;
+          min-width: 70%; /* Cambiado a porcentaje */
+          min-height: auto; /* Se elimina el valor fijo */
+      }
+  
+      .info {
+          max-width: 100%;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+      }
+  
+      .info > * {
+          margin-bottom: 5%; /* Cambiado a porcentaje */
+          max-width: 100%;
+      }
+  
+      .actions {
+          width: 100%;
+      }
+  
+      .actions a, .actions button {
+          padding: 2%; /* Cambiado a porcentaje */
+          font-size: 100%; /* Cambiado a porcentaje */
+      }
+  
+      .nav {
+          flex-direction: column;
+          align-items: center;
+      }
+  
+      .nav a {
+          font-size: 100%; /* Cambiado a porcentaje */
+          padding: 2%; /* Cambiado a porcentaje */
+      }
+  
+      .movie-title-description {
+          max-width: 100%;
+          margin-left: 0;
+      }
+  
+      .movie-title-description h3 {
+          font-size: 100%; /* Cambiado a porcentaje */
+          margin-bottom: 5%; /* Cambiado a porcentaje */
+      }
+  
+      .movie-title-description p {
+          font-size: 4%; /* Cambiado a porcentaje */
       }
 
-        .similar-movies{
+      .similar-movies{
         margin-left: 10%;
       }
-      .details-content img {
+      .movie-meta.row{
         max-width: 100%;
-        height: auto;
-        min-width: 70%; /* Cambiado a porcentaje */
-        min-height: auto; /* Se elimina el valor fijo */
-    }
+      }
   }
   
   @media (max-width: 768px) {

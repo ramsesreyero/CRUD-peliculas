@@ -1,5 +1,7 @@
+import { host } from "./host.js";
+
 async function cargarPelicula(id) {
-    const response = await fetch(`http://localhost:8080/api/peliculas/${id}`);
+    const response = await fetch(host + `/api/peliculas/${id}`);
     if (!response.ok) {
         console.error('Error al cargar la película:', response.statusText);
         return;
@@ -58,7 +60,7 @@ document.getElementById('edit-movie-form').addEventListener('submit', async func
     }
 
     try {
-        const response = await fetch(`http://localhost:8080/api/peliculas/${id}`, {
+        const response = await fetch(host + `/api/peliculas/${id}`, {
             method: 'PUT',
             body: formData
         });
