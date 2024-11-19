@@ -97,6 +97,7 @@ async function loadSimilarMovies(genero, currentMovieId) {
 function getServiceNameFromUrl(url) {
     const services = {
         'max.com': 'Max',
+        'play.max.com': 'Max',
         'netflix.com': 'Netflix',
         'hulu.com': 'Hulu',
         'disneyplus.com': 'Disney+',

@@ -6,13 +6,13 @@
     <title>CRUD de Películas</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./css/index.css"> <!-- Cambia la ruta según corresponda -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="./css/index.css"> 
 </head>
 <body>
     <header class="header">
         <nav class="nav">
-            <h1 class="nav-title">CRUD Peliculas</h1> <!-- Mantener como un h1 -->
+            <h1 class="nav-title">CRUD TV+</h1> 
             <a href="addmovie.html" class="selected">Agregar Película</a>
             <a href="team.html">Miembros del Equipo</a>
             <div class="search-container">
@@ -23,8 +23,12 @@
     <main class="container">
         <section class="search">
         </section>
-        <!-- Carrusel -->
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <a href="details.html?id=1">
@@ -42,34 +46,25 @@
                     </a>                
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" class="carousel-control-next" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
         </div>
-            <!-- Sección de géneros -->
-            <section class="genres mt-4">
-                <div class="genre-container d-flex align-items-center"> <!-- Contenedor flex -->
-                    <a id="showAllMovies" class="genre-link">Mostrar Todas</a>
-                    <div id="genreList" class="ml-3"> <!-- Agrega este div para contener los géneros -->
-                        <!-- Los géneros se generarán dinámicamente aquí -->
-                    </div>
+        <section class="genres mt-4">
+            <div class="genre-container d-flex align-items-center"> 
+                <a id="showAllMovies" class="genre-link">Mostrar Todas</a>
+                <div id="genreList" class="ml-3"> 
+                    <!-- Los géneros se generarán dinámicamente aquí -->
                 </div>
-            </section>
+            </div>
+        </section>
         <section class="movie-list">
             <!-- Se generarán dinámicamente las películas aquí -->
         </section>
     </main>
     <footer class="footer">
-        <p>&copy; 2024 Clase de Programaci Web. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Clase de Programación Web. Todos los derechos reservados.</p>
     </footer>
-    <script src="./js/index.js"></script> <!-- Incluye el archivo JavaScript externo -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script> <!-- Popper.js -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script> 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./js/index.js"></script> 
 </body>
 </html>

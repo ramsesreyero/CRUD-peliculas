@@ -104,7 +104,7 @@ html,body {
     }
     
     .movie-item img:hover {
-    transform:scale(1.1)
+    transform:scale(1.05)
     }
     
     .movie-item img {
@@ -212,8 +212,9 @@ html,body {
     margin-bottom:10px;
     width:100%;
     max-width:1670px;
-    height:600px;
-    overflow:hidden
+    height:750px;
+    overflow:hidden;
+    border-radius:0 0 15px 15px;
     }
     
     .carousel-inner {
@@ -236,8 +237,7 @@ html,body {
     
     .carousel-inner img {
     width:100%;
-    height:600px;
-    border-radius:0 0 10px 10px;
+    height:100%;
     object-fit:cover
     }
     
@@ -311,5 +311,18 @@ html,body {
     .movie-item h3 {
     margin:10px 0;
     color:#fff;
-    font:1.5em 'San Francisco',sans-serif
+    font:1.2em 'San Francisco',sans-serif
+    }
+    .carousel-indicators li {
+        background-color: #494949; /* Color del círculo */
+        border-radius: 50%; /* Hace que los indicadores sean círculos */
+        width: 7px; /* Ancho del círculo */
+        height: 7px; /* Alto del círculo */
+        transition: transform 0.3s; /* Añade una transición suave */
+        margin: 5px;
+    }
+    
+    .carousel-indicators .active {
+        background-color: #c3c3c3; /* Color del círculo activo */
+        transform: scale(1.5); /* Aumenta el tamaño del círculo activo */
     }

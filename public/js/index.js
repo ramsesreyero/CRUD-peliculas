@@ -91,7 +91,7 @@ async function obtenerPeliculas() {
             movieItem.innerHTML = `
                 <div class="movie-content" onclick="window.location.href='details.html?id=${pelicula.id}'">
                     <img src="${pelicula.imageUrl}" alt="Poster de ${pelicula.titulo}" />
-                    <h3>${pelicula.titulo}</h3> <!-- Aquí está el título -->
+                    <h3>${pelicula.titulo}</h3> 
                 </div>
             `;
             movieList.appendChild(movieItem);

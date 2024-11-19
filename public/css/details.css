@@ -14,7 +14,7 @@ html,body {
     overflow-x:hidden
     }
     
-    .header {
+  .header {
     position:fixed;
     top:0;
     left:0;
@@ -27,6 +27,7 @@ html,body {
     height:45px;
     overflow:hidden
     }
+    
     
     .container {
     margin-top:45px
@@ -77,7 +78,7 @@ html,body {
     .details-content {
     max-width:1600px;
     width:100%;
-    margin:0 auto
+    margin:0 40px
     }
     
     .details-content img {
@@ -228,16 +229,16 @@ html,body {
     
     .similar-movies {
     margin-top:40px;
-    padding:20px;
+    padding:0px;
     background-color:#2c2c2c;
     border-radius:0;
     color:#fff;
     box-shadow:0 4px 10px #0000;
     width:100%;
-    max-width:1200px;
+    max-width:1350px;
     margin-left:auto;
     margin-right:auto;
-    border-top:3px solid #3a3a3a
+    border-top:1px solid #3a3a3a
     }
     
     .similar-movies h2 {
@@ -258,7 +259,7 @@ html,body {
     position:relative;
     margin:10px;
     text-align:center;
-    width:220px;
+    width:250px;
     background-color:#1c1c1c;
     border-radius:8px;
     overflow:hidden;
@@ -281,7 +282,7 @@ html,body {
     
     .similar-movie-list .movie-item img {
     width:100%;
-    height:115px;
+    height:130px;
     object-fit:cover
     }
     
