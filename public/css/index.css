@@ -326,3 +326,70 @@ html,body {
         background-color: #c3c3c3; /* Color del círculo activo */
         transform: scale(1.5); /* Aumenta el tamaño del círculo activo */
     }
+
+    /* Pantallas pequeñas (móviles) */
+@media (max-width: 600px) {
+    .header .nav {
+        padding: 0 1em; /* Reduce el padding en la navegación */
+    }
+
+    .header .nav-title {
+        font-size: 1em; /* Reduce el tamaño de fuente del título */
+    }
+
+    .header .nav a {
+        font-size: 1em; /* Reduce el tamaño de fuente de los enlaces */
+    }
+
+    .movie-item {
+        width: 100%; /* Hacer que los elementos de la película ocupen el 100% */
+        max-width: 300px; /* Limitar el ancho máximo */
+    }
+
+    .search-container {
+        flex-direction: column; /* Cambia a columna para móviles */
+        align-items: stretch; /* Alinear elementos a los lados */
+    }
+
+    .carousel {
+        height: 70%; /* Mantiene la altura original del carrusel */
+    }
+
+    .footer {
+        font-size: 0.9em; /* Reduce el tamaño de fuente del pie de página */
+    }
+}
+
+/* Pantallas medianas (tabletas) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .header .nav {
+        padding: 0 5em; /* Ajusta el padding en la navegación */
+    }
+
+    .movie-item {
+        width: 45%; /* Ajusta el ancho de los elementos de la película */
+    }
+
+    .carousel {
+        height: 70%; /* Mantiene la altura original del carrusel */
+    }
+
+    .footer {
+        font-size: 1em; /* Mantiene el tamaño de fuente del pie de página */
+    }
+}
+
+/* Pantallas grandes (desktops) */
+@media (min-width: 1025px) {
+    .header .nav {
+        padding: 0 12em; /* Mantiene el padding original en la navegación */
+    }
+
+    .movie-item {
+        width: 220px; /* Mantiene el ancho original de los elementos de la película */
+    }
+
+    .carousel {
+        height: 70%; /* Mantiene la altura original del carrusel */
+    }
+}

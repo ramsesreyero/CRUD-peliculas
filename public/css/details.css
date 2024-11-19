@@ -72,24 +72,23 @@ html,body {
     display:flex;
     flex-direction:column;
     align-items:center;
-    margin-top:45px
+    margin-top:45px;
+    width: 100%;
     }
     
     .details-content {
-    max-width:1600px;
-    width:100%;
-    margin:0 40px
-    }
+      max-width: 90%; /* Limitar el ancho máximo */
+      max-height: 100%;
+      margin: 0 auto; /* Centra el contenido */
+      padding: 0%; /* Espaciado interno */
+      box-sizing: border-box; /* Incluye padding y border en el ancho total */
+  }
     
-    .details-content img {
-    min-width:1600px;
-    max-width:1600px;
-    min-height:730px;
-    max-height:730px;
-    width:100%;
-    height:auto;
-    object-fit:cover
-    }
+  .details-content img {
+    height: 720px; /* Altura fija */
+    width: 100%; /* Ancho del contenedor */
+    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor sin distorsionar */
+}
     
     .details-row {
     display:flex;
@@ -103,7 +102,7 @@ html,body {
     .info {
     display:flex;
     flex-direction:column;
-    padding:1rem;
+    padding:1%;
     background-color:#000;
     color:#fff;
     box-shadow:0 4px 8px #00000080;
@@ -234,10 +233,9 @@ html,body {
     border-radius:0;
     color:#fff;
     box-shadow:0 4px 10px #0000;
-    width:100%;
-    max-width:1350px;
-    margin-left:auto;
-    margin-right:auto;
+    width:85.8%;
+    max-width:100%;
+    margin:3% 5% 0% 7%;
     border-top:1px solid #3a3a3a
     }
     
@@ -302,132 +300,157 @@ html,body {
     padding:0;
     text-align:center
     }
+    .details-container {
+      min-width: 100%;
+  }
     
     @media (max-width: 1200px) {
-    .details-container {
-    min-width:100%
+      .details-container {
+          min-width: 100%;
+      }
+      .details-content{
+        margin:0 0% 0% 7%;
     }
-    
-    .details-content img {
-    max-width:100%;
-    height:auto;
-    min-width:200px;
-    min-height:90px
+  
+    .details-content {
+      max-width:110%;
+      width:90%;
+      margin:0 0% 0% 7%
+      }
+
+        .similar-movies{
+        margin-left: 10%;
+      }
+      .details-content img {
+        max-width: 100%;
+        height: auto;
+        min-width: 70%; /* Cambiado a porcentaje */
+        min-height: auto; /* Se elimina el valor fijo */
     }
-    }
-    
-    @media (max-width: 768px) {
-    .details-container {
-    min-width:100%
-    }
-    
-    .details-content img {
-    max-width:100%;
-    height:auto;
-    min-width:200px;
-    min-height:300px
-    }
-    
-    .info {
-    max-width:100%;
-    margin:0 auto;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center
-    }
-    
-    .info > * {
-    margin-bottom:10px;
-    max-width:100%
-    }
-    
-    .actions {
-    width:100%
-    }
-    
-    .actions a,.actions button {
-    padding:.5rem;
-    font-size:1em
-    }
-    
-    .nav {
-    flex-direction:column;
-    align-items:center
-    }
-    
-    .nav a {
-    font-size:1em;
-    padding:.5rem
-    }
-    
-    .movie-title-description {
-    max-width:100%;
-    margin-left:0
-    }
-    
-    .movie-title-description h3 {
-    font-size:1.5em;
-    margin-bottom:10px
-    }
-    
-    .movie-title-description p {
-    font-size:.9em
-    }
-    }
-    
-    @media (max-width: 480px) {
-    .header {
-    height:auto;
-    padding:10px
-    }
-    
-    .header h1 {
-    font-size:1em
-    }
-    
-    .movie-title-description h3 {
-    font-size:1.5em;
-    margin-bottom:0
-    }
-    
-    .movie-title-description p {
-    font-size:.9em
-    }
-    
-    .movie-meta.row .col {
-    flex-direction:column;
-    align-items:flex-start
-    }
-    
-    .movie-meta.row .col p {
-    font-size:.9em
-    }
-    
-    .movie-meta.row .col strong {
-    font-size:1em
-    }
-    
-    .details-content img {
-    max-width:100%;
-    height:auto;
-    min-width:150px;
-    min-height:40px
-    }
-    
-    .info h3 {
-    font-size:1.5em
-    }
-    
-    .info p {
-    font-size:.9em
-    }
-    
-    .info {
-    padding:10px
-    }
-    
-    .actions a,.actions button {
-    font-size:.9em
-    }
-    }
+  }
+  
+  @media (max-width: 768px) {
+      .details-container {
+          min-width: 100%;
+      }
+  
+      .details-content img {
+          max-width: 100%;
+          height: auto;
+          min-width: 70%; /* Cambiado a porcentaje */
+          min-height: auto; /* Se elimina el valor fijo */
+      }
+  
+      .info {
+          max-width: 100%;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+      }
+  
+      .info > * {
+          margin-bottom: 5%; /* Cambiado a porcentaje */
+          max-width: 100%;
+      }
+  
+      .actions {
+          width: 100%;
+      }
+  
+      .actions a, .actions button {
+          padding: 2%; /* Cambiado a porcentaje */
+          font-size: 100%; /* Cambiado a porcentaje */
+      }
+  
+      .nav {
+          flex-direction: column;
+          align-items: center;
+      }
+  
+      .nav a {
+          font-size: 100%; /* Cambiado a porcentaje */
+          padding: 2%; /* Cambiado a porcentaje */
+      }
+  
+      .movie-title-description {
+          max-width: 100%;
+          margin-left: 0;
+      }
+  
+      .movie-title-description h3 {
+          font-size: 100%; /* Cambiado a porcentaje */
+          margin-bottom: 5%; /* Cambiado a porcentaje */
+      }
+  
+      .movie-title-description p {
+          font-size: 4%; /* Cambiado a porcentaje */
+      }
+
+      .similar-movies{
+        margin-left: 10%;
+      }
+      .movie-meta.row{
+        max-width: 100%;
+      }
+  }
+  
+  @media (max-width: 480px) {
+      .header {
+          height: auto;
+          padding: 5%; /* Cambiado a porcentaje */
+      }
+  
+      .header h1 {
+          font-size: 4%; /* Cambiado a porcentaje */
+      }
+  
+      .movie-title-description h3 {
+          font-size: 5%; /* Cambiado a porcentaje */
+          margin-bottom: 0;
+      }
+  
+      .movie-title-description p {
+          font-size: 4%; /* Cambiado a porcentaje */
+      }
+  
+      .movie-meta.row .col {
+          flex-direction: column;
+          align-items: flex-start;
+      }
+  
+      .movie-meta.row .col p {
+          font-size: 4%; /* Cambiado a porcentaje */
+      }
+  
+      .movie-meta.row .col strong {
+          font-size: 4%; /* Cambiado a porcentaje */
+      }
+  
+      .details-content img {
+          max-width: 100%;
+          height: auto;
+          min-width: 80%; /* Cambiado a porcentaje */
+          min-height: auto; /* Se elimina el valor fijo */
+      }
+  
+      .info h3 {
+          font-size: 5%; /* Cambiado a porcentaje */
+      }
+  
+      .info p {
+          font-size: 4%; /* Cambiado a porcentaje */
+      }
+  
+      .info {
+          padding: 5%; /* Cambiado a porcentaje */
+      }
+  
+      .actions a, .actions button {
+          font-size: 4%; /* Cambiado a porcentaje */
+      }
+      .similar-movies{
+        margin-left: 20%;
+      }
+  }
