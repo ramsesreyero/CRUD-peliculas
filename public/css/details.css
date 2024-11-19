@@ -305,7 +305,7 @@ html,body {
     text-align:center
     }
 
-    @media (min-width: 1536px) and (min-height: 864px) {
+    @media (min-width: 1436px){
 
       .details-content img {
         height: 520px; /* Altura fija */
