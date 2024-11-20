@@ -547,7 +547,15 @@ padding: 0 5vw; /* Ajusta el padding en la navegación */
 }
 
 .movie-item {
-width: 45%; /* Ajusta el ancho de los elementos de la película */
+width: 25%; /* Ajusta el ancho de los elementos de la película */
+
+}
+
+.movie-item img {
+    width: 100%;
+    height: 125px;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 .footer {
