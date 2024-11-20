@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     await obtenerPeliculas(); // Obtener películas
 
     // Agregar evento al botón "Mostrar Todas las Películas"
-    document.getElementById('showAllMovies').addEventListener('click', mostrarTodasLasPeliculas);
+    const showAllMoviesButton = document.getElementById('showAllMovies');
+    showAllMoviesButton.addEventListener('click', mostrarTodasLasPeliculas);
     
     // Agregar evento para prevenir el comportamiento por defecto de los enlaces en el carrusel
     document.querySelectorAll('.carousel-link').forEach(link => {
@@ -14,6 +15,29 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log('Enlace clickeado:', this.href); // Solo un ejemplo
             window.location.href = this.href; // Redirigir a la página de detalles
         });
+    });
+
+    // Selecciona el input de búsqueda y los elementos que deseas ocultar
+    const searchInput = document.getElementById('searchInput');
+    const carousel = document.querySelector('.carousel');
+    const genreContainer = document.querySelector('.genre-container');
+    const genreList = document.getElementById('genreList'); // Agregar genreList
+
+    // Agrega un evento al input de búsqueda
+    searchInput.addEventListener('input', function() {
+        if (searchInput.value.trim() !== '') {
+            // Si hay texto en el input, oculta el carrusel, la lista de géneros, genreList y el botón "Mostrar Todas"
+            carousel.style.display = 'none';
+            genreContainer.style.display = 'none';
+            genreList.style.display = 'none'; // Ocultar genreList
+            showAllMoviesButton.style.display = 'none'; // Ocultar botón "Mostrar Todas"
+        } else {
+            // Si el input está vacío, muestra nuevamente el carrusel, la lista de géneros y el botón "Mostrar Todas"
+            carousel.style.display = 'block';
+            genreContainer.style.display = 'flex'; // O 'block', dependiendo de tu diseño
+            genreList.style.display = 'flex'; // Mostrar genreList
+            showAllMoviesButton.style.display = 'inline'; // Mostrar botón "Mostrar Todas"
+        }
     });
 });
 
