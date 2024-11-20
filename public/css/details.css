@@ -265,7 +265,7 @@ border-top: 1px solid #383838; /* Agrega un borde superior de 1px */
 text-align:left;
 font-size:1em;
 margin-bottom:20px;
-font-weight:700;
+font-weight:650;
 letter-spacing:1px
 }
 
@@ -329,6 +329,7 @@ font-size: 1em; /* Ajusta el tamaño de fuente según sea necesario */
 margin-bottom: 20px; /* Espacio debajo del título */
 }
 
+/*vista para laptop*/
 @media (min-width: 1236px) and (max-height: 800px) {
 html,body {
 height:100%;
@@ -458,16 +459,7 @@ text-align: left;
 font-size: 15px; /* Cambiado a porcentaje */
 }
 
-.similar-movies {
-margin-top: 2%; /* Agrega un margen superior del 5% */
-margin-left: auto; /* Mantiene el margen izquierdo automático */
-margin-right: auto; /* Mantiene el margen derecho automático */
-max-width: 150%; /* Establece el mismo ancho máximo que .info */
-display: flex; /* Si deseas que los elementos dentro de similar-movies se alineen en fila */
-flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea si no hay suficiente espacio */
-justify-content: center; /* Centra los elementos dentro del contenedor */
-flex-direction: column; /* Alinea los elementos en columna (texto y lista de películas) */
-}
+
 .movie-meta.row{
 max-width: 100%;
 }
@@ -510,6 +502,8 @@ box-shadow: 0 4px 10px #00000080; /* Sombra al pasar el mouse */
 text-align: left; /* Alinea el texto a la izquierda */
 font-size: 1em; /* Ajusta el tamaño de fuente según sea necesario */
 margin-bottom: 20px; /* Espacio debajo del título */
+font-weight:600;
+
 }
 
 }
@@ -580,7 +574,7 @@ margin-bottom: 20px; /* Espacio debajo del título */
 }
 
 /* Media Query para pantallas de hasta 768px */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     * {
         box-sizing: border-box;
     }
@@ -600,8 +594,11 @@ margin-bottom: 20px; /* Espacio debajo del título */
     }
 
     .header .nav {
-        padding: 0 1em; /* Reduce el padding en la navegación */
+        height: 45px;
+        background-color: black;
+        padding: 0 0em; /* Reduce el padding en la navegación */
     }
+
 
     .header .nav-title {
         font-size: 1em; /* Reduce el tamaño de fuente del título */
