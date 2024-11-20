@@ -615,21 +615,21 @@ margin: 0 auto; /* Centra el contenedor */
 }
 
 .details-content img {
-    width: 500px;
-    height: 200px;
-    max-height: 72vh;
-    object-fit: cover;
+width: 500px;
+height: 200px;
+max-height: 72vh;
+object-fit: cover;
 }
 
 .info {
-    max-width: 150%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    border-radius: 0%;
-    }
+max-width: 150%;
+margin: 0 auto;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+border-radius: 0%;
+}
 
 .info > * {
 margin-bottom: 0%; /* Cambiado a porcentaje */
@@ -656,11 +656,11 @@ padding: 2%; /* Cambiado a porcentaje */
 }
 
 .details-content {
-    max-width: 100%;
-    max-height: 100%;
-    margin: 0 auto;
-    padding: 0%;
-    box-sizing: border-box;
+max-width: 100%;
+max-height: 100%;
+margin: 0 auto;
+padding: 0%;
+box-sizing: border-box;
 }
 
 .movie-details {
@@ -704,11 +704,16 @@ flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea s
 justify-content: center; /* Centra los elementos dentro del contenedor */
 }
 .similar-movies h2 {
-    text-align: left; /* Alinea el texto a la izquierda */
-    font-size: 0.6em; /* Ajusta el tamaño de fuente según sea necesario */
-    margin-bottom: 20px; /* Espacio debajo del título */
-    font-weight:600;
-    }
+text-align: left; /* Alinea el texto a la izquierda */
+font-size: 0.6em; /* Ajusta el tamaño de fuente según sea necesario */
+margin-bottom: 20px; /* Espacio debajo del título */
+font-weight:600;
+}
+}
+
+/* Media Query para celulares horizontal */
+@media (min-width: 601px) and (max-width: 1024px) {
+
 }
 
 /* Media Query para pantallas de hasta 480px */
