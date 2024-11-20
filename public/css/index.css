@@ -180,7 +180,8 @@ margin-left:auto
 
 #searchInput {
 margin-right:10px;
-padding:5px
+padding:5px;
+margin-bottom: 5px;
 }
 
 #genreSelect {
@@ -522,6 +523,21 @@ width: 45%; /* Ajusta el ancho de los elementos de la película */
 .footer {
 font-size: 1rem; /* Mantiene el tamaño de fuente del pie de página */
 }
+#searchInput {
+    width: 150px;
+    margin-right:10px;
+    margin-bottom: 5px;
+    padding:5px
+    }
+    .header .nav a {
+        color: #666;
+        text-decoration: none;
+        padding: 10px 15px;
+        font-size: 1.2em;
+        font-weight: 700;
+        transition: color .3s;
+        margin: 0;
+    }
 }
 /* Pantallas grandes (desktops) */
 @media (min-width: 1025px) {
@@ -532,4 +548,5 @@ padding: 0 12vw; /* Mantiene el padding original en la navegación */
 .movie-item {
 width: 20vw; /* Mantiene el ancho original de los elementos de la película */
 }
+
 }
