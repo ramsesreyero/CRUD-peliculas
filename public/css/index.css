@@ -1,406 +1,535 @@
 html,body {
-    height:100%;
-    margin:0;
-    padding:0
-    }
-    
-    body {
-    display:flex;
-    flex-direction:column;
-    font-family:'San Francisco',sans-serif;
-    background-color:#333;
-    color:#fff;
-    overflow-x:hidden
-    }
-    
-    .header {
-    position:sticky;
-    top:0;
-    left:0; 
-    right:0;
-    z-index:1000;
-    display:flex;
-    flex-direction:column;
-    background-color:#000;
-    padding:0;
-    height:45px;
-    }
-    
-    .header .nav {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:0 12em;
-    height:100%
-    }
-    
-    .header .nav-title {
-    margin:0;
-    font-size:1.2em;
-    color:#fdfdfd;
-    font-weight:700;
-    padding:0 15px;
-    cursor:pointer
-    }
-    
-    .header .nav-title:hover {
-    color:#fdfdfd
-    }
-    
-    .header .nav a {
-    color:#666;
-    text-decoration:none;
-    padding:10px 20px;
-    font-size:1.2em;
-    font-weight:700;
-    transition:color .3s;
-    margin:0
-    }
-    
-    .header .nav a:hover {
-    color:#fff
-    }
-    
-    .container {
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    padding:20px;
-    width:100%;
-    max-width:3000px;
-    box-sizing:border-box
-    }
-    
-    .movie-list {
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    width:100%;
-    max-width:3000px;
-    margin:20px auto
-    }
-    
-    .movie-item {
-    margin:10px;
-    cursor:pointer;
-    text-align:center;
-    width:220px;
-    box-sizing:border-box;
-    transition:transform .3s ease
-    }
-    
-    .movie-item:hover {
-    transform:scale(1.05)
-    }
-    
-    .movie-item img {
-    width:100%;
-    height:300px;
-    object-fit:cover;
-    border-radius:8px;
-    transition:transform .3s ease
-    }
-    
-    .movie-item img:hover {
-    transform:scale(1.05)
-    }
-    
-    .movie-item img {
-    width:100%;
-    height:325px;
-    object-fit:cover;
-    border-radius:8px
-    }
-    
-    .movie-item h3 {
-        font-size: 1.2em;
-        margin: 10px 0;
-        font-weight: bold; /* Agrega esta línea */
-    }
-    
-    .footer {
-    text-align:center;
-    padding:20px;
-    background-color:#333;
-    color:#8a8a8a;
-    position:relative;
-    bottom:0;
-    width:100%;
-    margin-top:auto
-    }
-    
-    input[type="text"],input[type="number"],select {
-    width:100%;
-    padding:10px;
-    border:1px solid #444;
-    border-radius:5px;
-    background-color:#333;
-    color:#fff;
-    box-sizing:border-box;
-    margin-bottom:15px
-    }
-    
-    textarea {
-    height:100px;
-    resize:vertical
-    }
-    
-    button {
-    background-color:#007bff;
-    color:#fff;
-    border:none;
-    border-radius:5px;
-    padding:10px 20px;
-    font-size:1em;
-    cursor:pointer;
-    transition:background-color 0.3s,transform .2s
-    }
-    
-    button:hover {
-    background-color:#0056b3;
-    transform:translateY(-2px)
-    }
-    
-    .search {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    margin-bottom:20px
-    }
-    
-    .search-container {
-    display:flex;
-    align-items:center;
-    margin-left:auto
-    }
-    
-    #searchInput {
-    margin-right:10px;
-    padding:5px
-    }
-    
-    #genreSelect {
-    padding:5px
-    }
-    
-    .search-container input[type="text"],.search-container select {
-    margin-top:0;
-    margin-bottom:0;
-    margin-left:10px;
-    padding:5px;
-    border-radius:5px;
-    border:1px solid #444;
-    background-color:#000;
-    color:#fff
-    }
-    @media (min-width: 1236px) and (max-height: 800px) {
-        html,body {
-            height:100%;
-            margin:0;
-            padding:0;
-            font-size:100%;
-            width: 100vw;
-        }
-    }
-    @media (max-width: 600px) {
-    .search-container {
-    flex-direction:column;
-    align-items:center
-    }
-    
-    .search input[type="text"],.search select {
-    width:100%;
-    margin:10px 0
-    }
-    }
-    
-    .carousel {
-    margin-top:-40px;
-    margin-bottom:10px;
-    width:92vw;
-    max-width:1670px;
-    height:70vh;
-    max-height:80vh;
+height:100%;
+margin:0;
+padding:0
+}
 
-    overflow:hidden;
-    border-radius:0 0 15px 15px;
-    }
-    
-    .carousel-inner {
-    overflow:hidden
-    }
-    
-    /* .carousel-item {
-        
-    transition:transform .5s ease
-    } */
-    
-    .carousel-item.active {
-    display:block
-    }
-    
-    .carousel-item a {
-    display:block;
-    width:90vw;
-    height:100%
-    }
-    
-    .carousel-inner img {
-    width:90vw;
-    height:100%;
-    object-fit:fill
-    }
-    
-    .genres {
-    margin:20px 0;
-    text-align:center
-    }
-    
-    .genre-container {
-    display:flex;
-    align-items:center;
-    margin-top:20px
-    }
-    
-    .genre-list {
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:10px
-    }
-    
-    .genre-item {
-    background-color:#444;
-    color:#fff;
-    padding:10px 20px;
-    margin:0 10px;
-    border-radius:5px;
-    cursor:pointer;
-    transition:background-color .3s
-    }
-    
-    .genre-link:hover {
-    color:#fff;
-    transform:scale(1.1);
-    transition:color 0.3s,transform .3s
-    }
-    
-    #showAllMovies {
-    margin-left:10px;
-    font-size:1.4em
-    }
-    
-    .genre-link {
-    font-size:1.2em;
-    color:#666;
-    text-decoration:none;
-    margin-right:20px;
-    font-weight:700;
-    transition:color .3s
-    }
-    
-    .genre-link:hover {
-    color:#fff;
-    text-decoration:none;
-    cursor:pointer
-    }
-    
-    #genreList {
-    font-size:1.2em;
-    color:#fff;
-    display:flex;
-    gap:10px
-    }
-    
-    @font-face {
-    font-family:"San Francisco";
-    font-weight:400;
-    src:url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff)
-    }
-    
-    .movie-item h3 {
-    margin:10px 0;
-    color:#fff;
-    font:1.2em 'San Francisco',sans-serif
-    }
-    .carousel-indicators li {
-        background-color: #494949; /* Color del círculo */
-        border-radius: 50%; /* Hace que los indicadores sean círculos */
-        width: 7px; /* Ancho del círculo */
-        height: 7px; /* Alto del círculo */
-        transition: transform 0.3s; /* Añade una transición suave */
-        margin: 5px;
-    }
-    
-    .carousel-indicators .active {
-        background-color: #c3c3c3; /* Color del círculo activo */
-        transform: scale(1.5); /* Aumenta el tamaño del círculo activo */
-    }
+body {
+display:flex;
+flex-direction:column;
+font-family:'San Francisco',sans-serif;
+background-color:#333;
+color:#fff;
+overflow-x:hidden
+}
 
-    /* Pantallas pequeñas (móviles) */
+.header {
+position: sticky;
+top: 0;
+left: 0; 
+right: 0;
+z-index: 1000;
+display: flex;
+flex-direction: column;
+background-color: #000;
+padding: 0;
+height: 3rem; /* Cambiado a rem */
+}
+.header .nav a {
+color: #666;
+text-decoration: none;
+padding: 0.5rem 1rem; /* Cambiado a rem */
+font-size: 1.5rem; /* Cambiado a rem */
+font-weight: 700;
+transition: color .3s;
+margin: 0;
+}
+
+.header .nav-title {
+margin: 0;
+font-size: 1.5rem; /* Cambiado a rem */
+color: #fdfdfd;
+font-weight: 700;
+padding: 0.6rem 1rem 1rem 0rem; /* Cambiado a rem */
+cursor: pointer;
+}
+
+.header .nav-title:hover {
+color:#fdfdfd
+}
+
+.header .nav a {
+color:#666;
+text-decoration:none;
+padding:10px 20px;
+font-size:1.2em;
+font-weight:700;
+transition:color .3s;
+margin:0
+}
+
+.header .nav a:hover {
+color:#fff
+}
+
+.container {
+flex: 1;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 2rem; /* Cambiado a rem */
+width: 100%;
+max-width: 90vw; /* Cambiado a vw */
+box-sizing: border-box;
+}
+
+.movie-list {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+width: 100%;
+max-width: 90vw; /* Cambiado a vw */
+margin: 2rem auto; /* Cambiado a rem */
+}
+
+.movie-item {
+margin: 1rem; /* Cambiado a rem */
+cursor: pointer;
+text-align: center;
+width: 20vw; /* Cambiado a vw */
+max-width: 220px; /* Limitar ancho máximo */
+box-sizing: border-box;
+transition: transform .3s ease;
+}
+
+.movie-item:hover {
+transform:scale(1.05)
+}
+
+.movie-item img {
+width: 100%;
+height: auto; /* Cambiado a auto para mantener la proporción */
+max-height: 325px; /* Limitar altura máxima */
+object-fit: cover;
+border-radius: 8px;
+transition: transform .3s ease;
+}
+
+.movie-item img:hover {
+transform:scale(1.05)
+}
+
+.movie-item img {
+width:100%;
+height:325px;
+object-fit:cover;
+border-radius:8px
+}
+
+.movie-item h3 {
+font-size: 1.2em;
+margin: 10px 0;
+font-weight: bold; /* Agrega esta línea */
+}
+
+.footer {
+text-align: center;
+padding: 2rem; /* Cambiado a rem */
+background-color: #333;
+color: #8a8a8a;
+position: relative;
+bottom: 0;
+width: 100%;
+margin-top: auto;
+}
+
+input[type="text"], input[type="number"], select {
+width: 100%;
+padding: 1rem; /* Cambiado a rem */
+border: 1px solid #444;
+border-radius: 5px;
+background-color: #333;
+color: #fff;
+box-sizing: border-box;
+margin-bottom: 1rem; /* Cambiado a rem */
+}
+
+textarea {
+height:100px;
+resize:vertical
+}
+
+button {
+background-color: #007bff;
+color: #fff;
+border: none;
+border-radius: 5px;
+padding: 1rem 2rem; /* Cambiado a rem */
+font-size: 1rem; /* Cambiado a rem */
+cursor: pointer;
+transition: background-color 0.3s, transform .2s;
+}
+
+button:hover {
+background-color:#0056b3;
+transform:translateY(-2px)
+}
+
+.search {
+display:flex;
+justify-content:center;
+align-items:center;
+margin-bottom:20px
+}
+
+.search-container {
+display:flex;
+align-items:center;
+margin-left:auto
+}
+
+#searchInput {
+margin-right:10px;
+padding:5px
+}
+
+#genreSelect {
+padding:5px
+}
+
+.search-container input[type="text"],.search-container select {
+margin-top:0;
+margin-bottom:0;
+margin-left:10px;
+padding:5px;
+border-radius:5px;
+border:1px solid #444;
+background-color:#000;
+color:#fff
+}
+
+.carousel {
+margin-top:-55px;
+margin-bottom:10px;
+width:92vw;
+max-width:1670px;
+height:70vh;
+max-height:80vh;
+overflow:hidden;
+border-radius:0 0 15px 15px;
+}
+
+.carousel-inner {
+overflow:hidden
+}
+
+/* .carousel-item {
+
+transition:transform .5s ease
+} */
+
+.carousel-item.active {
+display:block
+}
+
+.carousel-item a {
+display:block;
+width:90vw;
+height:100%
+}
+
+.carousel-inner img {
+width:90vw;
+height:100%;
+object-fit:fill;
+border-radius:0 0 15px 15px;
+
+}
+
+.genres {
+margin:20px 0;
+text-align:center
+}
+
+.genre-container {
+display: flex; /* Asegúrate de que sea un contenedor flex */
+flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea si no hay suficiente espacio */
+justify-content: center; /* Centra los elementos dentro del contenedor */
+width: 100%; /* Asegúrate de que el contenedor ocupe todo el ancho */
+padding: 1rem; /* Agrega un poco de padding si es necesario */
+}
+
+
+.genre-list {
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:10px
+}
+
+.genre-item {
+background-color:#444;
+color:#fff;
+padding:10px 20px;
+margin:0 10px;
+border-radius:5px;
+cursor:pointer;
+transition:background-color .3s
+}
+
+.genre-link:hover {
+color:#fff;
+transform:scale(1.1);
+transition:color 0.3s,transform .3s
+}
+
+#showAllMovies {
+margin-left:10px;
+font-size:1.4em
+}
+
+.genre-link {
+font-size:1.2em;
+color:#666;
+text-decoration:none;
+margin-right:20px;
+font-weight:700;
+transition:color .3s
+}
+
+.genre-link:hover {
+color:#fff;
+text-decoration:none;
+cursor:pointer
+}
+
+#genreList {
+font-size:1.2em;
+color:#fff;
+display:flex;
+gap:10px
+}
+
+@font-face {
+font-family:"San Francisco";
+font-weight:400;
+src:url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff)
+}
+
+.movie-item h3 {
+margin:10px 0;
+color:#fff;
+font:1.2em 'San Francisco',sans-serif
+}
+.carousel-indicators li {
+background-color: #494949; /* Color del círculo */
+border-radius: 50%; /* Hace que los indicadores sean círculos */
+width: 7px; /* Ancho del círculo */
+height: 7px; /* Alto del círculo */
+transition: transform 0.3s; /* Añade una transición suave */
+margin: 5px;
+}
+
+.carousel-indicators .active {
+background-color: #c3c3c3; /* Color del círculo activo */
+transform: scale(1.5); /* Aumenta el tamaño del círculo activo */
+}
+
+@media (min-width: 1236px) and (max-height: 800px) {
+html,body {
+height:100%;
+margin:0;
+padding:0;
+font-size:100%;
+width: 100vw;
+}
+}
+
+/* Estilos de los medios */
 @media (max-width: 600px) {
-    .header .nav {
-        padding: 0 1em; /* Reduce el padding en la navegación */
-    }
+.header .nav {
+padding: 0vw; /* Cambiado a vw */
+}
 
-    .header .nav-title {
-        font-size: 1em; /* Reduce el tamaño de fuente del título */
-    }
+.search-container {
+height: 5px;
+width: 150px;
+padding: 7px 15px 0px 5px; /*arriba, derecha, abajo, izquierda */
+flex-direction: column; /* Cambia a columna para móviles */
+align-items: stretch; /* Alinear elementos a los lados */
+flex-direction:column;
+align-items:center
+}
 
-    .header .nav a {
-        font-size: 1em; /* Reduce el tamaño de fuente de los enlaces */
-    }
+.footer {
+font-size: 0.9rem; /* Cambiado a rem */
+}
+.header .nav-title {
+margin: 0;
+font-size: 0.9rem;
+color: #fdfdfd;
+font-weight: 700;
+padding: 15px 40px 0px 15px; /*arriba, derecha, abajo, izquierda */
+cursor: pointer;
+}
+.header .nav a {
+color: #666;
+text-decoration: none;
+padding: 12px 2px;
+font-size: 0.9em;
+font-weight: 700;
+transition: color .3s;
+margin: 0;
+}
+.hidden-link {
+display: none; /* Esto oculta el enlace */
+}
 
-    .movie-item {
-        width: 100%; /* Hacer que los elementos de la película ocupen el 100% */
-        max-width: 300px; /* Limitar el ancho máximo */
-    }
+.carousel {
+    margin-top: -55px;
+    margin-bottom: 10px;
+    width: 92vw;
+    max-width: 1670px;
+    height: 20vh;
+    max-height: 80vh;
+    overflow: hidden; /* Asegúrate de que el overflow esté oculto */
+    border-radius: 0 0 15px 15px; /* Asegúrate de que el border-radius esté aquí */
+}
 
-    .search-container {
-        flex-direction: column; /* Cambia a columna para móviles */
-        align-items: stretch; /* Alinear elementos a los lados */
-    }
+.carousel-inner {
+    display: flex; /* Usar flex para controlar la disposición de los elementos */
+    width: 100%; /* Asegúrate de que ocupe el 100% del ancho del contenedor */
+    height: 100%; /* Asegúrate de que ocupe el 100% de la altura */
+    overflow: hidden; /* Esto también ayuda a mantener el border-radius */
+}
 
-    .carousel {
-        height: 70%; /* Mantiene la altura original del carrusel */
-    }
+.carousel-item {
+    flex: 0 0 100%; /* Cada elemento ocupa el 100% del ancho del contenedor */
+    height: 100%; /* Asegúrate de que cada elemento ocupe el 100% de la altura */
+    transition: transform 0.5s ease; /* Asegúrate de que la transición esté aquí */
+}
 
-    .footer {
-        font-size: 0.9em; /* Reduce el tamaño de fuente del pie de página */
-    }
+.carousel-inner img {
+    width: 100%; /* Asegúrate de que la imagen ocupe el 100% del ancho del elemento */
+    height: 100%; /* Asegúrate de que la imagen ocupe el 100% de la altura del elemento */
+    object-fit: cover; /* Mantiene la proporción y recorta si es necesario */
+    border-radius: 0 0 15px 15px; /* Asegúrate de que el border-radius esté aquí también */
+}
+
+.carousel-item.active {
+    /* Asegúrate de que no haya estilos que interrumpan la transición */
+    transition: transform 0.5s ease; /* Reafirma la transición aquí si es necesario */
+}
+
+.search input[type="text"], .search select {
+    width: 100%;
+    margin: 10px 0;
+}
+.carousel-indicators {
+    position: absolute; /* Asegúrate de que la posición sea absoluta */
+    bottom: -20px; /* Ajusta este valor para mover los indicadores hacia arriba o abajo */
+    left: 50%; /* Centra los indicadores horizontalmente */
+    transform: translateX(-120%); /* Ajusta la posición de los indicadores al centro */
+    z-index: 1005; /* Asegúrate de que estén por encima de otros elementos */
+}
+
+.carousel-indicators li {
+    background-color: #494949; /* Color del círculo */
+    border-radius: 50%; /* Hace que los indicadores sean círculos */
+    width: 7px; /* Ancho del círculo */
+    height: 7px; /* Alto del círculo */
+    transition: transform 0.3s; /* Añade una transición suave */
+    margin: 5px; /* Espacio entre los indicadores */
+}
+
+.carousel-indicators .active {
+    background-color: #c3c3c3; /* Color del círculo activo */
+    transform: scale(1.5); /* Aumenta el tamaño del círculo activo */
+}
+.genres {
+    max-width: 100%;
+    margin: 0px 0;
+    text-align: center;
+}
+
+/* Asegúrate de que el genreList se muestre en columna */
+#genreList {
+    display: flex; /* Cambia el display a flex */
+    flex-direction: column; /* Asegúrate de que los elementos se apilen en columna */
+    align-items: center; /* Centra los elementos en el eje horizontal */
+    width: 100%; /* Asegúrate de que ocupe el 100% del ancho */
+    gap: 0;
+}
+
+.ml-3 {
+    margin-left: 0rem !important;
+}
+
+.genre-link {
+    font-size: 1rem;
+    flex: 1 1 100%; /* Cada enlace ocupa el 100% del ancho en móviles */
+    margin: 0.5rem 0; /* Margen vertical entre enlaces */
+}
+.genre-container {
+    flex-wrap: wrap;
+    display: flex
+;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    padding: 0rem;
+}
+
+#showAllMovies {
+    margin-left: 0px;
+    font-size: 1em;
+    text-align: center;
+}
+.movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 90vw; /* Cambiado a vw */
+    margin: 2rem auto; /* Cambiado a rem */
+}
+
+.movie-item {
+    margin: 1rem; /* Espaciado entre los elementos */
+    cursor: pointer;
+    text-align: center;
+    width: calc(50% - 2rem); /* Cambiado para mostrar 2 columnas */
+    max-width: 220px; /* Limitar ancho máximo */
+    box-sizing: border-box; /* Asegúrate de que el padding y el margen se incluyan en el ancho total */
+    transition: transform .3s ease;
+}
+
+.movie-item img {
+    width: 100%; /* La imagen ocupa el 100% del ancho del contenedor */
+    height: 140px; /* Establece una altura fija para todas las imágenes */
+    object-fit: cover; /* Asegura que la imagen se recorte adecuadamente */
+    border-radius: 8px;
+}
+
+.movie-item h3 {
+    display: none;
+    margin: 10px 0;
+    color: #fff;
+    font: 1em 'San Francisco', sans-serif;
+}
 }
 
 /* Pantallas medianas (tabletas) */
 @media (min-width: 601px) and (max-width: 1024px) {
-    .header .nav {
-        padding: 0 5em; /* Ajusta el padding en la navegación */
-    }
-
-    .movie-item {
-        width: 45%; /* Ajusta el ancho de los elementos de la película */
-    }
-
-    .carousel {
-        height: 70%; /* Mantiene la altura original del carrusel */
-    }
-
-    .footer {
-        font-size: 1em; /* Mantiene el tamaño de fuente del pie de página */
-    }
+.header .nav {
+padding: 0 5vw; /* Ajusta el padding en la navegación */
 }
 
+.movie-item {
+width: 45%; /* Ajusta el ancho de los elementos de la película */
+}
+
+.footer {
+font-size: 1rem; /* Mantiene el tamaño de fuente del pie de página */
+}
+}
 /* Pantallas grandes (desktops) */
 @media (min-width: 1025px) {
-    .header .nav {
-        padding: 0 12em; /* Mantiene el padding original en la navegación */
-    }
+.header .nav {
+padding: 0 12vw; /* Mantiene el padding original en la navegación */
+}
 
-    .movie-item {
-        width: 220px; /* Mantiene el ancho original de los elementos de la película */
-    }
-
-    .carousel {
-        height: 70%; /* Mantiene la altura original del carrusel */
-    }
+.movie-item {
+width: 20vw; /* Mantiene el ancho original de los elementos de la película */
+}
 }
