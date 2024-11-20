@@ -510,190 +510,190 @@ font-weight:600;
 
 /* Media Query para pantallas de hasta 1200px */
 @media (max-width: 1200px) {
-    .details-container {
-        min-width: 100%;
-    }
+.details-container {
+min-width: 100%;
+}
 
-    .details-content img {
-        max-width: 100%;
-        height: auto;
-        min-width: 70%; /* Cambiado a porcentaje */
-        min-height: auto; /* Se elimina el valor fijo */
-    }
+.details-content img {
+max-width: 100%;
+height: auto;
+min-width: 70%; /* Cambiado a porcentaje */
+min-height: auto; /* Se elimina el valor fijo */
+}
 
-    .info {
-        max-width: 100%;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+.info {
+max-width: 100%;
+margin: 0 auto;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+}
 
-    .info > * {
-        margin-bottom: 5%; /* Cambiado a porcentaje */
-        max-width: 100%;
-    }
+.info > * {
+margin-bottom: 5%; /* Cambiado a porcentaje */
+max-width: 100%;
+}
 
-    .actions {
-        width: 100%;
-    }
+.actions {
+width: 100%;
+}
 
-    .actions a, .actions button {
-        padding: 2%; /* Cambiado a porcentaje */
-        font-size: 100%; /* Cambiado a porcentaje */
-    }
+.actions a, .actions button {
+padding: 2%; /* Cambiado a porcentaje */
+font-size: 100%; /* Cambiado a porcentaje */
+}
 
-    .nav {
-        flex-direction: column;
-        align-items: center;
-    }
+.nav {
+flex-direction: column;
+align-items: center;
+}
 
-    .nav a {
-        font-size: 100%; /* Cambiado a porcentaje */
-        padding: 2%; /* Cambiado a porcentaje */
-    }
+.nav a {
+font-size: 100%; /* Cambiado a porcentaje */
+padding: 2%; /* Cambiado a porcentaje */
+}
 
-    .movie-title-description {
-        max-width: 100%;
-        margin-left: 0;
-    }
+.movie-title-description {
+max-width: 100%;
+margin-left: 0;
+}
 
-    .movie-title-description h3 {
-        font-size: 100%; /* Cambiado a porcentaje */
-        margin-bottom: 5%; /* Cambiado a porcentaje */
-    }
+.movie-title-description h3 {
+font-size: 100%; /* Cambiado a porcentaje */
+margin-bottom: 5%; /* Cambiado a porcentaje */
+}
 
-    .movie-title-description p {
-        font-size: 4%; /* Cambiado a porcentaje */
-    }
+.movie-title-description p {
+font-size: 4%; /* Cambiado a porcentaje */
+}
 
-    .similar-movies {
-        margin-left: 10%;
-    }
+.similar-movies {
+margin-left: 10%;
+}
 }
 
 /* Media Query para pantallas de hasta 768px */
 @media (max-width: 600px) {
-    * {
-        box-sizing: border-box;
-    }
-    body {
-        display: flex;
-        flex-direction: column;
-        font-family: 'San Francisco', sans-serif;
-        background-color: #2c2c2c;
-        color: #fff;
-        overflow-x: hidden; /* Asegúrate de que esto esté bien escrito */
-    }
+* {
+box-sizing: border-box;
+}
+body {
+display: flex;
+flex-direction: column;
+font-family: 'San Francisco', sans-serif;
+background-color: #2c2c2c;
+color: #fff;
+overflow-x: hidden; /* Asegúrate de que esto esté bien escrito */
+}
 
-    .header {
-        max-width: 100%; /* Asegúrate de que el header no exceda el ancho */
-        padding: 0px; /* Ajusta el padding si es necesario */
-        text-align: center; /* Centra el texto del header */
-    }
+.header {
+max-width: 100%; /* Asegúrate de que el header no exceda el ancho */
+padding: 0px; /* Ajusta el padding si es necesario */
+text-align: center; /* Centra el texto del header */
+}
 
-    .header .nav {
-        height: 45px;
-        background-color: black;
-        padding: 0 0em; /* Reduce el padding en la navegación */
-    }
-
-
-    .header .nav-title {
-        font-size: 1em; /* Reduce el tamaño de fuente del título */
-    }
-
-    .header .nav a {
-        font-size: 1em; /* Reduce el tamaño de fuente de los enlaces */
-    }
+.header .nav {
+height: 45px;
+background-color: black;
+padding: 0 0em; /* Reduce el padding en la navegación */
+}
 
 
-    .details-container {
-        min-width: 100%;
-        max-width: 100%; /* Asegúrate de que no exceda el ancho */
-        margin: 0 auto; /* Centra el contenedor */
+.header .nav-title {
+font-size: 1em; /* Reduce el tamaño de fuente del título */
+}
+
+.header .nav a {
+font-size: 1em; /* Reduce el tamaño de fuente de los enlaces */
+}
+
+
+.details-container {
+min-width: 100%;
+max-width: 100%; /* Asegúrate de que no exceda el ancho */
+margin: 0 auto; /* Centra el contenedor */
+}
+
+.details-content img {
+    width: 500px;
+    height: 200px;
+    max-height: 72vh;
+    object-fit: cover;
+}
+
+.info {
+    max-width: 150%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     }
 
-    .details-content img {
-        max-width: 100%;
-        height: auto;
-        min-width: 70%; /* Cambiado a porcentaje */
-        min-height: auto; /* Se elimina el valor fijo */
-    }
+.info > * {
+margin-bottom: 0%; /* Cambiado a porcentaje */
+max-width: 100%;
+}
 
-    .info {
-        max-width: 100%;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+.actions {
+width: 100%;
+}
 
-    .info > * {
-        margin-bottom: 5%; /* Cambiado a porcentaje */
-        max-width: 100%;
-    }
+.actions a, .actions button {
+padding: 2%; /* Cambiado a porcentaje */
+font-size: 100%; /* Cambiado a porcentaje */
+}
 
-    .actions {
-        width: 100%;
-    }
+.nav {
+flex-direction: column;
+align-items: center;
+}
 
-    .actions a, .actions button {
-        padding: 2%; /* Cambiado a porcentaje */
-        font-size: 100%; /* Cambiado a porcentaje */
-    }
+.nav a {
+font-size: 100%; /* Cambiado a porcentaje */
+padding: 2%; /* Cambiado a porcentaje */
+}
 
-    .nav {
-        flex-direction: column;
-        align-items: center;
-    }
+.movie-details {
+flex: 1;
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-top: 20px;
+width: 100%;
+}
 
-    .nav a {
-        font-size: 100%; /* Cambiado a porcentaje */
-        padding: 2%; /* Cambiado a porcentaje */
-    }
+.movie-title-description {
+max-width: 100%;
+margin-left: 0;
+text-align: center; /* Asegúrate de que el texto esté centrado */
+}
 
-    .movie-details {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 20px;
-        width: 100%;
-    }
+.movie-title-description h3 {
+font-size: 100%; /* Cambiado a porcentaje */
+margin-bottom: 5%; /* Cambiado a porcentaje */
+}
 
-    .movie-title-description {
-        max-width: 100%;
-        margin-left: 0;
-        text-align: center; /* Asegúrate de que el texto esté centrado */
-    }
+.movie-title-description p {
+font-size: 4%; /* Cambiado a porcentaje */
+}
+.movie-meta.row {
+display: flex; /* Asegúrate de que los elementos internos se alineen correctamente */
+flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea */
+justify-content: center; /* Centra los elementos dentro del contenedor */
+width: 100%; /* Asegúrate de que el ancho sea el 100% del contenedor padre */
+margin: 0 auto; /* Centra el contenedor */
+}
 
-    .movie-title-description h3 {
-        font-size: 100%; /* Cambiado a porcentaje */
-        margin-bottom: 5%; /* Cambiado a porcentaje */
-    }
-
-    .movie-title-description p {
-        font-size: 4%; /* Cambiado a porcentaje */
-    }
-    .movie-meta.row {
-        display: flex; /* Asegúrate de que los elementos internos se alineen correctamente */
-        flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea */
-        justify-content: center; /* Centra los elementos dentro del contenedor */
-        width: 100%; /* Asegúrate de que el ancho sea el 100% del contenedor padre */
-        margin: 0 auto; /* Centra el contenedor */
-    }
-
-    .similar-movies {
-        margin-left: auto; /* Centra el contenedor */
-        margin-right: auto; /* Centra el contenedor */
-        width: 90%; /* Asegúrate de que el ancho sea adecuado */
-        display: flex; /* Alinea los elementos dentro de similar-movies en fila */
-        flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea si no hay suficiente espacio */
-        justify-content: center; /* Centra los elementos dentro del contenedor */
-    }
+.similar-movies {
+margin-left: auto; /* Centra el contenedor */
+margin-right: auto; /* Centra el contenedor */
+width: 90%; /* Asegúrate de que el ancho sea adecuado */
+display: flex; /* Alinea los elementos dentro de similar-movies en fila */
+flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea si no hay suficiente espacio */
+justify-content: center; /* Centra los elementos dentro del contenedor */
+}
 }
 
 /* Media Query para pantallas de hasta 480px */
@@ -737,15 +737,25 @@ font-size: 4%; /* Cambiado a porcentaje */
 }
 
 .movie-meta.row .col strong {
-font-size: 4%; /* Cambiado a porcentaje */
+font-size: 2%; /* Cambiado a porcentaje */
 }
 
-.details-content img {
+#movie-categoria{
+font-size: 2%;
+}
+#movie-anio{
+font-size: 2%;
+}
+#movie-genero{
+font-size: 2%;
+}
+
+/* .details-content img {
 max-width: 100%;
 height: auto;
-min-width: 80%; /* Cambiado a porcentaje */
-min-height: auto; /* Se elimina el valor fijo */
-}
+min-width: 80%; 
+min-height: auto;
+} */
 
 .info h3 {
 font-size: 5%; /* Cambiado a porcentaje */
@@ -756,7 +766,7 @@ font-size: 4%; /* Cambiado a porcentaje */
 }
 
 .info {
-padding: 5%; /* Cambiado a porcentaje */
+padding: 2%; /* Cambiado a porcentaje */
 }
 
 .actions a, .actions button {
