@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Nueva Película</title>
-    <link rel="stylesheet" href="./css/addmovie.css"> <!-- Asegúrate de que la ruta sea correcta -->
+    <link rel="stylesheet" href="./css/addmovie.css"> <!-- Usar el mismo CSS que addmovie -->    
 </head>
 <body>
     <header class="header">
@@ -12,44 +12,44 @@
             <a href="index.html">Volver al Inicio</a>
         </nav>
     </header>
-
-    <main class="container">
-        <h1>Agregar Nueva Película</h1>
+    <main class="encabezado">
+        <h1>Agregar una Nueva Película</h1>
+        <h2>Las películas que amamos son las que nos definen; no dudes en agregar esa que ha dejado una huella en ti</h2>
+    </main>
+     <main class="container">
         <form id="add-movie-form" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="titulo">Título</label>
-                <input type="text" id="titulo" name="titulo" placeholder="Título de la película" required />
+                <input type="text" id="titulo" name="titulo" required />
+                <label for="titulo" class="form-textbox-label">Título de la película</label>
             </div>
             <div class="form-group">
-                <label for="contenido">Descripción</label>
-                <textarea id="contenido" name="contenido" placeholder="Descripción de la película" required></textarea>
+                <textarea id="contenido" name="contenido" required></textarea>
+                <label for="contenido" class="form-textbox-label">Descripción de la película</label>
             </div>
             <div class="form-group">
-                <label for="categoria">Categoría</label>
-                <input type="text" id="categoria" name="categoria" placeholder="Categoría (pelicula, serie)" required />
+                <input type="text" id="categoria" name="categoria" required />
+                <label for="categoria" class="form-textbox-label">Categoría (película, serie)</label>
             </div>
             <div class="form-group">
-                <label for="anio">Año</label>
-                <input type="number" id="anio" name="anio" placeholder="Año de lanzamiento" required min="1888" max="2100" />
+                <input type="number" id="anio" name="anio" required min="1888" max="2100" />
+                <label for="anio" class="form-textbox-label">Año de lanzamiento</label>
             </div>
             <div class="form-group">
-                <label for="genero">Género</label>
-                <input type="text" id="genero" name="genero" placeholder="Género" required />
+                <input type="text" id="genero" name="genero" required />
+                <label for="genero" class="form-textbox-label">Género (Ingrese solo 1)</label>
             </div>
             <div class="form-group">
-                <label for="watchUrl">URL para Ver</label>
-                <input type="text" id="watchUrl" name="watchUrl" placeholder="URL para ver la película" required />
+                <input type="text" id="watchUrl" name="watchUrl" required />
+                <label for="watchUrl" class="form-textbox-label">URL para ver la película</label>
             </div>
             <div class="form-group">
-                <label for="image">Portada</label>
                 <input type="file" id="image" name="image" accept="image/*" required />
             </div>
             <div class="form-group">
-                <label for="banner">Banner</label>
                 <input type="file" id="banner" name="banner" accept="image/*" required />
             </div>
             <div class="button-container">
-                <button type="submit">Guardar Película</button>
+                <button type="submit">Agregar Película</button>
             </div>        
         </form>
     </main>
@@ -57,6 +57,6 @@
     <footer class="footer">
         <p>&copy; 2024 Clase de Programación Web. Todos los derechos reservados.</p>
     </footer>
-    <script src="./js/addmovie.js" type="module"></script> <!-- Incluye el archivo JavaScript externo -->
+    <script src="./js/addmovie.js" type="module"></script> 
 </body>
 </html>
