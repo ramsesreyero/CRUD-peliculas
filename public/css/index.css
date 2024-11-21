@@ -78,8 +78,8 @@ display: flex;
 flex-wrap: wrap;
 justify-content: center;
 width: 100%;
-max-width: 90vw; /* Cambiado a vw */
-margin: 2rem auto; /* Cambiado a rem */
+max-width: 92vw; /* Cambiado a vw */
+margin: auto; /* Cambiado a rem */
 }
 
 .movie-item {
@@ -201,9 +201,8 @@ color:#fff
 
 .carousel {
 margin-top:-55px;
-margin-bottom:10px;
-width:92vw;
-max-width:1670px;
+margin-bottom:0px;
+width:90vw;
 height:70vh;
 max-height:80vh;
 overflow:hidden;
@@ -214,26 +213,32 @@ border-radius:0 0 15px 15px;
 overflow:hidden
 }
 
-/* .carousel-item {
-
-transition:transform .5s ease
-} */
-
 .carousel-item.active {
 display:block
 }
 
+.carousel-item {
+    flex: 0 0 100%; /* Cada elemento ocupa el 100% del ancho del contenedor */
+    height: 100%; /* Asegúrate de que cada elemento ocupe el 100% de la altura del elemento */
+    transition: transform 0.5s ease; /* Asegúrate de que la transición esté aquí */
+    position: relative; /* Añade esto para controlar la posición de los elementos */
+}
+
 .carousel-item a {
 display:block;
-width:90vw;
+width: 100%;
 height:100%
 }
 
 .carousel-inner img {
-width:90vw;
-height:100%;
-object-fit:fill;
-border-radius:0 0 15px 15px;
+    width: 100%; /* Asegúrate de que la imagen ocupe el 100% del ancho del elemento */
+    height: 100%; /* Asegúrate de que la imagen ocupe el 100% de la altura del elemento */
+    object-fit: cover; /* Mantiene la proporción y recorta si es necesario */
+    border-radius: 0 0 15px 15px; /* Asegúrate de que el border-radius esté aquí también */
+    position: relative; /* Esto ayudará a evitar la superposición */
+    top: 0;
+    left: 0;
+    overflow:hidden;
 
 }
 
