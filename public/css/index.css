@@ -243,8 +243,11 @@ height:100%
 }
 
 .genres {
-margin:20px 0;
+margin:0px;
 text-align:center
+}
+.mt-4, .my-4 {
+    margin-top: 0 !important;
 }
 
 .genre-container {
@@ -252,7 +255,7 @@ display: flex; /* Asegúrate de que sea un contenedor flex */
 flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea si no hay suficiente espacio */
 justify-content: center; /* Centra los elementos dentro del contenedor */
 width: 100%; /* Asegúrate de que el contenedor ocupe todo el ancho */
-padding: 1rem; /* Agrega un poco de padding si es necesario */
+padding: 2rem 0rem 1rem 0rem; /* Agrega un poco de padding si es necesario */
 }
 
 

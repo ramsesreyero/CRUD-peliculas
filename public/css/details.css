@@ -102,12 +102,6 @@ max-height: 75vh; /* Limita la altura máxima de la imagen */
 object-fit: cover; /* La imagen cubrirá el contenedor manteniendo su proporción */
 }
 
-/* .details-content img {
-height: calc(100vh - 15px);
-width: 100%; 
-object-fit: cover;
-} */
-
 .details-row {
 display:flex;
 align-items:center;
@@ -322,11 +316,6 @@ background-color:#0000004d;
 color:#fff;
 padding:0;
 text-align:center
-}
-.similar-movies h2 {
-text-align: left; /* Alinea el texto a la izquierda */
-font-size: 1em; /* Ajusta el tamaño de fuente según sea necesario */
-margin-bottom: 20px; /* Espacio debajo del título */
 }
 
 /*vista para laptop*/
@@ -620,8 +609,12 @@ margin-left: 10%;
         font-size: 9px;
     }
     .similar-movies {
-        margin: 0%;
+        margin: 10% 0% 0% 0%;
         width: 100%;
+    }
+    .similar-movies h2 {
+        font-size: 0.8em;
+        font-weight: 650;
     }
     .movie-meta.row{
         font-size: 13px;
@@ -683,8 +676,12 @@ margin-left: 10%;
         font-size: 15px;
     }
     .similar-movies {
-        margin: 0%;
+        margin: 10% 0% 0% 0%;
         width: 100%;
+    }
+    .similar-movies h2 {
+        font-size: 0.8em;
+        font-weight: 650;
     }
         .details-content {
             max-width: 100%;

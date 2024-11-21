@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const carousel = document.querySelector('.carousel');
     const genreContainer = document.querySelector('.genre-container');
     const genreList = document.getElementById('genreList'); // Agregar genreList
+    const movieList = document.querySelector('.movie-list'); // Seleccionar el contenedor de la lista de películas
 
     // Agrega un evento al input de búsqueda
     searchInput.addEventListener('input', function() {
@@ -31,12 +32,18 @@ document.addEventListener('DOMContentLoaded', async () => {
             genreContainer.style.display = 'none';
             genreList.style.display = 'none'; // Ocultar genreList
             showAllMoviesButton.style.display = 'none'; // Ocultar botón "Mostrar Todas"
+
+            // Quitar el margen automático
+            movieList.style.margin = '0'; // Establecer el margen a 0
         } else {
             // Si el input está vacío, muestra nuevamente el carrusel, la lista de géneros y el botón "Mostrar Todas"
             carousel.style.display = 'block';
             genreContainer.style.display = 'flex'; // O 'block', dependiendo de tu diseño
             genreList.style.display = 'flex'; // Mostrar genreList
             showAllMoviesButton.style.display = 'inline'; // Mostrar botón "Mostrar Todas"
+
+            // Restaurar el margen automático
+            movieList.style.margin = 'auto'; // Restablecer el margen a auto
         }
     });
 });
