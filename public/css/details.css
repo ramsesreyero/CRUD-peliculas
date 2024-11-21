@@ -123,13 +123,17 @@ display:flex;
 flex-direction:column;
 padding:1%;
 background-color:#000;
-color:#fff;
+color:#ddd;
 box-shadow:0 4px 8px #00000080;
 border-radius:0 0 20px 20px;
 margin:0 auto;
 box-sizing:border-box;
 flex:1;
-min-width:0
+min-width:0;
+justify-content: space-between; /* Distribuye el espacio entre los elementos */
+align-items: center; /* Alinea verticalmente los elementos */
+text-align: left; /* Cambiado a izquierda para mejor alineación */
+width: 100%; /* Asegura que ocupe todo el ancho disponible */
 }
 
 .info h3 {
@@ -140,7 +144,6 @@ flex-shrink:1
 
 .info p {
 margin:.5rem 0;
-font-size:1em;
 color:#ddd;
 flex-shrink:1;
 overflow:hidden;
@@ -149,15 +152,10 @@ white-space:normal
 }
 
 .movie-title-description {
-display:flex;
-flex-direction:column;
-margin-left:10px;
-width:100%;
-max-width:1000px;
-height:auto;
-overflow:hidden;
-text-overflow:ellipsis;
-white-space:normal
+    font-size:1.2em;
+    color: #fff;
+    flex: 1; /* Permite que ocupe el espacio restante */
+    margin: 0 20px; /* Margen horizontal para separación */
 }
 
 .movie-title-description h3 {
@@ -172,13 +170,13 @@ margin:0
 }
 
 .actions {
-display:flex;
-flex-direction:column;
-gap:10px;
-align-items:stretch;
-width:100%;
-max-width:300px;
-margin:0
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start; /* Alinea los botones a la izquierda */
+    margin-right: 20px; /* Espacio entre los botones y el contenido central */
+    width: 300px;
+    max-width: 300px;
 }
 
 .actions a,.actions button {
@@ -219,19 +217,16 @@ line-height:1.2
 }
 
 .movie-meta.row {
-align-items:right;
-justify-content: flex-start; /* Distribuye el espacio entre los elementos */
-display:flex;
-flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea si no hay suficiente espacio */
-flex-direction:column;
-gap:10px;
-margin:0
+    display: flex;
+    flex-direction: column; /* Cambiado a columna para apilar elementos */
+    align-items: flex-end; /* Alinea los elementos a la derecha */
+    margin-left: auto; /* Empuja el contenido a la derecha */
+    gap: 15px;
 }
 
 .movie-meta.row .col {
-display:flex;
-align-items:center;
-margin-right:50px
+    display: flex;
+    align-items: center; /* Alinea verticalmente los elementos en el centro */
 }
 
 .movie-meta.row .col:last-child {
@@ -244,6 +239,7 @@ line-height:1.2
 }
 
 .movie-meta.row .col strong {
+color: #fff;
 margin-right:.5rem
 }
 
@@ -578,141 +574,72 @@ margin-left: 10%;
 
 /* Media Query para pantallas de movil */
 @media (max-width: 600px) {
-* {
-box-sizing: border-box;
-}
-body {
-display: flex;
-flex-direction: column;
-font-family: 'San Francisco', sans-serif;
-background-color: #2c2c2c;
-color: #fff;
-overflow-x: hidden; /* Asegúrate de que esto esté bien escrito */
-}
+    .nav {
+        height: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #000;
+        padding: 0;
+    }
+    .info {
+        border-radius:0px;
+        }
+    .info > * {
+        margin-bottom: 0%;
+        max-width: 100%;
+    }
 
-.header {
-max-width: 100%; /* Asegúrate de que el header no exceda el ancho */
-padding: 0px; /* Ajusta el padding si es necesario */
-text-align: center; /* Centra el texto del header */
-}
-
-.header .nav {
-height: 45px;
-background-color: black;
-padding: 0 0em; /* Reduce el padding en la navegación */
-}
-
-
-.header .nav-title {
-font-size: 1em; /* Reduce el tamaño de fuente del título */
-}
-
-.header .nav a {
-font-size: 1em; /* Reduce el tamaño de fuente de los enlaces */
-}
-
-
-.details-container {
-min-width: 100%;
-max-width: 100%; /* Asegúrate de que no exceda el ancho */
-margin: 0 auto; /* Centra el contenedor */
-}
-
-.details-content img {
-width: 500px;
-height: 200px;
-max-height: 72vh;
-object-fit: cover;
-}
-
-.info {
-max-width: 150%;
-margin: 0 auto;
-display: flex;
-flex-direction: column;
-align-items: center;
-text-align: center;
-border-radius: 0%;
-}
-
-.info > * {
-margin-bottom: 0%; /* Cambiado a porcentaje */
-max-width: 100%;
-}
-
-.actions {
-width: 100%;
-}
-
-.actions a, .actions button {
-padding: 2%; /* Cambiado a porcentaje */
-font-size: 100%; /* Cambiado a porcentaje */
-}
-
-.nav {
-flex-direction: column;
-align-items: center;
-}
-
-.nav a {
-font-size: 100%; /* Cambiado a porcentaje */
-padding: 2%; /* Cambiado a porcentaje */
-}
-
-.details-content {
-max-width: 100%;
-max-height: 100%;
-margin: 0 auto;
-padding: 0%;
-box-sizing: border-box;
-}
-
-.movie-details {
-flex: 1;
-display: flex;
-flex-direction: column;
-align-items: center;
-margin-top: 20px;
-width: 100%;
-}
-
-.movie-title-description {
-max-width: 100%;
-margin-left: 0;
-text-align: center; /* Asegúrate de que el texto esté centrado */
-}
-
-.movie-title-description h3 {
-font-size: 100%; /* Cambiado a porcentaje */
-margin-bottom: 5%; /* Cambiado a porcentaje */
-}
-
-.movie-title-description p {
-font-size: 4%; /* Cambiado a porcentaje */
-}
-.movie-meta.row {
-display: flex; /* Asegúrate de que los elementos internos se alineen correctamente */
-flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea */
-justify-content: center; /* Centra los elementos dentro del contenedor */
-width: 100%; /* Asegúrate de que el ancho sea el 100% del contenedor padre */
-margin: 0 auto; /* Centra el contenedor */
-}
-
-.similar-movies {
-margin-top: 6%;
-margin-left: auto; /* Centra el contenedor */
-margin-right: auto; /* Centra el contenedor */
-width: 90%; /* Asegúrate de que el ancho sea adecuado */
-display: flex; /* Alinea los elementos dentro de similar-movies en fila */
-flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea si no hay suficiente espacio */
-justify-content: center; /* Centra los elementos dentro del contenedor */
-}
-.similar-movies h2 {
-text-align: left; /* Alinea el texto a la izquierda */
-font-size: 0.6em; /* Ajusta el tamaño de fuente según sea necesario */
-margin-bottom: 20px; /* Espacio debajo del título */
-font-weight:600;
-}
+    .col{
+        font-size: 50%;
+    }
+    .actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+        width: 100%;
+        max-width: 110px;
+        margin: 5px 0px;
+    }
+    .actions a, .actions button {
+        padding: 2%;
+        font-size: 60%;
+    }
+    .movie-title-description {
+        max-width: 100%;
+        margin-left: 0;
+        text-align: left;
+        margin: 0;
+    }
+    .movie-title-description h3 {
+        font-size: 50%;
+        margin-bottom: 3%;
+    }
+    .movie-title-description p {
+        font-size: 9px;
+    }
+    .similar-movies {
+        margin: 0%;
+        width: 100%;
+    }
+    .movie-meta.row{
+        font-size: 13px;
+        gap: 5px;
+        text-align: right;
+        }
+        .details-content {
+            max-width: 100%;
+        }
+        .movie-meta.row .col {
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+        }
+        .movie-meta.row .col strong {
+            color: #fff;
+            margin-right: 0rem;
+        }
 }
 
 /* Media Query para celulares horizontal */
@@ -750,7 +677,7 @@ font-weight:600;
     }
     .movie-title-description h3 {
         font-size: 100%;
-        margin-bottom: 3%;
+        margin-bottom: 2%;
     }
     .movie-title-description p {
         font-size: 15px;
@@ -759,83 +686,16 @@ font-weight:600;
         margin: 0%;
         width: 100%;
     }
-}
-
-/* Media Query para pantallas de hasta 480px */
-@media (max-width: 480px) {
-* {
-box-sizing: border-box;
-}
-body {
-display: flex;
-flex-direction: column;
-font-family: 'San Francisco', sans-serif;
-background-color: #2c2c2c;
-color: #fff;
-overflow-x: hidden; /* Asegúrate de que esto esté bien escrito */
-}
-.header {
-height: 15px;
-padding: 0; /* Cambiado a porcentaje */
-}
-
-.header h1 {
-font-size: 4%; /* Cambiado a porcentaje */
-}
-
-.movie-title-description h3 {
-font-size: 5%; /* Cambiado a porcentaje */
-margin-bottom: 0;
-}
-
-.movie-title-description p {
-font-size: 4%; /* Cambiado a porcentaje */
-}
-
-.movie-meta.row .col {
-flex-direction: column;
-align-items: flex-start;
-}
-
-.movie-meta.row .col p {
-font-size: 4%; /* Cambiado a porcentaje */
-}
-
-.movie-meta.row .col strong {
-font-size: 2%; /* Cambiado a porcentaje */
-}
-
-#movie-categoria{
-font-size: 2%;
-}
-#movie-anio{
-font-size: 2%;
-}
-#movie-genero{
-font-size: 2%;
-}
-
-/* .details-content img {
-max-width: 100%;
-height: auto;
-min-width: 80%; 
-min-height: auto;
-} */
-
-.info h3 {
-font-size: 5%; /* Cambiado a porcentaje */
-}
-
-.info p {
-font-size: 4%; /* Cambiado a porcentaje */
-}
-
-.info {
-padding: 2%; /* Cambiado a porcentaje */
-}
-
-.actions a, .actions button {
-font-size: 4%; /* Cambiado a porcentaje */
-}
-
+        .details-content {
+            max-width: 100%;
+        }
+        .movie-meta.row .col {
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+        }
+        .movie-meta.row .col strong {
+            color: #fff;
+            margin-right: 0rem;
+        }
 }
