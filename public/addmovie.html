@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Nueva Película</title>
+    <title>Agregar Contenido</title>
     <link rel="stylesheet" href="./css/addmovie.css"> <!-- Usar el mismo CSS que addmovie -->    
 </head>
 <body>
@@ -13,18 +13,18 @@
         </nav>
     </header>
     <main class="encabezado">
-        <h1>Agregar una Nueva Película</h1>
+        <h1>Agregar Nuevo Contenido</h1>
         <h2>Las películas que amamos son las que nos definen; no dudes en agregar esa que ha dejado una huella en ti</h2>
     </main>
     <main class="container">
         <form id="add-movie-form" enctype="multipart/form-data">
             <div class="form-group">
                 <input type="text" id="titulo" name="titulo" required />
-                <label for="titulo" class="form-textbox-label">Título de la película</label>
+                <label for="titulo" class="form-textbox-label">Título</label>
             </div>
             <div class="form-group">
                 <textarea id="contenido" name="contenido" required></textarea>
-                <label for="contenido" class="form-textbox-label">Descripción de la película</label>
+                <label for="contenido" class="form-textbox-label">Descripción</label>
             </div>
             <div class="form-group">
                 <label for="categoria" class="form-textbox-label"></label>
@@ -54,7 +54,7 @@
             </div>
             <div class="form-group">
                 <input type="text" id="watchUrl" name="watchUrl" required />
-                <label for="watchUrl" class="form-textbox-label">URL para ver la película</label>
+                <label for="watchUrl" class="form-textbox-label">URL para ver</label>
             </div>
             <div class="form-group">
                 <input type="file" id="image" name="image" accept="image/*" required style="display: none;" />
@@ -71,7 +71,7 @@
                 <span id="banner-file-name" class="file-name"></span> <!-- Contenedor para mostrar el nombre del archivo -->
             </div>
             <div class="button-container">
-                <button type="submit">Agregar Película</button>
+                <button type="submit">Agregar</button>
             </div>        
         </form>
     </main>

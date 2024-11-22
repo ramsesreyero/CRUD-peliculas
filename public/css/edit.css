@@ -150,7 +150,7 @@ h2 {
 /* Estilos para inputs de tipo file */
 .form-group input[type="file"] {
     width: 50%; /* Asegurarse de que ocupe el 100% del contenedor */
-    padding: 1.5% 0% 1% 1%; /* Ajustar el padding */
+    padding: 1.5rem 1rem; /* Ajustar el padding */
     border: 1px solid #6e6e73; /* Borde gris por defecto */
     border-radius: 15px;
     background-color: hsla(0, 0%, 100%, .04);
@@ -238,10 +238,37 @@ h2 {
     color: #a1a1a1;
 }
     
-    .input-image-container {
-    display:flex;
-    align-items:center
-    }
+.input-image-container {
+    display: flex;
+    align-items: center; /* Centrar verticalmente */
+    position: relative; /* Para posicionar el input */
+}
+
+.input-image-container input[type="file"] {
+    position: absolute; /* Posicionar absolutamente */
+    width: 100%; /* Asegurarse de que ocupe el 100% del contenedor */
+    height: 100%; /* Asegurarse de que ocupe el 100% del contenedor */
+    opacity: 0; /* Hacer el input invisible */
+    cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+}
+
+.custom-file-upload {
+    display: inline-flex; /* Usar flex para centrar el contenido */
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    padding: 1rem; /* Espaciado */
+    border: 1px solid #6e6e73; /* Borde gris por defecto */
+    border-radius: 15px; /* Bordes redondeados */
+    background-color: hsla(0, 0%, 100%, .04); /* Color de fondo */
+    color: #ffffff; /* Color del texto */
+    cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+    text-align: center; /* Centrar el texto */
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+.custom-file-upload:hover {
+    background-color: #007aff; /* Cambiar el color de fondo al pasar el mouse */
+}
     
     .input-image-container input {
     margin-right:10px
@@ -314,6 +341,11 @@ h2 {
     .button-container button {
         width: 80%; /* Hacer que el botón ocupe más espacio */
     }
+
+    .form-group input[type="text"], .form-group input[type="number"], .form-group textarea {
+        padding: 2rem 1rem;
+        padding-bottom: 1rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -327,10 +359,6 @@ h2 {
 }
 
 @media (max-width: 576px) {
-    .form-group input,
-    .form-group textarea {
-        padding: 0.5rem; /* Reducir el padding de los inputs */
-    }
     .button-container button {
         width: 90%; /* Hacer que el botón ocupe casi todo el ancho */
     }

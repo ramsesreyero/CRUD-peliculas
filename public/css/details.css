@@ -578,6 +578,10 @@ font-size: 4%; /* Cambiado a porcentaje */
 
 /* Media Query para pantallas de movil */
 @media (max-width: 600px) {
+    .header .nav a {
+        font-size: 1rem; /* Cambiado a rem */
+        font-weight: 700;
+        }
     .nav {
         height: 48px;
         display: flex;
@@ -652,6 +656,10 @@ font-size: 4%; /* Cambiado a porcentaje */
 
 /* Media Query para celulares horizontal */
 @media (min-width: 601px) and (max-width: 1024px) {
+    .header .nav a {
+        font-size: 1rem; /* Cambiado a rem */
+        font-weight: 700;
+        }
     .nav {
         height: 48px;
         display: flex
