@@ -1,13 +1,33 @@
-const mysql = require('mysql2/promise'); // Usar mysql2/promise para facilitar el manejo
-require('dotenv').config();
+// db.js
+const mysql = require('mysql2/promise');
 
+// Crear un pool de conexiones usando la URL de conexión de Railway
 const db = mysql.createPool({
-    host: process.env.DB_HOST || 'junction.proxy.rlwy.net',
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || 'rvbevVIEJYqqzefyTimybsrWsWuplSrJ',
-    database: process.env.DB_NAME || 'railway',
-    port: process.env.DB_PORT || 32229, // Usa el puerto por defecto si no se especifica
-    connectionLimit: 10 // Limitar el número de conexiones
+    uri: 'mysql://root:rvbevVIEJYqqzefyTimybsrWsWuplSrJ@junction.proxy.rlwy.net:32229/railway',
+    connectionLimit: 10, // Limitar el número de conexiones
+    connectTimeout: 20000, // Aumentar el tiempo de espera a 20 segundos
+    ssl: {
+        rejectUnauthorized: false // Permitir certificados autofirmados
+    }
+});
+
+// Función para probar la conexión a la base de datos
+async function connectToDatabase() {
+    try {
+        const connection = await db.getConnection(); // Obtener una conexión del pool
+        console.log('Connected to the MySQL database');
+        await connection.release(); // Liberar la conexión de vuelta al pool
+    } catch (err) {
+        console.error('Error connecting to the database:', err);
+    }
+}
+
+// Llamar a la función para probar la conexión
+connectToDatabase();
+
+// Manejo de errores para el pool de conexiones
+db.on('error', (err) => {
+    console.error('Database connection error:', err);
 });
 
 // Exportar el pool de conexiones

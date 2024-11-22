@@ -8,6 +8,7 @@ const categoriasRoutes = require('./api/generos'); // Importar las rutas de cate
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const multer = require('multer');
 const morgan = require('morgan');
+const db = require('./config/db'); // Ajusta la ruta según la ubicación de db.js
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -29,7 +30,7 @@ app.use(cors({
 
 // Middleware for parsing JSON bodies
 app.use(bodyParser.json());
- app.use(express.static('public'));
+app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
 
 // Set up multer for file uploads
@@ -58,16 +59,7 @@ app.use('/api', createProxyMiddleware({
     },
 }));
 
-// Database connection using a pool
-const db = mysql.createPool({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    connectionLimit: 10 // Limit the number of connections
-});
-
-// Connect to the database
+// Connect to the database (This is already handled in db.js)
 db.getConnection()
     .then(connection => {
         console.log('Connected to the MySQL database');
