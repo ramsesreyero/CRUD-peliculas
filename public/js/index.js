@@ -1,5 +1,7 @@
 import { host } from "./host.js";
 
+let isLoggedIn = false; // Variable para rastrear el estado de inicio de sesión
+
 document.addEventListener('DOMContentLoaded', async () => {
     await obtenerGeneros(); // Obtener géneros al cargar la página
     await obtenerPeliculas(); // Obtener películas
@@ -46,7 +48,71 @@ document.addEventListener('DOMContentLoaded', async () => {
             movieList.style.margin = 'auto'; // Restablecer el margen a auto
         }
     });
+
+    // Manejo del Modal de Iniciar Sesión
+    const modal = document.getElementById("loginModal");
+    const btn = document.querySelector(".btn-primary.ml-2"); // El botón de iniciar sesión
+    const span = document.getElementsByClassName("close-button")[0]; // El botón de cerrar
+
+    // Cuando el usuario hace clic en el botón, abrir el modal 
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // Cuando el usuario hace clic en <span> (x), cerrar el modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // Cuando el usuario hace clic en cualquier parte fuera del modal, cerrarlo
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // Manejar el envío del formulario de inicio de sesión
+    const loginForm = document.getElementById('login-form');
+    loginForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevenir el comportamiento por defecto
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        // Verificar credenciales estáticas
+        if (email === 'admin@gmail.com' && password === 'password') {
+            isLoggedIn = true; // Cambiar el estado de inicio de sesión
+            modal.style.display = "none"; // Cerrar el modal
+
+            // Actualizar la interfaz de usuario
+            updateUIForLoggedInUser ();
+        } else {
+            alert('Credenciales incorrectas.'); // Mensaje de error
+ }
+    });
+
+    // Función para actualizar la interfaz de usuario cuando el usuario ha iniciado sesión
+    function updateUIForLoggedInUser () {
+        // Cambiar el botón de iniciar sesión por un círculo gris
+        const loginButton = document.querySelector('.btn-primary.ml-2');
+        loginButton.innerHTML = '<div class="circle"></div>'; // Cambiar a un círculo gris
+        loginButton.classList.remove('btn-primary'); // Remover clase de botón primario
+
+        // Mostrar el enlace "Agregar Película" en el header
+        const header = document.querySelector('header');
+        const addMovieLink = document.createElement('a');
+        addMovieLink.href = 'addmovie.html';
+        addMovieLink.className = 'selected';
+        addMovieLink.innerText = 'Agregar Película';
+        header.appendChild(addMovieLink);
+
+        // Mostrar el botón "Eliminar" en details.html
+        const deleteButton = document.getElementById('delete-button');
+        if (deleteButton) {
+            deleteButton.style.display = 'block'; // Asegurarse de que el botón esté visible
+        }
+    }
 });
+
 
 async function obtenerGeneros() {
     try {
@@ -170,7 +236,7 @@ if (activePage) {
     const navLinks = document.querySelectorAll('.header .nav a');
     navLinks.forEach(link => {
         if (link.href.includes(activePage)) {
- link.classList.add('selected');
+            link.classList.add('selected');
         }
     });
 }

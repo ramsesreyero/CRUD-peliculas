@@ -6,6 +6,10 @@ font-size:100%;
 width: 100vw;
 }
 
+#delete-button {
+    display: none; /* Ocultar por defecto */
+}
+
 .header {
 position:sticky;
 top:0;

@@ -50,9 +50,8 @@ const getMovieById = async (req, res) => {
     }
 };
 
-// Function to add a movie
 const addMovie = async (req, res) => {
-    const { titulo, contenido, categoria, anio, genero } = req.body;
+    const { titulo, contenido, categoria, anio, genero, watchUrl } = req.body;
 
     console.log(req)
     console.log(req.body)
@@ -86,8 +85,9 @@ const addMovie = async (req, res) => {
         const bannerResult = await uploadImage(req.files.banner[0].buffer); // Subir banner
         const bannerUrl = bannerResult.secure_url; // Obtener URL del banner
 
-        const query = 'INSERT INTO peliculas (titulo, contenido, categoria, anio, genero, imageUrl, bannerUrl) VALUES (?, ?, ?, ?, ?, ?, ?)';
-        const values = [titulo, contenido, categoria, parseInt(anio, 10), genero, imageUrl, bannerUrl];
+        // Agregar watchUrl a la consulta
+        const query = 'INSERT INTO peliculas (titulo, contenido, categoria, anio, genero, imageUrl, bannerUrl, watchUrl) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+        const values = [titulo, contenido, categoria, parseInt(anio, 10), genero, imageUrl, bannerUrl, watchUrl]; // Ahora incluye watchUrl
 
         await queryDatabase(query, values);
         res.status(201).json({ message: 'Película agregada con éxito' });
