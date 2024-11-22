@@ -50,12 +50,22 @@ h2 {
     text-align: center;
     font-size: 1.4rem; /* Usar rem para escalabilidad */
     line-height: 1.381002381;
-    font-weight: 470;
+    font-weight: 490;
     letter-spacing: -0.03em;
     color: #6e6e73;
     margin-bottom: 20px;
 }
 
+h3 {
+    text-align: center;
+    font-size: 1.2rem; /* Usar rem para escalabilidad */
+    line-height: 1.381002381;
+    font-weight: 470;
+    letter-spacing: -0.03em;
+    color: #6e6e73;
+    margin-bottom: 0px;
+    margin-top: 15px;
+}
 
 
 .close-button:hover,
