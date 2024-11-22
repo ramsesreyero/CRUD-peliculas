@@ -1,9 +1,14 @@
 // db.js
 const mysql = require('mysql2/promise');
+require('dotenv').config(); // Cargar las variables de entorno desde el archivo .env
 
-// Crear un pool de conexiones usando la URL de conexión de Railway
+// Crear un pool de conexiones usando las variables de entorno
 const db = mysql.createPool({
-    uri: 'mysql://root:rvbevVIEJYqqzefyTimybsrWsWuplSrJ@junction.proxy.rlwy.net:32229/railway',
+    host: process.env.DB_HOST, // Usar la variable de entorno para el host
+    user: process.env.DB_USER, // Usar la variable de entorno para el usuario
+    password: process.env.DB_PASSWORD, // Usar la variable de entorno para la contraseña
+    database: process.env.DB_NAME, // Usar la variable de entorno para el nombre de la base de datos
+    port: process.env.DB_PORT, // Usar la variable de entorno para el puerto
     connectionLimit: 10, // Limitar el número de conexiones
     connectTimeout: 20000, // Aumentar el tiempo de espera a 20 segundos
     ssl: {
