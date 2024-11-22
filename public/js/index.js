@@ -92,36 +92,45 @@ document.addEventListener('DOMContentLoaded', async () => {
     const modal = document.getElementById("loginModal");
     const btn = document.querySelector(".btn-primary.ml-2"); // El botón de iniciar sesión
     const span = document.getElementsByClassName("close-button")[0]; // El botón de cerrar
-    
+    const emailLabel = document.querySelector('label[for="email"]'); // Label del email
+    const passwordLabel = document.querySelector('label[for="password"]'); // Label del password
+
     // Cuando el usuario hace clic en el botón, abrir el modal 
     btn.onclick = function() {
         modal.style.display = "block";
         document.body.classList.add('no-scroll'); // Añadir clase para desactivar el scroll
     }
-    
+
     // Cuando el usuario hace clic en <span> (x), cerrar el modal
     span.onclick = function() {
-        modal.style.display = "none";
-        document.body.classList.remove('no-scroll'); // Quitar clase para activar el scroll
+        closeModal(); // Llamar a la función para cerrar el modal
     }
-    
+
     // Cuando el usuario hace clic en cualquier parte fuera del modal, cerrarlo
     window.onclick = function(event) {
         if (event.target == modal) {
-            modal.style.display = "none";
-            document.body.classList.remove('no-scroll'); // Quitar clase para activar el scroll
+            closeModal(); // Llamar a la función para cerrar el modal
         }
     }
 
-// Manejo del formulario de inicio de sesión
+    // Función para cerrar el modal y restaurar los labels
+    function closeModal() {
+        modal.style.display = "none";
+        document.body.classList.remove('no-scroll'); // Quitar clase para activar el scroll
+
+        // Restaurar el estado de los labels
+        emailLabel.textContent = 'Correo Electrónico'; // Restaurar el texto original
+        emailLabel.style.color = ''; // Restaurar el color original
+        passwordLabel.style.color = ''; // Restaurar el color original
+    }
+
+    // Manejo del formulario de inicio de sesión
     const loginForm = document.getElementById('login-form');
     loginForm.addEventListener('submit', function(event) {
         event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
 
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-        const emailLabel = document.querySelector('label[for="email"]');
-        const passwordLabel = document.querySelector('label[for="password"]');
 
         // Validar las credenciales
         if (email === 'admin@gmail.com' && password === 'password') {
@@ -132,8 +141,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             emailLabel.textContent = 'Cuenta no encontrada';
             emailLabel.style.color = 'red'; // Cambiar el color a rojo
             passwordLabel.style.color = 'red'; // Cambiar el color del label de password a rojo
-            
-            // Limpiar los campos
             
             // Agregar eventos de focus para restaurar el estado original
             document.getElementById('email').addEventListener('focus', function() {
