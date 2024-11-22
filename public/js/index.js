@@ -113,20 +113,37 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    // Manejo del formulario de inicio de sesión
+// Manejo del formulario de inicio de sesión
     const loginForm = document.getElementById('login-form');
     loginForm.addEventListener('submit', function(event) {
         event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
 
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
+        const emailLabel = document.querySelector('label[for="email"]');
+        const passwordLabel = document.querySelector('label[for="password"]');
 
         // Validar las credenciales
         if (email === 'admin@gmail.com' && password === 'password') {
             localStorage.setItem('isLoggedIn', 'true'); // Establecer el estado de inicio de sesión
             window.location.reload(); // Recargar la página para reflejar el cambio
         } else {
-            alert('No se encontro la cuenta.'); // Manejo de errores
+            // Mostrar el mensaje de error en el label del email
+            emailLabel.textContent = 'Cuenta no encontrada';
+            emailLabel.style.color = 'red'; // Cambiar el color a rojo
+            passwordLabel.style.color = 'red'; // Cambiar el color del label de password a rojo
+            
+            // Limpiar los campos
+            
+            // Agregar eventos de focus para restaurar el estado original
+            document.getElementById('email').addEventListener('focus', function() {
+                emailLabel.textContent = 'Correo Electrónico'; // Restaurar el texto original
+                emailLabel.style.color = ''; // Restaurar el color original
+            });
+            
+            document.getElementById('password').addEventListener('focus', function() {
+                passwordLabel.style.color = ''; // Restaurar el color original
+            });
         }
     });
 
