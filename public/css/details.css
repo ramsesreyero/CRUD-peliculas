@@ -11,17 +11,65 @@ width: 100vw;
 }
 
 .header {
-position:sticky;
-top:0;
-left:0; 
-right:0;
-z-index:3200;
-display:flex;
-flex-direction:column;
-background-color:#000;
-padding:0;
-height:45px;
+    position: sticky;
+    top: 0;
+    left: 0; 
+    right: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+    padding: 0;
+    align-items: stretch;
 }
+
+.header .nav{
+    width: 100%;
+    height: 52px;
+    padding: 0 7%; /* Mantiene el padding original en la navegación */
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    justify-content: center;/* Ajusta el padding en la navegación */
+
+
+}
+.header .nav a {
+color: #666;
+text-decoration: none;
+/* padding: 0.5rem 1rem; */
+font-size: 1.5rem; /* Cambiado a rem */
+font-weight: 700;
+transition: color .3s;
+margin: 0;
+}
+
+.header .nav-title {
+margin: 0;
+font-size: 1.2rem; /* Cambiado a rem */
+color: #fdfdfd;
+font-weight: 700;
+padding: 0rem;
+cursor: pointer;
+}
+
+.header .nav-title:hover {
+color:#fdfdfd
+}
+
+.header .nav a {
+color:#666;
+text-decoration:none;
+font-size:1.2em;
+font-weight:700;
+transition:color .3s;
+margin:0
+}
+
+.header .nav a:hover {
+color:#fff
+}
+
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -39,35 +87,6 @@ overflow-x:hidden;
 
 .container {
 margin-top:45px
-}
-
-.header h1 {
-margin:0;
-font-size:1.2em;
-color:#fff
-}
-
-.nav {
-height: 20vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background-color:#000;
-padding:0
-}
-
-.nav a {
-color:#666;
-text-decoration:none;
-padding:10px 20px;
-font-size:1.2em;
-font-weight:700;
-transition:color .3s;
-margin:0
-}
-
-.nav a:hover {
-color:#fff
 }
 
 img {

@@ -158,17 +158,6 @@ height:100px;
 resize:vertical
 }
 
-button {
-background-color: #007bff;
-color: #fff;
-border: none;
-border-radius: 5px;
-padding: 1rem 2rem; /* Cambiado a rem */
-font-size: 1rem; /* Cambiado a rem */
-cursor: pointer;
-transition: background-color 0.3s, transform .2s;
-}
-
 .btn{
     padding: 0rem .75rem;
 }
@@ -236,7 +225,6 @@ color:#fff
 margin-top:-55px;
 margin-bottom:0px;
 width:90vw;
-height:70vh;
 max-height:80vh;
 overflow:hidden;
 border-radius:0 0 15px 15px;
@@ -495,6 +483,7 @@ background-color: #c3c3c3; /* Color del círculo activo */
 transform: scale(1.5); /* Aumenta el tamaño del círculo activo */
 }
 .genres {
+    display: flex;
 max-width: 100%;
 margin: 0px 0;
 text-align: center;
@@ -538,7 +527,7 @@ flex-wrap: wrap;
 justify-content: center;
 width: 100%;
 max-width: 90vw; /* Cambiado a vw */
-margin: 2rem auto; /* Cambiado a rem */
+margin: 0rem auto; /* Cambiado a rem */
 }
 
 .movie-item {

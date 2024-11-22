@@ -92,21 +92,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     const modal = document.getElementById("loginModal");
     const btn = document.querySelector(".btn-primary.ml-2"); // El botón de iniciar sesión
     const span = document.getElementsByClassName("close-button")[0]; // El botón de cerrar
-
+    
     // Cuando el usuario hace clic en el botón, abrir el modal 
     btn.onclick = function() {
         modal.style.display = "block";
+        document.body.classList.add('no-scroll'); // Añadir clase para desactivar el scroll
     }
-
+    
     // Cuando el usuario hace clic en <span> (x), cerrar el modal
     span.onclick = function() {
         modal.style.display = "none";
+        document.body.classList.remove('no-scroll'); // Quitar clase para activar el scroll
     }
-
+    
     // Cuando el usuario hace clic en cualquier parte fuera del modal, cerrarlo
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
+            document.body.classList.remove('no-scroll'); // Quitar clase para activar el scroll
         }
     }
 
@@ -114,16 +117,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     const loginForm = document.getElementById('login-form');
     loginForm.addEventListener('submit', function(event) {
         event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
-    
+
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-    
-        // Por simplicidad, asumiremos que el inicio de sesión es exitoso
-        if (email && password) { // Reemplaza esto con la lógica de autenticación real
+
+        // Validar las credenciales
+        if (email === 'admin@gmail.com' && password === 'password') {
             localStorage.setItem('isLoggedIn', 'true'); // Establecer el estado de inicio de sesión
             window.location.reload(); // Recargar la página para reflejar el cambio
         } else {
-            alert('Credenciales inválidas.'); // Manejo de errores
+            alert('No se encontro la cuenta.'); // Manejo de errores
         }
     });
 

@@ -7,32 +7,61 @@
     top: 0;
     width: 100%; /* Ancho completo */
     height: 100%; /* Alto completo */
-    overflow: auto; /* Habilitar el desplazamiento si es necesario */
-    background-color: rgb(0,0,0); /* Color de fondo negro */
+    overflow: hidden; /* Evitar scroll en el fondo */
     background-color: rgba(0,0,0,0.4); /* Fondo negro con opacidad */
 }
 
 .modal-content {
+    display: flex;
+    flex-direction: column; /* Cambiado a columna para apilar elementos verticalmente */
+    align-items: center; /* Centrar horizontalmente todos los elementos */
+    position: fixed; /* Necesario para el posicionamiento del modal */
+    top: 50%; /* Mover el modal al 50% de la altura de la pantalla */
+    left: 50%; /* Mover el modal al 50% del ancho de la pantalla */
+    transform: translate(-50%, -50%); /* Centrar el modal usando transform */
     background-color: #1c1c1e;
-    margin: 15% auto; /* 15% desde la parte superior y centrado */
     padding: 20px;
-    border: 1px solid #888;
     width: 30%; /* Ancho del modal */
+    max-width: 500px; /* Opcional: Ancho máximo para pantallas grandes */
+    max-height: 80%; /* Limitar la altura máxima del modal */
+    overflow-y: auto; /* Habilitar el scroll dentro del modal */
     border-radius: 15px; /* Bordes redondeados */
+    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+}
+
+.no-scroll {
+    overflow: hidden; /* Evita el scroll */
 }
 
 .close-button {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    width: fit-content;
-    height: fit-content;
+display: none;
 }
+
+
+h1 {
+    text-align: center;
+    font-size: 2rem; /* Usar rem para escalabilidad */
+    line-height: 1.125;
+    font-weight: 600;
+    letter-spacing: .004em;
+}
+
+h2 {
+    text-align: center;
+    font-size: 1.4rem; /* Usar rem para escalabilidad */
+    line-height: 1.381002381;
+    font-weight: 470;
+    letter-spacing: -0.03em;
+    color: #6e6e73;
+    margin-bottom: 20px;
+}
+
+
 
 .close-button:hover,
 .close-button:focus {
-    color: black;
+    transition: color 0.3s, background-color 0.3s;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     cursor: pointer;
 }
@@ -40,18 +69,45 @@
 .form-group {
     position: relative;
     margin-bottom: 20px;
-    text-align: left;
+    text-align: center;
+}
+
+/* Estilos para el botón */
+button {
+    padding: 1rem;
+    margin: 0 auto;
+    display: inline-block; /* Asegurarse de que el botón se comporte como un bloque en línea */
+    width: 100%;
+    font-size: 1.3rem; /* Tamaño de fuente del botón */
+    color: #ffffff; /* Color del texto del botón */
+    background-color: #007aff; /* Color de fondo del botón */
+    border: none; /* Sin borde */
+    border-radius: 15px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+    transition: background-color .3s; /* Transición suave para el color de fondo */
+}
+
+/* Asegúrate de que el botón cambie de color al pasar el mouse */
+button:hover {
+    background-color: #005bb5; /* Cambiar el color de fondo al pasar el ratón */
+}
+
+/* Asegúrate de que el contenedor del botón tenga text-align: center */
+.form-group.button-container {
+    text-align: center; /* Centrar el contenido */
+    margin-bottom: 0; /* Eliminar el margen inferior del último grupo */
 }
 
 .form-group input {
     font-size: 1.3rem; /* Usar rem para escalabilidad */
     width: 100%;
-    padding: 1rem; /* Ajustar el padding */
-    border: 1px solid #3a3a3c; /* Borde gris */
+    padding: 1rem 0rem 0rem 1rem; /* Ajusta el padding superior e inferior */
+    border: 1px solid #3a3a3c; /* Borde gris por defecto */
     border-radius: 15px;
     background-color: #2c2c2e;
     color: #ffffff;
-    transition: border-color .3s; /* Transición suave para el borde */
+    line-height: 2; /* Aumentar el line-height para mover el texto hacia abajo */
+    transition: border-color .3s; /* Transición suave para el cambio de color del borde */
 }
 
 .form-group input:focus {
@@ -78,10 +134,43 @@
     color: #007aff; /* Cambiar el color del label al hacer foco */
 }
 
-.circle {
-    width: 30px; /* Ajusta el tamaño según sea necesario */
-    height: 30px;
-    background-color: gray; /* Color del círculo */
-    border-radius: 50%; /* Hacerlo circular */
-    display: inline-block; /* Para que se comporte como un botón */
+/* Estilos para dispositivos móviles (pantallas menores a 768px) */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 80%; /* Aumentar el ancho del modal para pantallas pequeñas */
+        margin: auto; /* Ajustar el margen superior */
+    }
+
+    .form-group input {
+        font-size: 1.2rem; /* Reducir el tamaño de la fuente en inputs */
+    }
+
+    .form-textbox-label {
+        font-size: 1.2rem; /* Reducir el tamaño del label */
+    }
+
+    .close-button {
+        font-size: 24px; /* Reducir el tamaño del botón de cerrar */
+    }
+}
+
+/* Estilos para tablets (pantallas entre 768px y 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .modal-content {
+        max-height: 90%;
+        width: 90%; /* Aumentar el ancho del modal para pantallas pequeñas */
+        margin: 5% auto; /* Ajustar el margen superior */
+    }
+
+    .form-group input {
+        font-size: 1.2rem; /* Ajustar el tamaño de la fuente en inputs */
+    }
+
+    .form-textbox-label {
+        font-size: 1.3rem; /* Ajustar el tamaño del label */
+    }
+
+    .close-button {
+        font-size: 26px; /* Ajustar el tamaño del botón de cerrar */
+    }
 }

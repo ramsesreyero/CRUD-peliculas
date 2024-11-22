@@ -13,7 +13,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // Middleware for logging requests
-app.use(morgan('dev'));
+app.use(morgan('tiny'));
 
 // Middleware for CORS
 app.use(cors({
