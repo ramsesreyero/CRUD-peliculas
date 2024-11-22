@@ -1,7 +1,7 @@
 const mysql = require('mysql2');
-const cloudinary = require('../config/cloudinary'); // Ensure you have this configured
+const cloudinary = require('../config/cloudinary');
 
-// Create a connection to the database
+// Se crea la conexion a la BD
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -9,7 +9,7 @@ const db = mysql.createConnection({
     database: process.env.DB_NAME
 });
 
-// Promisify the database query for better error handling
+// Promeda del query de la bd para manejar errores
 const queryDatabase = (query, values) => {
     return new Promise((resolve, reject) => {
         db.query(query, values, (err, results) => {
@@ -21,7 +21,7 @@ const queryDatabase = (query, values) => {
     });
 };
 
-// Function to get all movies
+// Funcion para obtener todas las peliculas
 const getAllMovies = async (req, res) => {
     try {
         const results = await queryDatabase('SELECT * FROM peliculas');
@@ -32,9 +32,9 @@ const getAllMovies = async (req, res) => {
     }
 };
 
-// Function to get a movie by ID
+// Funcion para obtener una pelicula por su ID
 const getMovieById = async (req, res) => {
-    const { id } = req.params; // Use params instead of query for cleaner URL
+    const { id } = req.params; // Usa parametros en lugar de query paea url mas barata
     if (!id) {
         return res.status(400).json({ error: 'ID de película no proporcionado' });
     }

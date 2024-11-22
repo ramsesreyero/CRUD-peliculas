@@ -452,11 +452,6 @@ font-size: 15px; /* Cambiado a porcentaje */
 .movie-meta.row{
 max-width: 100%;
 }
-.similar-movie-list {
-display: flex; /* Alinea los elementos en una fila */
-flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea si no hay suficiente espacio */
-justify-content: flex-start; /* Distribuye el espacio entre los elementos */
-}
 
 .similar-movie-list .movie-item {
 flex: 1 1 200px; /* Permite que los elementos crezcan y se reduzcan, con un ancho base de 200px */
@@ -556,9 +551,6 @@ margin-bottom: 5%; /* Cambiado a porcentaje */
 font-size: 4%; /* Cambiado a porcentaje */
 }
 
-.similar-movies {
-margin-left: 10%;
-}
 }
 
 /* Media Query para pantallas de movil */

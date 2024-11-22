@@ -4,31 +4,47 @@ margin:0;
 padding:0
 }
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
 display:flex;
 flex-direction:column;
 font-family:'San Francisco',sans-serif;
 background-color:#333;
 color:#fff;
-overflow-x:hidden
+overflow-x:hidden;
+height: 100vh;
 }
 
 .header {
-position: sticky;
-top: 0;
-left: 0; 
-right: 0;
-z-index: 10000;
-display: flex;
-flex-direction: column;
-background-color: #000;
-padding: 0;
-height: 3rem; /* Cambiado a rem */
+    position: sticky;
+    top: 0;
+    left: 0; 
+    right: 0;
+    z-index: 3200;
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+    padding: 0;
+    align-items: stretch;
+}
+
+.header .nav{
+    height: 52px;
+    padding: 0 7%; /* Mantiene el padding original en la navegación */
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    justify-content: space-between;/* Ajusta el padding en la navegación */
+
+
 }
 .header .nav a {
 color: #666;
 text-decoration: none;
-padding: 0.5rem 1rem; /* Cambiado a rem */
+/* padding: 0.5rem 1rem; */
 font-size: 1.5rem; /* Cambiado a rem */
 font-weight: 700;
 transition: color .3s;
@@ -37,10 +53,10 @@ margin: 0;
 
 .header .nav-title {
 margin: 0;
-font-size: 1.5rem; /* Cambiado a rem */
+font-size: 1.2rem; /* Cambiado a rem */
 color: #fdfdfd;
 font-weight: 700;
-padding: 0.6rem 1rem 1rem 0rem; /* Cambiado a rem */
+padding: 0rem;
 cursor: pointer;
 }
 
@@ -51,7 +67,6 @@ color:#fdfdfd
 .header .nav a {
 color:#666;
 text-decoration:none;
-padding:10px 20px;
 font-size:1.2em;
 font-weight:700;
 transition:color .3s;
@@ -160,9 +175,34 @@ cursor: pointer;
 transition: background-color 0.3s, transform .2s;
 }
 
+.btn{
+    padding: 0rem .75rem;
+}
+
 button:hover {
-background-color:#0056b3;
-transform:translateY(-2px)
+background-color:#007bff;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+
+
+.search-container button {
+    text-align: center;
+    height: 100%;
+    min-width: 150px;
+    flex: 1 1 0%;
+}
+
+.search-container button {
+    text-align: center;
+    flex: 1; /* Permite que el botón crezca para ocupar el espacio disponible */
+    height: 60%;
+    min-width: 150px; /* Establece un ancho mínimo para el botón */
 }
 
 .search {
@@ -173,15 +213,14 @@ margin-bottom:20px
 }
 
 .search-container {
+height: 100%;
 display:flex;
 align-items:center;
 margin-left:auto
 }
 
 #searchInput {
-margin-right:10px;
-padding:5px;
-margin-bottom: 5px;
+height: 60%;
 }
 
 #genreSelect {
@@ -239,7 +278,6 @@ height:100%
     top: 0;
     left: 0;
     overflow:hidden;
-
 }
 
 .genres {
@@ -309,11 +347,6 @@ display:flex;
 gap:10px
 }
 
-@font-face {
-font-family:"San Francisco";
-font-weight:400;
-src:url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff)
-}
 
 .movie-item h3 {
 margin:10px 0;
@@ -349,64 +382,67 @@ margin-left: 14%;
 list-style: none;
 }
 
-@media (min-width: 1236px) and (max-height: 800px) {
-html,body {
-height:100%;
-margin:0;
-padding:0;
-font-size:100%;
-width: 100vw;
-}
+@font-face {
+    font-family:"San Francisco";
+    font-weight:400;
+    src:url(https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff)
+    }
 
-}
 /* Estilos de los medios */
 @media (max-width: 600px) {
 .header .nav {
-padding: 0vw; /* Cambiado a vw */
+padding: 0% 5%; /* Ajusta el padding en la navegación */
+width: 100%;
+gap: 0px;
+justify-content: space-between;
 }
+        
+#searchInput {
+    font-size: 0.7rem;
+    width: 80px;
+    margin-right:0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    padding:5px
+    }
+    .search-container {
+        margin-left: 0%;
+    }
+    .search-container button {
+        font-size: 0.7rem;
+        text-align: center;
+        flex: 1;
+        height: 60%;
+        width: 80px;
+        min-width: 40px;
+    }
+    
+    .btn {
+        padding: 0rem;
+    }
 
-.search-container {
-height: 5px;
-width: 150px;
-padding: 7px 15px 0px 5px; /*arriba, derecha, abajo, izquierda */
-flex-direction: column; /* Cambia a columna para móviles */
-align-items: stretch; /* Alinear elementos a los lados */
-flex-direction:column;
-align-items:center
-}
+    .header .nav-title {
+        margin: 0;
+        font-size: 0.8rem;
+        color: #fdfdfd;
+        font-weight: 700;
+        padding: 0rem;
+        cursor: pointer;
+    }
+
+    .header .nav a {
+        color: #666;
+        text-decoration: none;
+        font-size: 0.8em;
+        font-weight: 700;
+        transition: color .3s;
+        margin: 0;
+    }
 
 .footer {
 font-size: 0.9rem; /* Cambiado a rem */
 }
-.header {
-position:sticky;
-top:0;
-left:0; 
-right:0;
-z-index:3200;
-display:flex;
-flex-direction:column;
-background-color:#000;
-padding:0;
-height:45px;
-}
-.header .nav-title {
-margin: 0;
-font-size: 0.9rem;
-color: #fdfdfd;
-font-weight: 700;
-padding: 15px 40px 0px 15px; /*arriba, derecha, abajo, izquierda */
-cursor: pointer;
-}
-.header .nav a {
-color: #666;
-text-decoration: none;
-padding: 12px 2px;
-font-size: 0.9em;
-font-weight: 700;
-transition: color .3s;
-margin: 0;
-}
+
 .hidden-link {
 display: none; /* Esto oculta el enlace */
 }
@@ -478,7 +514,6 @@ margin: 0px 0;
 text-align: center;
 }
 
-/* Asegúrate de que el genreList se muestre en columna */
 #genreList {
 display: flex; /* Cambia el display a flex */
 flex-direction: column; /* Asegúrate de que los elementos se apilen en columna */
@@ -526,7 +561,7 @@ cursor: pointer;
 text-align: center;
 width: calc(50% - 2rem); /* Cambiado para mostrar 2 columnas */
 max-width: 220px; /* Limitar ancho máximo */
-box-sizing: border-box; /* Asegúrate de que el padding y el margen se incluyan en el ancho total */
+box-sizing: border-box; /* Asegúrate     de que el padding y el margen se incluyan en el ancho total */
 transition: transform .3s ease;
 }
 
@@ -548,7 +583,26 @@ font: 1em 'San Francisco', sans-serif;
 /* Pantallas medianas (tabletas) o celular horizontal */
 @media (min-width: 601px) and (max-width: 1024px) {   
 .header .nav {
-padding: 0 5vw; /* Ajusta el padding en la navegación */
+padding: 0% 5%; 
+justify-content: space-between;/* Ajusta el padding en la navegación */
+}
+
+.header .nav-title {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #fdfdfd;
+    font-weight: 700;
+    padding: 0rem;
+    cursor: pointer;
+}
+
+.header .nav a {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.8em;
+    font-weight: 700;
+    transition: color .3s;
+    margin: 0;
 }
 
 .movie-item {
@@ -567,29 +621,48 @@ border-radius: 8px;
 font-size: 1rem; /* Mantiene el tamaño de fuente del pie de página */
 }
 #searchInput {
-width: 150px;
-margin-right:10px;
-margin-bottom: 5px;
+    font-size: 0.7rem;
+width: 120px;
+margin-right:0px;
+margin-bottom: 0px;
 padding:5px
 }
-.header .nav a {
-color: #666;
-text-decoration: none;
-padding: 10px 15px;
-font-size: 1.2em;
-font-weight: 700;
-transition: color .3s;
-margin: 0;
-}
-}
-/* Pantallas grandes (desktops) */
-@media (min-width: 1025px) {
-.header .nav {
-padding: 0 12vw; /* Mantiene el padding original en la navegación */
+
+.search-container button {
+    font-size: 0.7rem;
+    text-align: center;
+    flex: 1;
+    height: 60%;
+    min-width: 100px;
 }
 
-.movie-item {
-width: 20vw; /* Mantiene el ancho original de los elementos de la película */
+.btn {
+    padding: 0rem;
 }
 
-}
+.carousel {
+    margin-top: -55px;
+    height: 15%;
+    max-height: 15%;
+    }
+    .carousel-inner {
+        display: flex; /* Usar flex para controlar la disposición de los elementos */
+        width: 100%; /* Asegúrate de que ocupe el 100% del ancho del contenedor */
+        height: 100%; /* Asegúrate de que ocupe el 100% de la altura */
+        overflow: hidden; /* Esto también ayuda a mantener el border-radius */
+        }
+    .carousel-item {
+        flex: 0 0 100%; /* Cada elemento ocupa el 100% del ancho del contenedor */
+        height: 100%; /* Asegúrate de que cada elemento ocupe el 100% de la altura */
+        transition: transform 0.5s ease; /* Asegúrate de que la transición esté aquí */
+        }
+    .carousel-inner img {
+        width: 100%; /* Asegúrate de que la imagen ocupe el 100% del ancho del elemento */
+        height: 100%; /* Asegúrate de que la imagen ocupe el 100% de la altura del elemento */
+        object-fit: cover; /* Mantiene la proporción y recorta si es necesario */
+        border-radius: 0 0 15px 15px; /* Asegúrate de que el border-radius esté aquí también */
+        }
+    .carousel-indicators {
+        bottom: 0%; /* Ajusta este valor para mover los indicadores hacia arriba o abajo */
+        }
+}   

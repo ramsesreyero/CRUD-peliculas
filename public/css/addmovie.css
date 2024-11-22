@@ -54,7 +54,7 @@ body {
 .encabezado{
     align-self: center;
     max-width: 50%; /* Cambiado a 90% para más flexibilidad */
-    margin: 0 auto;
+    margin: 5% auto auto auto;
 }
 
 h1 {
@@ -118,7 +118,7 @@ h2 {
 /* Estilos para inputs de tipo file */
 .form-group input[type="file"] {
     width: 100%; /* Asegurarse de que ocupe el 100% del contenedor */
-    padding: 1rem; /* Ajustar el padding */
+    padding: 0% 0% 0% 1%; /* Ajustar el padding */
     border: 1px solid #6e6e73; /* Borde gris por defecto */
     border-radius: 15px;
     background-color: hsla(0, 0%, 100%, .04);
