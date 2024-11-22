@@ -86,6 +86,38 @@ h2 {
     text-align: left;
 }
 
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.file-name {
+    display: block; /* Asegurarse de que esté en una nueva línea */
+    margin-top: 0.5rem; /* Espaciado superior */
+    color: #a1a1a1; /* Color del texto */
+    font-size: 1rem; /* Tamaño de fuente */
+}
+
+.custom-file-upload {
+    display: inline-flex; /* Usar flex para centrar el contenido */
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    width: 100%; /* Asegurarse de que ocupe el 100% del contenedor */
+    padding: 1rem; /* Espaciado */
+    border: 1px solid #6e6e73; /* Borde gris por defecto */
+    border-radius: 15px; /* Bordes redondeados */
+    background-color: hsla(0, 0%, 100%, .04); /* Color de fondo */
+    color: #ffffff; /* Color del texto */
+    cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+    text-align: center; /* Centrar el texto */
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+.custom-file-upload:hover {
+    background-color: #007aff; /* Cambiar el color de fondo al pasar el mouse */
+}
+
 .form-group input, 
 .form-group textarea {
     font-size: 1.3rem; /* Usar rem para escalabilidad */
@@ -117,8 +149,8 @@ h2 {
 /* Estilos para campos de tipo file (sin cambios) */
 /* Estilos para inputs de tipo file */
 .form-group input[type="file"] {
-    width: 100%; /* Asegurarse de que ocupe el 100% del contenedor */
-    padding: 0% 0% 0% 1%; /* Ajustar el padding */
+    width: 50%; /* Asegurarse de que ocupe el 100% del contenedor */
+    padding: 1.5% 0% 1% 1%; /* Ajustar el padding */
     border: 1px solid #6e6e73; /* Borde gris por defecto */
     border-radius: 15px;
     background-color: hsla(0, 0%, 100%, .04);
@@ -146,6 +178,19 @@ h2 {
     left: 15px; /* Mantener la posición horizontal */
     transform: translateY(-50%); /* Ajustar para centrar el label */
     font-size: 1.4rem; /* Usar rem para escalabilidad */
+    color: #aaa;
+    transition: all 0.2s ease-in-out; /* Cambiar a .4s para una animación más lenta */
+}
+
+.form-file-label {
+    display: flex;
+    justify-content: flex-end; /* Alinear el contenido al borde derecho */
+    position: absolute;
+    pointer-events: none; /* Asegúrate de que el label no interfiera con el input */
+    top: 50%; /* Centrar verticalmente por defecto */
+    right: 10px; /* Ajustar para que esté más cerca del borde derecho */
+    transform: translateY(-50%); /* Ajustar para centrar el label verticalmente */
+    font-size: 1.3rem; /* Usar rem para escalabilidad */
     color: #aaa;
     transition: all 0.2s ease-in-out; /* Cambiar a .4s para una animación más lenta */
 }
@@ -229,7 +274,7 @@ h2 {
         width: 80%; /* Aumentar el ancho del botón */
     }
     .form-group input[type="file"] {
-        padding: 0.8rem; /* Mantener el padding original */
+        padding: 2.5%; /* Mantener el padding original */
     }
 }
 

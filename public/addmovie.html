@@ -43,10 +43,18 @@
                 <label for="watchUrl" class="form-textbox-label">URL para ver la película</label>
             </div>
             <div class="form-group">
-                <input type="file" id="image" name="image" accept="image/*" required />
+                <input type="file" id="image" name="image" accept="image/*" required style="display: none;" />
+                <label for="image" class="custom-file-upload">
+                    Portada Vertical
+                </label>
+                <span id="image-file-name" class="file-name"></span> <!-- Contenedor para mostrar el nombre del archivo -->
             </div>
             <div class="form-group">
-                <input type="file" id="banner" name="banner" accept="image/*" required />
+                <input type="file" id="banner" name="banner" accept="image/*" required style="display: none;" />
+                <label for="banner" class="custom-file-upload">
+                    Banner Horizontal
+                </label>
+                <span id="banner-file-name" class="file-name"></span> <!-- Contenedor para mostrar el nombre del archivo -->
             </div>
             <div class="button-container">
                 <button type="submit">Agregar Película</button>

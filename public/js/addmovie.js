@@ -29,6 +29,18 @@ document.querySelectorAll('.form-group input, .form-group textarea').forEach(inp
     if (input.value.trim() !== '') {
         input.classList.add('has-value'); // Mantener la clase si ya tiene texto
     }
+
+    // Agregar evento de cambio para mostrar el nombre del archivo
+    if (input.type === 'file') {
+        input.addEventListener('change', function() {
+            const fileNameSpan = this.nextElementSibling; // Asumimos que el span para el nombre del archivo está justo después del input
+            if (this.files.length > 0) {
+                fileNameSpan.textContent = this.files[0].name; // Mostrar el nombre del archivo
+            } else {
+                fileNameSpan.textContent = ''; // Limpiar si no hay archivo
+            }
+        });
+    }
 });
 
 // Añadir evento de carga para aplicar la clase `has-value` a los inputs ya llenos
