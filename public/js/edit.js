@@ -94,31 +94,31 @@ function updateLabelState() {
 document.getElementById('edit-movie-form').addEventListener('submit', async function(event) {
     event.preventDefault(); // Evitar el envío del formulario
 
-    const id = document.getElementById('movie-id').value;
-    const titulo = document.getElementById('titulo').value;
-    const contenido = document.getElementById('contenido').value;
-    const categoria = document.getElementById('categoria').value;
-    const anio = document.getElementById('anio').value;
-    const genero = document.getElementById('genero').value;
-    const watchUrl = document.getElement.getElementById('watchUrl').value;
-    const imageFile = document.getElementById('image').files[0]; // Obtener la portada
-    const bannerFile = document.getElementById('bannerUrl').files[0]; // Obtener el banner
-
-    const formData = new FormData();
-    formData.append('titulo', titulo);
-    formData.append('contenido', contenido);
-    formData.append('categoria', categoria);
-    formData.append('anio', anio);
-    formData.append('genero', genero);
-    formData.append('watchUrl', watchUrl);
-    if (imageFile) {
-        formData.append('image', imageFile); // Agregar la portada si existe
-    }
-    if (bannerFile) {
-        formData.append('bannerUrl', bannerFile); // Agregar el banner si existe
-    }
-
     try {
+        const id = document.getElementById('movie-id').value;
+        const titulo = document.getElementById('titulo').value;
+        const contenido = document.getElementById('contenido').value;
+        const categoria = document.getElementById('categoria').value;
+        const anio = document.getElementById('anio').value;
+        const genero = document.getElementById('genero').value;
+        const watchUrl = document.getElementById('watchUrl').value;
+        const imageFile = document.getElementById('image').files[0]; // Obtener la portada
+        const bannerFile = document.getElementById('bannerUrl').files[0]; // Obtener el banner
+
+        const formData = new FormData();
+        formData.append('titulo', titulo);
+        formData.append('contenido', contenido);
+        formData.append('categoria', categoria);
+        formData.append('anio', anio);
+        formData.append('genero', genero);
+        formData.append('watchUrl', watchUrl);
+        if (imageFile) {
+            formData.append('image', imageFile); // Agregar la portada si existe
+        }
+        if (bannerFile) {
+            formData.append('bannerUrl', bannerFile); // Agregar el banner si existe
+        }
+
         const response = await fetch(host + `/api/peliculas/${id}`, {
             method: 'PUT',
             body: formData
