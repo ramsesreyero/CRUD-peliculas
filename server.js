@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+const cors = require('cors'); // Mantén esta declaración
 const mysql = require('mysql2/promise'); // Usar promesas para facilitar el manejo
 const peliculasRoutes = require('./routes/peliculas');
 const categoriasRoutes = require('./api/generos'); // Importar las rutas de categorías
@@ -17,9 +17,7 @@ const PORT = process.env.PORT || 8080;
 app.use(morgan('tiny'));
 
 // Middleware for CORS
-const cors = require('cors');
-
-app.use(cors({
+app.use(cors({ // Usa cors aquí sin volver a declararlo
     origin: [
         'https://web-production-0ed3.up.railway.app', // URL de tu frontend en Railway
         'http://localhost:8080', // Si necesitas pruebas locales
