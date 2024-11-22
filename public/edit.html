@@ -79,16 +79,30 @@
                 <label for="contenido" class="form-textbox-label">Descripción</label>
             </div>
             <div class="form-group">
-                <input type="text" id="categoria" name="categoria" placeholder="Categoría" required />
-                <label for="categoria" class="form-textbox-label">Categoría</label>
+                <select id="categoria" name="categoria" required>
+                    <option value="" disabled selected>Selecciona una categoría</option>
+                    <option value="Película">Película</option>
+                    <option value="Serie">Serie</option>
+                </select>
+                <label for="categoria" class="form-textbox-label"></label>
             </div>
             <div class="form-group">
                 <input type="number" id="anio" name="anio" placeholder="Año" required min="1888" max="2100" />
                 <label for="anio" class="form-textbox-label">Año</label>
             </div>
             <div class="form-group">
-                <input type="text" id="genero" name="genero" placeholder="Género" required />
-                <label for="genero" class="form-textbox-label">Género</label>
+                <select id="genero" name="genero" required>
+                    <option value="" disabled selected>Selecciona un género</option>
+                    <option value="Acción">Acción</option>
+                    <option value="Comedia">Comedia</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Terror">Terror</option>
+                    <option value="Ciencia Ficción">Ciencia Ficción</option>
+                    <option value="Fantasía">Fantasía</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Documental">Documental</option>
+                </select>
+                <label for="genero" class="form-textbox-label"></label>
             </div>
             <div class="form-group">
                 <input type="text" id="watchUrl" name="watchUrl" placeholder="URL para ver la película" required />

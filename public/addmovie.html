@@ -16,7 +16,7 @@
         <h1>Agregar una Nueva Película</h1>
         <h2>Las películas que amamos son las que nos definen; no dudes en agregar esa que ha dejado una huella en ti</h2>
     </main>
-     <main class="container">
+    <main class="container">
         <form id="add-movie-form" enctype="multipart/form-data">
             <div class="form-group">
                 <input type="text" id="titulo" name="titulo" required />
@@ -27,16 +27,30 @@
                 <label for="contenido" class="form-textbox-label">Descripción de la película</label>
             </div>
             <div class="form-group">
-                <input type="text" id="categoria" name="categoria" required />
-                <label for="categoria" class="form-textbox-label">Categoría (película, serie)</label>
+                <label for="categoria" class="form-textbox-label"></label>
+                <select id="categoria" name="categoria" required>
+                    <option value="" disabled selected>Selecciona una categoría</option>
+                    <option value="Película">Película</option>
+                    <option value="Serie">Serie</option>
+                </select>
             </div>
             <div class="form-group">
                 <input type="number" id="anio" name="anio" required min="1888" max="2100" />
                 <label for="anio" class="form-textbox-label">Año de lanzamiento</label>
             </div>
             <div class="form-group">
-                <input type="text" id="genero" name="genero" required />
-                <label for="genero" class="form-textbox-label">Género (Ingrese solo 1)</label>
+                <label for="genero" class="form-textbox-label"></label>
+                <select id="genero" name="genero" required>
+                    <option value="" disabled selected>Selecciona un género</option>
+                    <option value="Acción">Acción</option>
+                    <option value="Comedia">Comedia</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Terror">Terror</option>
+                    <option value="Ciencia Ficción">Ciencia Ficción</option>
+                    <option value="Fantasía">Fantasía</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Documental">Documental</option>
+                </select>
             </div>
             <div class="form-group">
                 <input type="text" id="watchUrl" name="watchUrl" required />
@@ -65,6 +79,4 @@
     <footer class="footer">
         <p>&copy;2024 Ramses Reyero. Clase de Programación Web. Todos los derechos reservados.</p>
     </footer>
-    <script src="./js/addmovie.js" type="module"></script> 
-</body>
-</html>
+    <script src="./js/addmovie.js" type="module"></script>

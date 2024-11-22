@@ -1,47 +1,20 @@
 import { host } from "./host.js";
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Suponiendo que ya tienes la función para cargar los datos de la película
-    cargarPelicula();
+    const movieId = new URLSearchParams(window.location.search).get('id');
+    if (movieId) {
+        cargarPelicula(movieId);
+    }
 
     // Manejar la lógica para mantener el efecto del label
-    document.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
-        // Verificar el valor al cargar la página
-        if (input.value.trim() !== '') {
-            input.classList.add('has-value'); // Mantener la clase si ya tiene texto
-            const label = input.nextElementSibling; // Asumimos que el label está justo después del input
-            label.classList.add('has-value'); // Mantener clase al label
-        }
+    document.querySelectorAll('.form-group input, .form-group textarea, .form-group select').forEach(input => {
+        updateLabelState.call(input); // Establecer el estado inicial
 
-        // Agregar evento de entrada
-        input.addEventListener('input', function() {
-            const label = this.nextElementSibling; // Asumimos que el label está justo después del input
-            if (this.value.trim() !== '') {
-                this.classList.add('has-value'); // Agregar clase si hay texto
-                label.classList.add('has-value'); // Agregar clase al label
-            } else {
-                this.classList.remove('has-value'); // Quitar clase si está vacío
-                label.classList.remove('has-value'); // Quitar clase al label
-            }
-        });
-
-        // Agregar evento de focus para mantener la clase si hay texto
-        input.addEventListener('focus', function() {
-            const label = this.nextElementSibling; // Asumimos que el label está justo después del input
-            if (this.value.trim() !== '') {
-                this.classList.add('has-value'); // Mantener clase si ya tiene texto
-                label.classList.add('has-value'); // Mantener clase al label
-            }
-        });
-
-        // Agregar evento de blur para verificar el valor al perder el foco
-        input.addEventListener('blur', function() {
-            const label = this.nextElementSibling; // Asumimos que el label está justo después del input
-            if (this.value.trim() === '') {
-                this.classList.remove('has-value'); // Quitar clase si está vacío
-                label.classList.remove('has-value'); // Quitar clase al label
-            }
-        });
+        // Agregar eventos para manejar el estado del label
+        input.addEventListener('input', updateLabelState);
+        input.addEventListener('change', updateLabelState); // Solo para selects
+        input.addEventListener('focus', updateLabelState);
+        input.addEventListener('blur', updateLabelState);
     });
 });
 
@@ -57,18 +30,31 @@ async function cargarPelicula(id) {
     document.getElementById('movie-id').value = pelicula.id;
     document.getElementById('titulo').value = pelicula.titulo;
     document.getElementById('contenido').value = pelicula.contenido;
-    document.getElementById('categoria').value = pelicula.categoria;
+
+    // Asegúrate de que los valores de categoría y género se establezcan correctamente
+    const categoriaSelect = document.getElementById('categoria');
+    const generoSelect = document.getElementById('genero');
+
+    // Establecer el valor para la categoría
+    Array.from(categoriaSelect.options).forEach(option => {
+        if (option.value === pelicula.categoria) {
+            option.selected = true; // Seleccionar la opción que coincide
+        }
+    });
+
+    // Establecer el valor para el género
+    Array.from(generoSelect.options).forEach(option => {
+        if (option.value === pelicula.genero) {
+            option.selected = true; // Seleccionar la opción que coincide
+        }
+    });
+
     document.getElementById('anio').value = pelicula.anio;
-    document.getElementById('genero').value = pelicula.genero;
     document.getElementById('watchUrl').value = pelicula.watchUrl;
 
-    // Aquí se añade la clase has-value a los inputs que ya tienen contenido
-    document.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
-        if (input.value.trim() !== '') {
-            input.classList.add('has-value'); // Mantener la clase si ya tiene texto
-            const label = input.nextElementSibling; // Asumimos que el label está justo después del input
-            label.classList.add('has-value'); // Mantener clase al label
-        }
+    // Llama a updateLabelState para todos los inputs y selects
+    document.querySelectorAll('.form-group input, .form-group textarea, .form-group select').forEach(input => {
+        updateLabelState.call(input); // Establecer el estado inicial
     });
 
     // Mostrar la imagen actual si existe
@@ -86,57 +72,25 @@ async function cargarPelicula(id) {
     }
 }
 
-// Manejar la lógica para mantener el efecto del label
-document.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
-    // Agregar evento de entrada
-    input.addEventListener('input', function() {
-        const label = this.nextElementSibling; // Asumimos que el label está justo después del input
-        if (this.value.trim() !== '') {
-            this.classList.add('has-value'); // Agregar clase si hay texto
-            label.classList.add('has-value'); // Agregar clase al label
-        } else {
-            this.classList.remove('has-value'); // Quitar clase si está vacío
-            label.classList.remove('has-value'); // Quitar clase al label
-        }
-    });
-
-    // Agregar evento de focus para mantener la clase si hay texto
-    input.addEventListener('focus', function() {
-        const label = this.nextElementSibling; // Asumimos que el label está justo después del input
-        if (this.value.trim() !== '') {
-            this.classList.add('has-value'); // Mantener clase si ya tiene texto
-            label.classList.add('has-value'); // Mantener clase al label
-        }
-    });
-
-    // Agregar evento de blur para verificar el valor al perder el foco
-    input.addEventListener('blur', function() {
-        const label = this.nextElementSibling; // Asumimos que el label está justo después del input
-        if (this.value.trim() === '') {
-            this.classList.remove('has-value'); // Quitar clase si está vacío
-            label.classList.remove('has-value'); // Quitar clase al label
-        }
-    });
-
-    // Verificar el valor al cargar la página
-    if (input.value.trim() !== '') {
-        input.classList.add('has-value'); // Mantener la clase si ya tiene texto
-        const label = input.nextElementSibling; // Asumimos que el label está justo después del input
-        label.classList.add('has-value'); // Mantener clase al label
+// Función para actualizar el estado del label
+function updateLabelState() {
+    const label = this.nextElementSibling; // Asumimos que el label está justo después del input/select
+    const isSelect = this.tagName === 'SELECT';
+    
+    // Verificamos si el input/select tiene un valor
+    const hasValue = this.value.trim() !== '' || (isSelect && this.selectedIndex > 0);
+    
+    // Actualizar clases según el estado
+    if (hasValue) {
+        this.classList.add('has-value'); // Agregar clase si hay texto o se seleccionó una opción
+        label.classList.add('has-value'); // Mantener clase en el label
+    } else {
+        this.classList.remove('has-value'); // Quitar clase si está vacío
+        label.classList.remove('has-value'); // Quitar clase del label
     }
-});
+}
 
-// Añadir evento de carga para aplicar la clase `has-value` a los inputs ya llenos
-window.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
-        if (input.value.trim() !== '') {
-            input.classList.add('has-value'); // Mantener la clase si ya tiene texto
-            const label = input.nextElementSibling; // Asumimos que el label está justo después del input
-            label.classList.add('has-value'); // Mantener clase al label
-        }
-    });
-});
-
+// Manejar el formulario de edición
 document.getElementById('edit-movie-form').addEventListener('submit', async function(event) {
     event.preventDefault(); // Evitar el envío del formulario
 
@@ -146,7 +100,7 @@ document.getElementById('edit-movie-form').addEventListener('submit', async func
     const categoria = document.getElementById('categoria').value;
     const anio = document.getElementById('anio').value;
     const genero = document.getElementById('genero').value;
-    const watchUrl = document.getElementById('watchUrl').value;
+    const watchUrl = document.getElement.getElementById('watchUrl').value;
     const imageFile = document.getElementById('image').files[0]; // Obtener la portada
     const bannerFile = document.getElementById('bannerUrl').files[0]; // Obtener el banner
 
@@ -181,9 +135,3 @@ document.getElementById('edit-movie-form').addEventListener('submit', async func
         alert("Ocurrió un error al intentar actualizar la película.");
     }
 });
-
-// Cargar la película al cargar la página
-const movieId = new URLSearchParams(window.location.search).get('id');
-if (movieId) {
-    cargarPelicula(movieId);
-}

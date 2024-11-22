@@ -255,6 +255,41 @@ h2 {
     border-radius:4px
     }
 
+    .form-group select {
+        font-size: 1.3rem; /* Usar rem para escalabilidad */
+        width: 100%;
+        padding: 1rem; /* Ajustar el padding */
+        border: 1px solid #3a3a3c; /* Borde gris por defecto */
+        border-radius: 15px;
+        background-color: #2c2c2e; /* Color de fondo */
+        color: #ffffff; /* Color del texto */
+        line-height: 1.5; /* Ajusta el line-height si es necesario */
+        transition: border-color .3s; /* Transición suave para el cambio de color del borde */
+    }
+    
+    /* Cambiar el color del borde al hacer foco */
+    .form-group select:focus {
+        border-color: #007aff !important; /* Borde azul al hacer foco */
+        outline: none; /* Eliminar el contorno predeterminado del navegador */
+    }
+    
+    /* Estilo para las opciones dentro del select (opcional) */
+    .form-group select option {
+        background-color: #2c2c2e; /* Color de fondo para las opciones */
+        color: #ffffff; /* Color del texto para las opciones */
+    }
+
+    /* Ocultar las flechas en los campos de tipo number */
+.form-group input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+}
+
+.form-group input[type="number"]::-webkit-inner-spin-button,
+.form-group input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Chrome, Safari, Edge */
+    margin: 0; /* Eliminar margen */
+}
+
     /* Media Queries para adaptabilidad */
 
 @media (max-width: 1200px) {
