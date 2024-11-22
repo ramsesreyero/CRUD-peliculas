@@ -1,20 +1,14 @@
-const mysql = require('mysql2');
-require('dotenv').config(); // Asegúrate de que esto esté al principio
+const mysql = require('mysql2/promise'); // Usar mysql2/promise para facilitar el manejo
+require('dotenv').config();
 
-const db = mysql.createConnection({
-    host: process.env.DB_HOST, // mysql.railway.internal
-    user: process.env.DB_USER, // root
-    password: process.env.DB_PASSWORD, // rvbevVIEJYqqzefyTimybsrWsWuplSrJ
-    database: process.env.DB_NAME // railway
+const db = mysql.createPool({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT || 3306, // Usa el puerto por defecto si no se especifica
+    connectionLimit: 10 // Limitar el número de conexiones
 });
 
-// Conectar a la base de datos
-db.connect(err => {
-    if (err) {
-        console.error('Error conectando a la base de datos:', err);
-        return;
-    }
-    console.log('Conectado a la base de datos MySQL');
-});
-
-module.exports = db; // Asegúrate de exportar la conexión si es necesario
+// Exportar el pool de conexiones
+module.exports = db;

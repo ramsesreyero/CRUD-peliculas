@@ -1,27 +1,13 @@
-const mysql = require('mysql2');
+const db = require('../config/db'); // Importar el pool de conexiones
 const cloudinary = require('../config/cloudinary');
 
-// Se crea la conexion a la BD
-const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
-});
-
-// Promeda del query de la bd para manejar errores
-const queryDatabase = (query, values) => {
-    return new Promise((resolve, reject) => {
-        db.query(query, values, (err, results) => {
-            if (err) {
-                return reject(err);
-            }
-            resolve(results);
-        });
-    });
+// Promesa del query de la bd para manejar errores
+const queryDatabase = async (query, values) => {
+    const [results] = await db.query(query, values);
+    return results;
 };
 
-// Funcion para obtener todas las peliculas
+// Función para obtener todas las películas
 const getAllMovies = async (req, res) => {
     try {
         const results = await queryDatabase('SELECT * FROM peliculas');
