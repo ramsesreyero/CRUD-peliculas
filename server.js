@@ -17,12 +17,12 @@ const PORT = process.env.PORT || 8080;
 app.use(morgan('tiny'));
 
 // Middleware for CORS
+const cors = require('cors');
+
 app.use(cors({
     origin: [
-        'https://crud-peliculas-pyyp388wu-ramsesreyeros-projects.vercel.app',
-        'https://crud-peliculas-omega.vercel.app',
-        'http://localhost:8080',
-        'http://10.22.0.135:8080',
+        'https://web-production-0ed3.up.railway.app', // URL de tu frontend en Railway
+        'http://localhost:8080', // Si necesitas pruebas locales
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
