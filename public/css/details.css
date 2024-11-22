@@ -6,8 +6,8 @@ font-size:100%;
 width: 100vw;
 }
 
-#delete-button {
-    display: none; /* Ocultar por defecto */
+.hidden {
+    display: none;
 }
 
 .header {

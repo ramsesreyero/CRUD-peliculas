@@ -26,6 +26,8 @@
     float: right;
     font-size: 28px;
     font-weight: bold;
+    width: fit-content;
+    height: fit-content;
 }
 
 .close-button:hover,

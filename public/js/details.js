@@ -4,6 +4,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const movieId = getMovieIdFromUrl(); // Obtener el ID de la película de la URL
     loadMovieDetails(movieId); // Cargar detalles de la película
 
+    // Verificar si el usuario ha iniciado sesión
+    const loggedIn = localStorage.getItem('isLoggedIn');
+    if (loggedIn) {
+        // Mostrar los botones de "Editar" y "Eliminar"
+        document.getElementById('edit-button').classList.remove('hidden');
+        document.getElementById('delete-button').classList.remove('hidden');
+    } else {
+        // Ocultar los botones si el usuario no está conectado
+        document.getElementById('edit-button').classList.add('hidden');
+        document.getElementById('delete-button').classList.add('hidden');
+    }
+
     document.getElementById('edit-button').addEventListener('click', () => {
         window.location.href = `edit.html?id=${movieId}`; // Redirigir a la página de edición
     });

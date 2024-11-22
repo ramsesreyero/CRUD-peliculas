@@ -6,6 +6,45 @@ document.addEventListener('DOMContentLoaded', async () => {
     await obtenerGeneros(); // Obtener géneros al cargar la página
     await obtenerPeliculas(); // Obtener películas
 
+    // Verificar si el usuario ha iniciado sesión
+    const loggedIn = localStorage.getItem('isLoggedIn');
+    if (loggedIn) {
+        isLoggedIn = true; // Cambiar el estado de inicio de sesión
+        updateUIForLoggedInUser (); // Actualizar la interfaz de usuario
+    } else {
+        hideElementsForLoggedOutUser (); // Ocultar elementos para usuarios no conectados
+    }
+
+    document.querySelectorAll('.form-group input').forEach(input => {
+        // Agregar evento de entrada
+        input.addEventListener('input', function() {
+            if (this.value.trim() !== '') {
+                this.classList.add('has-value'); // Agregar clase si hay texto
+            } else {
+                this.classList.remove('has-value'); // Quitar clase si está vacío
+            }
+        });
+    
+        // Agregar evento de focus para mantener la clase si hay texto
+        input.addEventListener('focus', function() {
+            if (this.value.trim() !== '') {
+                this.classList.add('has-value'); // Mantener clase si ya tiene texto
+            }
+        });
+    
+        // Agregar evento de blur para verificar el valor al perder el foco
+        input.addEventListener('blur', function() {
+            if (this.value.trim() === '') {
+                this.classList.remove('has-value'); // Quitar clase si está vacío
+            }
+        });
+    
+        // Verificar el valor al cargar la página
+        if (input.value.trim() !== '') {
+            input.classList.add('has-value'); // Mantener la clase si ya tiene texto
+        }
+    });
+
     // Agregar evento al botón "Mostrar Todas las Películas"
     const showAllMoviesButton = document.getElementById('showAllMovies');
     showAllMoviesButton.addEventListener('click', mostrarTodasLasPeliculas);
@@ -71,48 +110,81 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    // Manejar el envío del formulario de inicio de sesión
+    // Manejo del formulario de inicio de sesión
     const loginForm = document.getElementById('login-form');
     loginForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevenir el comportamiento por defecto
+        event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+    
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-
-        // Verificar credenciales estáticas
-        if (email === 'admin@gmail.com' && password === 'password') {
-            isLoggedIn = true; // Cambiar el estado de inicio de sesión
-            modal.style.display = "none"; // Cerrar el modal
-
-            // Actualizar la interfaz de usuario
-            updateUIForLoggedInUser ();
+    
+        // Por simplicidad, asumiremos que el inicio de sesión es exitoso
+        if (email && password) { // Reemplaza esto con la lógica de autenticación real
+            localStorage.setItem('isLoggedIn', 'true'); // Establecer el estado de inicio de sesión
+            window.location.reload(); // Recargar la página para reflejar el cambio
         } else {
-            alert('Credenciales incorrectas.'); // Mensaje de error
- }
+            alert('Credenciales inválidas.'); // Manejo de errores
+        }
     });
 
-    // Función para actualizar la interfaz de usuario cuando el usuario ha iniciado sesión
     function updateUIForLoggedInUser () {
-        // Cambiar el botón de iniciar sesión por un círculo gris
         const loginButton = document.querySelector('.btn-primary.ml-2');
-        loginButton.innerHTML = '<div class="circle"></div>'; // Cambiar a un círculo gris
-        loginButton.classList.remove('btn-primary'); // Remover clase de botón primario
+        loginButton.style.display = 'none'; // Ocultar el botón de inicio de sesión
 
-        // Mostrar el enlace "Agregar Película" en el header
-        const header = document.querySelector('header');
-        const addMovieLink = document.createElement('a');
-        addMovieLink.href = 'addmovie.html';
-        addMovieLink.className = 'selected';
-        addMovieLink.innerText = 'Agregar Película';
-        header.appendChild(addMovieLink);
+        // Crear un ícono que actuará como botón de cierre de sesión
+        const userIcon = document.createElement('i');
+        userIcon.className = 'fas fa-user-circle'; // Clase de Font Awesome para el ícono
+        userIcon.style.fontSize = '40px'; // Ajustar el tamaño del ícono
+        userIcon.style.cursor = 'pointer'; // Cambiar el cursor a puntero
+        userIcon.style.color = '#007bff'; // Color del ícono (puedes cambiarlo)
 
-        // Mostrar el botón "Eliminar" en details.html
-        const deleteButton = document.getElementById('delete-button');
-        if (deleteButton) {
-            deleteButton.style.display = 'block'; // Asegurarse de que el botón esté visible
+        // Añadir el evento de clic para cerrar sesión
+        userIcon.onclick = function() {
+            // Lógica para cerrar sesión
+            localStorage.removeItem('isLoggedIn'); // Eliminar el estado de inicio de sesión
+            window.location.reload(); // Recargar la página para reflejar el cambio
+        };
+
+        // Agregar el ícono a la navegación
+        const nav = document.querySelector('.nav');
+        nav.appendChild(userIcon); // Asegúrate de que se agregue al contenedor correcto
+
+        // Mostrar el enlace "Agregar Película"
+        const addMovieLink = document.querySelector('a[href="addmovie.html"]');
+        if (addMovieLink) {
+            addMovieLink.classList.remove('hidden'); // Quitar clase hidden
+        }
+
+        // Mostrar el botón "Editar"
+        const editButton = document.getElementById('edit-button');
+        if (editButton) {
+            editButton.classList.remove('hidden'); // Quitar clase hidden
         }
     }
-});
 
+    function hideElementsForLoggedOutUser () {
+        // Ocultar el enlace "Agregar Película"
+        const addMovieLink = document.querySelector('a[href="addmovie.html"]');
+        if (addMovieLink) {
+            addMovieLink.classList.add('hidden'); // Añadir clase hidden
+        }
+
+        // Ocultar el botón "Editar"
+        const editButton = document.getElementById('edit-button');
+        if (editButton) {
+            editButton.classList.add('hidden'); // Añadir clase hidden
+        }
+    }
+
+    window.onload = function() {
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+        if (isLoggedIn) {
+            updateUIForLoggedInUser ();
+        } else {
+            hideElementsForLoggedOutUser ();
+        }
+    };
+});
 
 async function obtenerGeneros() {
     try {
