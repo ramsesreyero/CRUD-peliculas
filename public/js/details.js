@@ -1,6 +1,52 @@
 import { host } from "./host.js";
 
 document.addEventListener('DOMContentLoaded', () => {
+    const deleteButton = document.getElementById('delete-button');
+    const deleteModal = document.getElementById('deleteModal');
+    const confirmDeleteButton = document.getElementById('confirmDeleteButton');
+    const cancelDeleteButton = document.getElementById('cancelDeleteButton');
+
+    confirmDeleteButton.onclick = async () => {
+        // Cambiar el texto del botón a "Eliminando..."
+        confirmDeleteButton.innerText = 'Eliminando...';
+        confirmDeleteButton.disabled = true; // Deshabilitar el botón para evitar múltiples clics
+    
+        try {
+            await deleteMovie(movieId); // Llama a tu función para eliminar la película
+            // Aquí puedes manejar la redirección o cualquier otro paso después de la eliminación
+        } catch (error) {
+            console.error('Error al eliminar la película:', error);
+            alert('Error al eliminar la película. Inténtalo de nuevo más tarde.');
+        } finally {
+            confirmDeleteButton.innerText = 'Eliminar'; // Restablecer el texto del botón
+            confirmDeleteButton.disabled = false; // Habilitar el botón nuevamente
+        }
+    };
+
+    // Mostrar el modal al hacer clic en el botón de eliminar
+    deleteButton.addEventListener('click', () => {
+        const movieId = getMovieIdFromUrl(); // Obtener el ID de la película
+        deleteModal.style.display = 'block'; // Mostrar el modal
+        document.body.classList.add('no-scroll'); // Agregar la clase para desactivar el scroll
+        confirmDeleteButton.onclick = async () => {
+            await deleteMovie(movieId); // Llama a tu función para eliminar la película
+        };
+    });
+
+    // Cerrar el modal al hacer clic en "Cancelar"
+    cancelDeleteButton.addEventListener('click', () => {
+        deleteModal.style.display = 'none'; // Cerrar el modal
+        document.body.classList.remove('no-scroll'); // Quitar la clase para activar el scroll
+    });
+
+    // Función para cerrar el modal cuando se hace clic fuera de él
+    window.onclick = function(event) {
+        if (event.target == deleteModal) {
+            deleteModal.style.display = 'none'; // Cerrar el modal al hacer clic fuera
+            document.body.classList.remove('no-scroll'); // Quitar la clase para activar el scroll
+        }
+    };
+
     const movieId = getMovieIdFromUrl(); // Obtener el ID de la película de la URL
     loadMovieDetails(movieId); // Cargar detalles de la película
 
@@ -19,15 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('edit-button').addEventListener('click', () => {
         window.location.href = `edit.html?id=${movieId}`; // Redirigir a la página de edición
     });
-
-    document.getElementById('delete-button').addEventListener('click', () => {
-        deleteMovie(movieId); // Función para eliminar la película
-    });
 });
 
 function getMovieIdFromUrl() {
     const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('id'); // Obtener el ID de la película de la URL
+    return urlParams.get ('id'); // Obtener el ID de la película de la URL
 }
 
 async function loadMovieDetails(id) {
@@ -121,6 +163,7 @@ async function loadSimilarMovies(genero, currentMovieId) {
         similarMovieList.innerHTML = '<p>Error al cargar películas similares. Intenta de nuevo más tarde.</p>';
     }
 }
+
 // Función para obtener el nombre del servicio a partir del URL
 function getServiceNameFromUrl(url) {
     const services = {
@@ -160,20 +203,28 @@ function getServiceNameFromUrl(url) {
 }
 
 async function deleteMovie(id) {
-    const confirmDelete = confirm('¿Estás seguro de que deseas eliminar esta película?');
-    if (confirmDelete) {
+    // Mostrar el modal de confirmación
+    const deleteModal = document.getElementById('deleteModal');
+    deleteModal.style.display = 'block'; // Mostrar el modal
+
+    // Manejar la acción de confirmación dentro del modal
+    const confirmDeleteButton = document.getElementById('confirmDeleteButton');
+    confirmDeleteButton.onclick = async () => {
         try {
             const response = await fetch(host + `/api/peliculas/${id}`, {
                 method: 'DELETE'
             });
             if (response.ok) {
-                alert('Película eliminada con éxito');
-                window.location.href = 'index.html'; // Redirigir a la página principal
+                // Cerrar el modal después de eliminar
+                deleteModal.style.display = 'none'; 
+                // Redirigir a la página principal
+                window.location.href = 'index.html'; 
             } else {
                 alert('Error al eliminar la película. Inténtalo de nuevo más tarde.');
             }
         } catch (error) {
             console.error('Error al eliminar la película:', error);
+            alert('Error al eliminar la película. Inténtalo de nuevo más tarde.');
         }
-    }
+    };
 }

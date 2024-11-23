@@ -37,7 +37,7 @@
                 <label for="categoria" class="form-textbox-label"></label>
             </div>
             <div class="form-group">
-                <input type="number" id="anio" name="anio" placeholder="Año" required min="1888" max="2100" />
+                <input type="text" id="anio" name="anio" placeholder="Año" required maxlength="4" pattern="\d{4}" title="Por favor, ingresa un año de 4 dígitos" oninput="this.value = this.value.replace(/[^0-9]/g, '');" />
                 <label for="anio" class="form-textbox-label">Año</label>
             </div>
             <div class="form-group">

@@ -5,57 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de detalles</title>
     <link rel="stylesheet" href="./css/details.css">
+    <link rel="stylesheet" href="./css/deletemodal.css"> 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
-    <header class="header">
-        <nav class="nav">
-            <a href="index.html">Volver al Inicio</a>
-        </nav>
-    </header>
-    <main class="movie-details">
-        <div class="details-container">
-            <div class="details-content">
-                <img id="movie-banner" src="./carruselimg/bannerplaceholder.png" alt="Banner de la película" style="display: block;">                <div class="info">
-                    <div class="details-row">
-                        <div class="actions">
-                            <a id="watch-button" class="button">Servicio disponible</a>
-                            <a id="edit-button" class="button hidden">Editar</a>
-                            <button id="delete-button" class="button hidden">Eliminar</button>
-                        </div>
-                        
-                        <div class="movie-title-description">
-                            <h3 id="movie-title"></h3>
-                            <p id="movie-description"><strong></strong> <span id="movie-contenido"></span></p>
-                        </div>
-    
-                        <div class="movie-meta row">
-                            <div class="col">
-                                <strong>Categoría: </strong> <span id="movie-categoria"></span>
+    <body>
+        <header class="header">
+            <nav class="nav">
+                <a href="index.html">Volver al Inicio</a>
+            </nav>
+        </header>
+        <main class="movie-details">
+            <div class="details-container">
+                <div class="details-content">
+                    <img id="movie-banner" src="./carruselimg/bannerplaceholder.png" alt="Banner de la película" style="display: block;">                <div class="info">
+                        <div class="details-row">
+                            <div class="actions">
+                                <a id="watch-button" class="button">Servicio disponible</a>
+                                <a id="edit-button" class="button hidden">Editar</a>
+                                <button id="delete-button" class="button hidden">Eliminar</button>
                             </div>
-                            <div class="col">
-                                <strong>Año: </strong> <span id="movie-anio"></span>
+                            
+                            <div class="movie-title-description">
+                                <h3 id="movie-title"></h3>
+                                <p id="movie-description"><strong></strong> <span id="movie-contenido"></span></p>
                             </div>
-                            <div class="col">
-                                <strong>Género: </strong> <span id="movie-genero"></span>
+        
+                            <div class="movie-meta row">
+                                <div class="col">
+                                    <strong>Categoría: </strong> <span id="movie-categoria"></span>
+                                </div>
+                                <div class="col">
+                                    <strong>Año: </strong> <span id="movie-anio"></span>
+                                </div>
+                                <div class="col">
+                                    <strong>Género: </strong> <span id="movie-genero"></span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <section id="similar-movies" class="similar-movies">
+                    <h2>Títulos relacionados</h2>
+                    <div class="similar-movie-list">
+                        <!-- Las películas similares se generarán dinámicamente aquí -->
+                    </div>
+                </section>
             </div>
-            <section id="similar-movies" class="similar-movies">
-                <h2>Títulos relacionados</h2>
-                <div class="similar-movie-list">
-                    <!-- Las películas similares se generarán dinámicamente aquí -->
+        </main>
+        <footer class="footer">
+            <p>&copy;2024 Ramses Reyero. Clase de Programación Web. Todos los derechos reservados.</p>
+        </footer>
+        <script src="./js/details.js" type="module"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+    <!-- Modal de Confirmación de Eliminación -->
+        <div id="deleteModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h1>Confirmar Eliminación</h1>
+                <h4>¿Estás seguro de que deseas eliminar esta película?</h4>
+                <div class="button-container">
+                    <button id="confirmDeleteButton">Eliminar</button>
+                    <button id="cancelDeleteButton">Cancelar</button>
                 </div>
-            </section>
+            </div>
         </div>
-    </main>
-    <footer class="footer">
-        <p>&copy;2024 Ramses Reyero. Clase de Programación Web. Todos los derechos reservados.</p>
-    </footer>
-    <script src="./js/details.js" type="module"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
-</body>
+    </body>
 </html>

@@ -1,0 +1,136 @@
+.modal {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Mantener en su lugar */
+    z-index: 1; /* Por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    overflow: hidden; /* Evitar scroll en el fondo */
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo negro con opacidad */
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column; /* Cambiado a columna para apilar elementos verticalmente */
+    align-items: center; /* Centrar horizontalmente todos los elementos */
+    position: absolute; /* Cambiado a absolute */
+    top: 50%; /* Mover el modal al 50% de la altura de la pantalla */
+    left: 50%; /* Mover el modal al 50% del ancho de la pantalla */
+    transform: translate(-50%, -50%); /* Centrar el modal usando transform */
+    background-color: #1c1c1e; /* Color de fondo del modal */
+    padding: 20px;
+    width: 30%; /* Ancho del modal */
+    max-width: 500px; /* Opcional: Ancho máximo para pantallas grandes */
+    max-height: 80%; /* Limitar la altura máxima del modal */
+    overflow-y: auto; /* Habilitar el scroll dentro del modal */
+    border-radius: 15px; /* Bordes redondeados */
+    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+    color: #ffffff; /* Color del texto dentro del modal */
+}
+
+.no-scroll {
+    overflow: hidden; /* Evita el scroll en el body */
+}
+
+.close-button{
+    display: none;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem; /* Usar rem para escalabilidad */
+    line-height: 1.125;
+    font-weight: 600;
+    margin: 0; /* Eliminar márgenes */
+}
+
+h2 {
+    text-align: center;
+    font-size: 1.4rem; /* Usar rem para escalabilidad */
+    line-height: 1.381002381;
+    font-weight: 490;
+    color: #6e6e73;
+    margin-bottom: 20px;
+}
+
+h4 {
+    text-align: center;
+    font-size: 1.2rem; /* Usar rem para escalabilidad */
+    line-height: 1.381002381;
+    font-weight: 470;
+    color: #6e6e73;
+    margin-bottom: 0px;
+    margin-top: 15px;
+}
+
+/* Estilos para el botón de eliminar */
+#confirmDeleteButton {
+    padding: 1rem;
+    margin: 10% auto;
+    display: inline-block; /* Asegurarse de que el botón se comporte como un bloque en línea */
+    width: 100%;
+    font-size: 1.3rem; /* Tamaño de fuente del botón */
+    color: #ffffff; /* Color del texto del botón */
+    background-color: #d60000; /* Color de fondo del botón */
+    border: none; /* Sin borde */
+    border-radius: 15px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+    transition: background-color .3s; /* Transición suave para el color de fondo */
+}
+
+/* Cambiar el color del botón al pasar el mouse */
+#confirmDeleteButton:hover {
+    background-color: #ff1616; /* Color más oscuro al pasar el ratón */
+}
+
+#cancelDeleteButton {
+    padding: 1rem;
+    margin: 0 auto;
+    display: inline-block; /* Asegurarse de que el botón se comporte como un bloque en línea */
+    width: 100%;
+    font-size: 1.3rem; /* Tamaño de fuente del botón */
+    color: #ffffff; /* Color del texto del botón */
+    background-color: #0068d7; /* Color de fondo del botón */
+    border: none; /* Sin borde */
+    border-radius: 15px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+    transition: background-color .3s; /* Transición suave para el color de fondo */
+}
+
+/* Cambiar el color del botón al pasar el mouse */
+#cancelDeleteButton:hover {
+    background-color: #1285ff; /* Color más oscuro al pasar el ratón */
+}
+
+/* Estilos para dispositivos móviles (pantallas menores a 768px) */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 80%; /* Aumentar el ancho del modal para pantallas pequeñas */
+        margin: auto; /* Ajustar el margen superior */
+    }
+
+    h1, h2, h3 {
+        font-size: 1.5rem; /* Ajustar el tamaño de fuente para pantallas pequeñas */
+    }
+
+    button {
+        font-size: 1.2rem; /* Reducir el tamaño de la fuente en botones */
+    }
+}
+
+/* Estilos para tablets (pantallas entre 768 px y 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .modal-content {
+        width: 60%; /* Ajustar el ancho del modal para tablets */
+    }
+
+    h1, h2, h3 {
+        font-size: 1.8rem; /* Ajustar el tamaño de fuente para tablets */
+    }
+
+    button {
+        font-size: 1.3rem; /* Mantener el tamaño de la fuente en botones */
+    }
+}

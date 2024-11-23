@@ -49,7 +49,6 @@ height: 100vh;
 .header .nav a {
 color: #666;
 text-decoration: none;
-/* padding: 0.5rem 1rem; */
 font-size: 1.5rem; /* Cambiado a rem */
 font-weight: 700;
 transition: color .3s;
