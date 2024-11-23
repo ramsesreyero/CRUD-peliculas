@@ -61,21 +61,21 @@
             <div class="form-group">
                 <label for="image"></label>
                 <div class="input-image-container">
-                    <input type="file" id="image" name="image" accept="image/*" />
+                    <input type="file" id="image" name="image" accept="image/*" style="display: none;" />
                     <label for="image" class="custom-file-upload">
                         Portada Vertical
                     </label>
-                    <img id="current-image" src="" alt="Imagen Actual" style="max-width: 200px; display: none;" />
+                    <span id="image-file-name" class="file-name"></span> <!-- Contenedor para mostrar el nombre del archivo -->
                 </div>
             </div>
             <div class="form-group">
                 <label for="bannerUrl"></label>
                 <div class="input-image-container">
-                    <input type="file" id="bannerUrl" name="bannerUrl" accept="image/*" />
+                    <input type="file" id="bannerUrl" name="banner" accept="image/*" style="display: none;" />
                     <label for="bannerUrl" class="custom-file-upload">
                         Banner Horizontal
                     </label>
-                    <img id="current-banner" src="" alt="Banner Actual" style="max-width: 200px; display: none;" />
+                    <span id="banner-file-name" class="file-name"></span> <!-- Contenedor para mostrar el nombre del archivo -->
                 </div>
             </div>
             <div class="button-container">

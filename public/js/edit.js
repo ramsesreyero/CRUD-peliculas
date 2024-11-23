@@ -15,6 +15,18 @@ document.addEventListener('DOMContentLoaded', () => {
         input.addEventListener('change', updateLabelState); // Solo para selects
         input.addEventListener('focus', updateLabelState);
         input.addEventListener('blur', updateLabelState);
+
+        // Mostrar el nombre del archivo seleccionado
+        if (input.type === 'file') {
+            input.addEventListener('change', function() {
+                const fileNameSpan = this.nextElementSibling; // Asumimos que el span para el nombre del archivo está justo después del input
+                if (this.files.length > 0) {
+                    fileNameSpan.textContent = this.files[0].name; // Mostrar el nombre del archivo
+                } else {
+                    fileNameSpan.textContent = ''; // Limpiar si no hay archivo
+                }
+            });
+        }
     });
 });
 
@@ -116,7 +128,7 @@ document.getElementById('edit-movie-form').addEventListener('submit', async func
             formData.append('image', imageFile); // Agregar la portada si existe
         }
         if (bannerFile) {
-            formData.append('bannerUrl', bannerFile); // Agregar el banner si existe
+            formData.append('banner', bannerFile); // Agregar el banner si existe
         }
 
         const response = await fetch(host + `/api/peliculas/${id}`, {
