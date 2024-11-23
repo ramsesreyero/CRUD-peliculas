@@ -317,6 +317,58 @@ h2 {
     margin: 0; /* Eliminar margen */
 }
 
+        /* Estilos para el formulario y animación de labels */
+        .form-group {
+            position: relative;
+            margin-bottom: 20px;
+            text-align: left; /* Alinear el texto a la izquierda */
+        }
+
+        .form-textbox-label {
+            position: absolute;
+            pointer-events: none; /* Asegúrate de que el label no interfiera con el input */
+            top: 50%; /* Centrar verticalmente por defecto */
+            left: 15px; /* Mantener la posición horizontal */
+            transform: translateY(-50%); /* Ajustar para centrar el label */
+            font-size: 1rem; /* Usar rem para escalabilidad */
+            color: #aaa;
+            transition: all 0.2s ease-in-out; /* Transición suave */
+        }
+
+        .form-group input:focus + .form-textbox-label,
+        .form-group textarea:focus + .form-textbox-label,
+        .form-group input.has-value + .form-textbox-label,
+        .form-group textarea.has-value + .form-textbox-label {
+            top: 10px; /* Mover el label hacia arriba */
+            left: 15px; /* Mantener la posición horizontal */
+            font-size: 0.875rem; /* Reducir el tamaño del label */
+            color: #007aff; /* Cambiar el color del label al hacer foco */
+        }
+
+        /* Estilos adicionales */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #1c1c1e;
+            color: #ffffff;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        .button-container button {
+            background-color: #007aff;
+            color: #ffffff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button-container button:hover {
+            background-color: #005bb5;
+        }
+
     /* Media Queries para adaptabilidad */
 
 @media (max-width: 1200px) {
