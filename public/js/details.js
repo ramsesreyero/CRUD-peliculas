@@ -44,7 +44,21 @@ async function loadMovieDetails(id) {
         document.getElementById('movie-categoria').innerText = pelicula.categoria;
         document.getElementById('movie-anio').innerText = pelicula.anio;
         document.getElementById('movie-genero').innerText = pelicula.genero;
-        document.getElementById('movie-banner').src = pelicula.bannerUrl;
+
+        // Cargar el banner de la película
+        const movieBanner = document.getElementById('movie-banner');
+        movieBanner.src = pelicula.bannerUrl; // Asignar la URL del banner
+
+        // Mostrar la imagen solo cuando se haya cargado
+        movieBanner.onload = () => {
+            movieBanner.style.display = 'block'; // Mostrar la imagen del banner
+        };
+
+        // Manejar el error de carga de la imagen
+        movieBanner.onerror = () => {
+            movieBanner.src = '../icons/bannerplaceholder.jpg'; // Volver al placeholder si hay un error
+            movieBanner.style.display = 'block'; // Asegurarse de que el placeholder se muestre
+        };
 
         // Cargar películas similares basadas en el género de la película actual
         loadSimilarMovies(pelicula.genero, id); // Pasa el ID de la película actual
