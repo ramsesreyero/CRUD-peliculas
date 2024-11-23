@@ -101,20 +101,10 @@ const updateMovie = async (req, res) => {
         }
 
         // Manejo de la imagen
-        if (req.files && req.files.image) {
+        if (req.files && req.files.image && req.files.image.length > 0) {
             console.log('Archivo de imagen recibido:', req.files.image[0]); // Log para verificar el archivo
             try {
-                const result = await new Promise((resolve, reject) => {
-                    const uploadStream = cloudinary.uploader.upload_stream((error, result) => {
-                        if (error) {
-                            return reject(error);
-                        }
-                        resolve(result);
-                    });
-                    uploadStream.end(req.files.image[0].buffer); // Envía el buffer de la imagen a Cloudinary
-                });
-
-                console.log('Resultado de la carga en Cloudinary (imagen):', result); // Log para verificar el resultado
+                const result = await uploadImage(req.files.image[0].buffer);
                 peliculaActualizada.imageUrl = result.secure_url; // Actualiza solo si hay nueva imagen
             } catch (uploadError) {
                 console.error('Error al subir la imagen a Cloudinary:', uploadError);
@@ -126,20 +116,10 @@ const updateMovie = async (req, res) => {
         }
 
         // Manejo del banner
-        if (req.files && req.files.bannerUrl) {
-            console.log('Archivo de banner recibido:', req.files.bannerUrl[0]); // Log para verificar el archivo
+        if (req.files && req.files.banner && req.files.banner.length > 0) {
+            console.log('Archivo de banner recibido:', req.files.banner[0]); // Log para verificar el archivo
             try {
-                const bannerResult = await new Promise((resolve, reject) => {
-                    const uploadStream = cloudinary.uploader.upload_stream((error, result) => {
-                        if (error) {
-                            return reject(error);
-                        }
-                        resolve(result);
-                    });
-                    uploadStream.end(req.files.bannerUrl[0].buffer); // Envía el buffer del banner a Cloudinary
-                });
-
-                console.log('Resultado de la carga en Cloudinary (banner):', bannerResult); // Log para verificar el resultado
+                const bannerResult = await uploadImage(req.files.banner[0].buffer); // Cambiar bannerUrl a banner
                 peliculaActualizada.bannerUrl = bannerResult.secure_url; // Actualiza solo si hay nuevo banner
             } catch (uploadError) {
                 console.error('Error al subir el banner a Cloudinary:', uploadError);
