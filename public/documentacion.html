@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación</title>
+    <link rel="stylesheet" href="./css/documentacion.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html">Volver al Inicio</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Aplicación CRUD de Películas y Series</h1>
+        
+        <section class="description">
+            <h2>Descripción General</h2>
+            <p>El proyecto es una aplicación web diseñada para gestionar una biblioteca de películas y series, permitiendo a los usuarios crear, leer, actualizar y eliminar información sobre películas. Además, incluye características como la carga y gestión de imágenes, filtrado por géneros y búsqueda de películas.</p>
+        </section>
+
+        <section class="technologies">
+            <h2>Tecnologías y Librerías Utilizadas</h2>
+            <h3>Frontend</h3>
+            <ul>
+                <li><strong>HTML5</strong>: Estructura básica de la aplicación.</li>
+                <li><strong>CSS3</strong>: Estilos para la presentación visual.</li>
+                <li><strong>JavaScript (ES6+)</strong>: Lógica del cliente para interactividad.</li>
+                <li><strong>Bootstrap</strong>: Framework CSS utilizado para el diseño responsivo y componentes estilizados.</li>
+            </ul>
+
+            <h3>Backend</h3>
+            <ul>
+                <li><strong>Node.js</strong>: Entorno de ejecución para JavaScript en el servidor.</li>
+                <li><strong>Express.js</strong>: Framework para construir aplicaciones web y APIs en Node.js.</li>
+                <li><strong>MySQL</strong>: Sistema de gestión de bases de datos relacional utilizado para almacenar la información de las películas y series.</li>
+            </ul>
+
+            <h3>Servicios</h3>
+            <ul>
+                <li><strong>Cloudinary</strong>: Servicio de almacenamiento en la nube utilizado para gestionar y optimizar imágenes.</li>
+                <li><strong>dotenv</strong>: Paquete para manejar variables de entorno.</li>
+            </ul>
+
+            <h3>Middleware</h3>
+            <ul>
+                <li><strong>body-parser</strong>: Middleware para analizar los cuerpos de las solicitudes HTTP.</li>
+                <li><strong>cors</strong>: Middleware para habilitar CORS (Cross-Origin Resource Sharing), permitiendo que la API sea accesible desde diferentes dominios.</li>
+                <li><strong>morgan</strong>: Middleware para registrar las solicitudes HTTP en la consola, útil para el desarrollo y depuración.</li>
+                <li><strong>multer</strong>: Middleware para manejar la carga de archivos, utilizado para subir imágenes y banners de películas y series.</li>
+            </ul>
+        </section>
+
+        <section class="project-structure">
+            <h2>Estructura del Proyecto</h2>
+            <pre>
+movie-crud/
+├── api/                # Controladores y lógica de negocio
+├── config/             # Configuraciones (DB, Cloudinary)
+├── public/             # Archivos estáticos
+│   ├── css/            # Estilos
+│   ├── js/             # JavaScript del cliente
+│   └── carruselimg/    # Imágenes del carrusel
+├── routes/             # Rutas de la API
+└── server.js           # Punto de entrada
+            </pre>
+        </section>
+
+        <section class="database">
+            <h2>Base de Datos</h2>
+            <p><strong>MySQL</strong>: Utilizado como base de datos para almacenar la información de las películas. La estructura de la tabla <code>peliculas</code> incluye campos como <code>id</code>, <code>titulo</code>, <code>contenido</code>, <code>categoria</code>, <code>anio</code>, <code>genero</code>, <code>imageUrl</code>, <code>bannerUrl</code>, y <code>watchUrl</code>.</p>
+        </section>
+
+        <section class="hosting">
+            <h2>Alojamiento</h2>
+            <p><strong>Railway</strong>: El proyecto está alojado en Railway, una plataforma que permite implementar aplicaciones de manera sencilla y rápida.</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy;2024 Ramses Reyero. Clase de Programación Web. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
