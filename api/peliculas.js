@@ -84,14 +84,13 @@ const addMovie = async (req, res) => {
     }
 };
 
-// Function to update a movie
 const updateMovie = async (req, res) => {
     const { id } = req.params; // Obtener el ID de los parámetros
-    const peliculaActualizada = req.body;
+    const peliculaActualizada = req.body; // Asegúrate de que esta variable esté bien definida
 
     try {
         // Validar que los campos requeridos estén presentes
-        if (!peliculaActualizada.titulo || !peliculaActualizada.contenido || !peliculaActualizada.categoria || !peliculaActualizada.anio || !peliculaActualizada.genero || !peliculaActual.watchUrl) {
+        if (!peliculaActualizada.titulo || !peliculaActualizada.contenido || !peliculaActualizada.categoria || !peliculaActualizada.anio || !peliculaActualizada.genero || !peliculaActualizada.watchUrl) {
             return res.status(400).json({ error: 'Todos los campos son requeridos' });
         }
 
