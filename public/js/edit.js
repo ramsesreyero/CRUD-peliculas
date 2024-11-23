@@ -8,11 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Manejar la lógica para mantener el efecto del label
     document.querySelectorAll('.form-group input, .form-group textarea, .form-group select').forEach(input => {
-        updateLabelState.call(input); // Establecer el estado inicial
-
         // Agregar eventos para manejar el estado del label
         input.addEventListener('input', updateLabelState);
-        input.addEventListener('change', updateLabelState); // Solo para selects
+        input.addEventListener('change', updateLabelState);
         input.addEventListener('focus', updateLabelState);
         input.addEventListener('blur', updateLabelState);
 
@@ -27,6 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
+    });
+
+    // Aquí puedes agregar la lógica para verificar los valores de los inputs
+    document.querySelectorAll('.form-group input, .form-group textarea, .form-group select').forEach(input => {
+        // Llama a la función para establecer el estado inicial
+        updateLabelState.call(input); // Esto asegurará que el label se mueva si hay contenido
     });
 });
 
@@ -64,24 +68,24 @@ async function cargarPelicula(id) {
     document.getElementById('anio').value = pelicula.anio;
     document.getElementById('watchUrl').value = pelicula.watchUrl;
 
-    // Llama a updateLabelState para todos los inputs y selects
-    document.querySelectorAll('.form-group input, .form-group textarea, .form-group select').forEach(input => {
-        updateLabelState.call(input); // Establecer el estado inicial
-    });
-
     // Mostrar la imagen actual si existe
-    if (pelicula.imageUrl) {
-        const currentImage = document.getElementById('current-image');
+    const currentImage = document.getElementById('current-image');
+    if (currentImage && pelicula.imageUrl) {
         currentImage.src = pelicula.imageUrl;
         currentImage.style.display = 'block'; // Mostrar la imagen
     }
 
     // Mostrar el banner actual si existe
-    if (pelicula.bannerUrl) {
-        const currentBanner = document.getElementById('current-banner');
+    const currentBanner = document.getElementById('current-banner');
+    if (currentBanner && pelicula.bannerUrl) {
         currentBanner.src = pelicula.bannerUrl;
         currentBanner.style.display = 'block'; // Mostrar el banner
     }
+
+    // Actualizar el estado del label para todos los inputs y selects
+    document.querySelectorAll('.form-group input, .form-group textarea, .form-group select').forEach(input => {
+        updateLabelState.call(input); // Llama a la función para establecer el estado inicial
+    });
 }
 
 // Función para actualizar el estado del label
