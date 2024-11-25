@@ -93,3 +93,74 @@ footer {
     width: 100%;
     margin-top: auto;
 }
+
+/* Estilos generales (ya definidos en tu código) */
+
+/* Media Query para dispositivos móviles */
+@media (max-width: 600px) {
+    .header h1 {
+        font-size: 1.2em; /* Reduce el tamaño del título en móviles */
+    }
+
+    .header .nav a {
+        font-size: 1rem; /* Reduce el tamaño de los enlaces de navegación */
+    }
+
+    h1 {
+        font-size: 1.8em; /* Reduce el tamaño del título principal */
+    }
+
+    h2 {
+        font-size: 1.5em; /* Reduce el tamaño de los subtítulos */
+    }
+
+    .description, .technologies, .project-structure, .database, .hosting {
+        padding: 15px; /* Reduce el espaciado interno */
+    }
+}
+
+/* Media Query para tabletas */
+@media (min-width: 601px) and (max-width: 900px) {
+    .header h1 {
+        font-size: 1.5em; /* Tamaño del título para tabletas */
+    }
+
+    .header .nav a {
+        font-size: 1.1rem; /* Tamaño de los enlaces de navegación */
+    }
+
+    h1 {
+        font-size: 2em; /* Tamaño del título principal */
+    }
+
+    h2 {
+        font-size: 1.6em; /* Tamaño de los subtítulos */
+    }
+
+    .description, .technologies, .project-structure, .database, .hosting {
+        padding: 18px; /* Espaciado interno ajustado */
+    }
+}
+
+/* Media Query para pantallas grandes */
+@media (min-width: 901px) {
+    .header h1 {
+        font-size: 1.8em; /* Tamaño del título para pantallas grandes */
+    }
+
+    .header .nav a {
+        font-size: 1.2rem; /* Tamaño de los enlaces de navegación */
+    }
+
+    h1 {
+        font-size: 2.4em; /* Tamaño del título principal */
+    }
+
+    h2 {
+        font-size: 1.8em; /* Tamaño de los subtítulos */
+    }
+
+    .description, .technologies, .project-structure, .database, .hosting {
+        padding: 20px; /* Espaciado interno normal */
+    }
+}
