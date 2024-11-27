@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const cancelDeleteButton = document.getElementById('cancelDeleteButton');
 
     confirmDeleteButton.onclick = async () => {
-        // Cambiar el texto del botón a "Eliminando..."
         confirmDeleteButton.innerText = 'Eliminando...';
         confirmDeleteButton.disabled = true; // Deshabilitar el botón para evitar múltiples clics
     
@@ -193,7 +192,6 @@ function getServiceNameFromUrl(url) {
         'crackle.com': 'Crackle', 
         'mubi.com': 'Mubi', 
         'hoopladigital.com': 'Hoopla',
-        // Agregar más servicios según sea necesario
     };
 
     const urlObject = new URL(url);

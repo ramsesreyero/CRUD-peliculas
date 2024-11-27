@@ -256,7 +256,7 @@ function filtrarPeliculasPorGenero(genero) {
     let found = false; // Variable para rastrear si se encontró alguna película
 
     movieItems.forEach(item => {
-        const itemGenero = item.dataset.genero; // Asegúrate de que los elementos tengan el atributo data-genero
+        const itemGenero = item.dataset.genero;
         if (itemGenero === genero) {
             item.style.display = ''; // Muestra la película si coincide
             found = true; // Se encontró una película que coincide

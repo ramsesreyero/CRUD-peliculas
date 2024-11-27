@@ -357,7 +357,6 @@ body {
 display:flex;
 flex-direction:column;
 font-family:'San Francisco',sans-serif;
-background-color:#2c2c2c;
 color:#fff;
 overflow-x:hidden;
 }
@@ -482,7 +481,6 @@ max-width: 100%;
 flex: 1 1 200px; /* Permite que los elementos crezcan y se reduzcan, con un ancho base de 200px */
 margin: 20px; /* Espacio entre los elementos */
 max-width: 240px; /* Establece un ancho máximo para los elementos */
-background-color: #1c1c1c; /* Color de fondo para los ítems */
 border-radius: 8px; /* Bordes redondeados */
 overflow: hidden; /* Oculta el desbordamiento */
 transition: transform 0.3s, box-shadow .3s; /* Efecto de transición */
@@ -504,7 +502,6 @@ padding: 0px; /* Espaciado interno para el texto */
 
 .similar-movie-list .movie-item:hover {
 transform: scale(1.05); /* Efecto de escala al pasar el mouse */
-box-shadow: 0 4px 10px #00000080; /* Sombra al pasar el mouse */
 }
 
 .similar-movies h2 {
